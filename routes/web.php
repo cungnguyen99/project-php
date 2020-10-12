@@ -20,3 +20,5 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index');
 
 //BACKEND
 Route::get('/admin','App\Http\Controllers\AdminController@index');
+
+Route::get('/dashboard','App\Http\Controllers\AdminController@show_dashboard');
