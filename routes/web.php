@@ -23,4 +23,8 @@ Route::get('/admin','App\Http\Controllers\AdminController@index');
 
 Route::get('/dashboard','App\Http\Controllers\AdminController@show_dashboard');
 
+//logout
+Route::get('/logout','App\Http\Controllers\AdminController@logout');
+
+//login
 Route::post('/admin-dashboard','App\Http\Controllers\AdminController@dashboard');

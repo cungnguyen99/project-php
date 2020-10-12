@@ -24,6 +24,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="log-w3">
 <div class="w3layouts-main">
 	<h2>Sign In Now</h2>
+	<?php
+		// gán biến message ở hàm dashboard trong controller
+		$mess=Session::get('message');
+		if($mess){
+			echo '<span>' ,$mess. '</span>';
+			//in xong rồi thì gán bằng null, chỉ cho in ra 1 lần
+			Session::put('message',null);
+		}
+	?>
 	<!-- action gui den ham thuc hien trong controller adminController -->
 		<form action="{{URL::to('/admin-dashboard')}}" method="post">
 		{{csrf_field()}}
