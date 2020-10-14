@@ -20,7 +20,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{{asset('public/backend/css/morris.css')}}" type="text/css"/>
 <!-- calendar -->
 <link rel="stylesheet" href="{{asset('public/backend/css/monthly.css')}}">
-<!-- //calendar -->
+<!-- create film -->
+<link href="{{asset('public/backend/css/create_films.css')}}" rel='stylesheet' type='text/css' />
 <!-- //font-awesome icons -->
 <script src="{{asset('public/backend/js/jquery2.0.3.min.js')}}"></script>
 <script src="{{asset('public/backend/js/raphael-min.js')}}"></script>
@@ -93,8 +94,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Danh muc phim</span>
                     </a>
                     <ul class="sub">
-						<li><a href="typography.html">Thêm phim</a></li>
-						<li><a href="glyphicon.html">Liệt kê danh mục</a></li>
+						<li><a href="{{URL::to('/add-category-film')}}">Thêm phim</a></li>
+						<li><a href="{{URL::to('/all-category-films')}}">Liệt kê danh mục</a></li>
                     </ul>
                 </li>
                 
