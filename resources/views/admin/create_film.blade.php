@@ -7,15 +7,17 @@
             <p>You are 30 seconds away from earning your own money!</p><input type="submit" name="" value="Login" /><br/></div>
         <div class="col-md-9 register-right">
                     <h3 class="register-heading">Create a new film for...</h3>
-                    <form action="/product/create" method="POST" enctype="multipart/form-data">
+                    <form action="{{URL::to('/save-film')}}" method="post">
+                    {{csrf_field()}}
                         <div class="form-wrap register-form">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-6">
-                                            <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Film Name *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="genre" placeholder="Genre *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="country" placeholder="Country *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="time" placeholder="Time *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" name="tenphim" placeholder="Tên Phim *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" name="theloai" placeholder="Thể loại *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" name="hangsx" placeholder="Hãng sản xuất *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" name="daodien" placeholder="Đạo diễn *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" onfocus="(this.type='date')" name="ngaykc" placeholder="Ngày Khởi chiếu *" value="" /></div>
                                             <div class="form-group">
                                                 <div class="maxl">
                                                     <div class="button-wrapper"><span class="label">Upload File</span><input class="form-control custom-file-input" id="upload" name="url" type="file" multiple="multiple" /></div>
@@ -23,11 +25,11 @@
                                             </div>
                                     </div>
                                     <div class="col-md-6">
-                                            <div class="form-group"><input class="form-control" type="text" name="cast" placeholder="Cast *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="imdb" placeholder="Imdb *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="year" placeholder="Manufacture Year *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="description" placeholder="Description for film *" value="" /></div>
-                                            <input class="btnRegister" type="submit" value="Create" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" name="namchinh" placeholder="Nam chính *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" name="nuchinh" placeholder="Nữ chính *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" name="tongchiphi" placeholder="Tổng chi phí *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" onfocus="(this.type='date')" name="ngaykt" placeholder="Ngày Kết thúc *" value="" /></div>
+                                            <input class="btnRegister" type="submit" value="Tạo mới" /></div>
                                     </div>
                                 </div>
                             </div>

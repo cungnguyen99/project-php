@@ -135,7 +135,7 @@
     margin-bottom: -15%;
     color: #495057;
 }
-.register-form input.form-control{
+.register-form input.form-control, textarea.form-contro{
     width: 60% !important;
 }
 .register-form ::placeholder { 

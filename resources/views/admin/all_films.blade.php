@@ -5,6 +5,29 @@
     <div class="panel-heading">
       Responsive Table
     </div>
+    <?php
+		// gán biến message ở hàm dashboard trong controller
+		$mess=Session::get('message');
+		if($mess){
+			echo '<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+      <div class="toast" style="position: absolute; top: 0; right: 0;">
+        <div class="toast-header">
+          <i class="fa fa-check-square"></i>  
+          <strong class="mr-auto">Bootstrap</strong>
+          <small>11 mins ago</small>
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body">'
+          ,$mess.
+        '</div>
+      </div>
+    </div>';
+			//in xong rồi thì gán bằng null, chỉ cho in ra 1 lần
+			Session::put('message',null);
+		}
+	?>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
         <select class="input-sm form-control w-sm inline v-middle">
