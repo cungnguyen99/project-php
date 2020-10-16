@@ -18,7 +18,12 @@ class CategoryFilms extends Controller
 
     public function all_category_films()
     {
-        return view('admin.all_films');
+        //lấy hết hàng trong bảng films
+        $all_films=DB::table('tbl_films')->get();
+        //đưa dữ liệu sang bên file all_films trong view để hiện ra trang all_category_films
+        $data=view('admin.all_films')->with('allFilms',$all_films);
+
+        return view('admin_layout')->with('admin.all_films',$data);
     }
 
     public function save_film(Request $req)

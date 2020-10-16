@@ -58,22 +58,24 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Project</th>
-            <th>Task</th>
-            <th>Date</th>
+            <th>Tên phim</th>
+            <th>imdb</th>
+            <th>Đạo diễn</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
         <tbody>
+        @foreach($allFilms as $items => $item)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Idrawfast prototype design prototype design prototype design prototype design prototype design</td>
-            <td><span class="text-ellipsis">{item.PrHelpText1}</span></td>
-            <td><span class="text-ellipsis">{item.PrHelpText1}</span></td>
+            <td>{{$item->TenPhim}}</td>
+            <td><span class="text-ellipsis">{{$item->IMDB}}</span></td>
+            <td><span class="text-ellipsis">{{$item->DaoDien}}</span></td>
             <td>
               <a href="" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
             </td>
           </tr>
+        @endforeach
         </tbody>
       </table>
     </div>

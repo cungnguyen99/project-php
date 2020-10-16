@@ -200,7 +200,7 @@
 						</li>                
 						<li><a href="#">Help</a></li>
 						<li class="loginLink"><a href="#">LOG In</a></li>
-						<li class="btn signupLink"><a href="#">sign up</a></li>
+						<li class="btn"><a href="{{URL::to('/admin')}}">sign up</a></li>
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->
