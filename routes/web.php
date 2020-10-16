@@ -30,5 +30,9 @@ Route::post('/admin-dashboard','App\Http\Controllers\AdminController@dashboard')
 
 //category films:
 Route::get('/add-category-film','App\Http\Controllers\CategoryFilms@add_category_film');
+Route::get('/edit-category-film/{id_film}','App\Http\Controllers\CategoryFilms@edit_category_film');
+Route::get('/delete-category-film/{id_film}','App\Http\Controllers\CategoryFilms@delete_category_film');
 Route::get('/all-category-films','App\Http\Controllers\CategoryFilms@all_category_films');
+
 Route::post('/save-film','App\Http\Controllers\CategoryFilms@save_film');
+Route::post('/update-film/{id_film}','App\Http\Controllers\CategoryFilms@update_film');
