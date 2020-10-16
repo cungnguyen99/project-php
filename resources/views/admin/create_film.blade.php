@@ -7,7 +7,7 @@
             <p>You are 30 seconds away from earning your own money!</p><input type="submit" name="" value="Login" /><br/></div>
         <div class="col-md-9 register-right">
                     <h3 class="register-heading">Create a new film for...</h3>
-                    <form action="{{URL::to('/save-film')}}" method="post">
+                    <form action="{{URL::to('/save-film')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                         <div class="form-wrap register-form">
                             <div class="container">
@@ -20,7 +20,7 @@
                                             <div class="form-group"><input class="form-control" type="text" onfocus="(this.type='date')" name="ngaykc" placeholder="Ngày Khởi chiếu *" value="" /></div>
                                             <div class="form-group">
                                                 <div class="maxl">
-                                                    <div class="button-wrapper"><span class="label">Upload File</span><input class="form-control custom-file-input" id="upload" name="url" type="file" multiple="multiple" /></div>
+                                                    <div class="button-wrapper"><span class="label">Upload File</span><input class="form-control custom-file-input" id="upload" name="url" type="file" /></div>
                                                 </div>
                                             </div>
                                     </div>
@@ -28,6 +28,7 @@
                                             <div class="form-group"><input class="form-control" type="text" name="namchinh" placeholder="Nam chính *" value="" /></div>
                                             <div class="form-group"><input class="form-control" type="text" name="nuchinh" placeholder="Nữ chính *" value="" /></div>
                                             <div class="form-group"><input class="form-control" type="text" name="tongchiphi" placeholder="Tổng chi phí *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" name="imdb" placeholder="IMDB *" value="" /></div>
                                             <div class="form-group"><input class="form-control" type="text" onfocus="(this.type='date')" name="ngaykt" placeholder="Ngày Kết thúc *" value="" /></div>
                                             <input class="btnRegister" type="submit" value="Tạo mới" /></div>
                                     </div>
