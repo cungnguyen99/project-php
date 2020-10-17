@@ -73,7 +73,7 @@
             <td><span class="text-ellipsis">{{$item->DaoDien}}</span></td>
             <td>
               <a href="{{URL::to('/edit-category-film/'.$item->ID)}}" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a> 
-              <a href="{{URL::to('/delete-category-film/'.$item->ID)}}" class="active" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
+              <a onclick="return confirm('Bạn có muốn xóa không.')" href="{{URL::to('/delete-category-film/'.$item->ID)}}" class="active" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
             </td>
           </tr>
         @endforeach

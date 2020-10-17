@@ -102,4 +102,11 @@ class CategoryFilms extends Controller
         Session::put('message','Sửa phim thành công.');
         return Redirect::to('all-category-films');        
     }
+
+    public function delete_category_film($id_film)
+    {
+        DB::table('tbl_films')->where('ID',$id_film)->delete();
+        Session::put('message','Xóa phim thành công.');
+        return Redirect::to('all-category-films');  
+    }
 }
