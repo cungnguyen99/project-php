@@ -91,11 +91,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Danh muc phim</span>
+                        <span>Danh Mục Phim</span>
                     </a>
                     <ul class="sub">
 						<li><a href="{{URL::to('/add-category-film')}}">Thêm phim</a></li>
 						<li><a href="{{URL::to('/all-category-films')}}">Liệt kê danh mục</a></li>
+                    </ul>
+                </li>
+
+				<li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Thể Loại Phim</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/add-genre-film')}}">Thêm thể loại phim</a></li>
+						<li><a href="{{URL::to('/all-genres-film')}}">Liệt kê thể loại phim</a></li>
                     </ul>
                 </li>
                 

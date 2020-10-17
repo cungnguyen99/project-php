@@ -28,7 +28,7 @@ Route::get('/logout','App\Http\Controllers\AdminController@logout');
 //login
 Route::post('/admin-dashboard','App\Http\Controllers\AdminController@dashboard');
 
-//category films:
+//films:
 Route::get('/add-category-film','App\Http\Controllers\CategoryFilms@add_category_film');
 Route::get('/edit-category-film/{id_film}','App\Http\Controllers\CategoryFilms@edit_category_film');
 Route::get('/delete-category-film/{id_film}','App\Http\Controllers\CategoryFilms@delete_category_film');
@@ -36,3 +36,12 @@ Route::get('/all-category-films','App\Http\Controllers\CategoryFilms@all_categor
 
 Route::post('/save-film','App\Http\Controllers\CategoryFilms@save_film');
 Route::post('/update-film/{id_film}','App\Http\Controllers\CategoryFilms@update_film');
+
+//genres films:
+Route::get('/add-genre-film','App\Http\Controllers\GenresFilm@add_genre_film');
+Route::get('/edit-genre-film/{id_genre}','App\Http\Controllers\GenresFilm@edit_genre_film');
+Route::get('/delete-genre-film/{id_genre}','App\Http\Controllers\GenresFilm@delete_genre_film');
+Route::get('/all-genres-film','App\Http\Controllers\GenresFilm@all_genres_film');
+
+Route::post('/save-genre','App\Http\Controllers\GenresFilm@save_film');
+Route::post('/update-genre/{id_genre}','App\Http\Controllers\GenresFilm@update_film');
