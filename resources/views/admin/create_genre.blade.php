@@ -7,7 +7,7 @@
             <p>You are 30 seconds away from earning your own money!</p><input type="submit" name="" value="Login" /><br/></div>
         <div class="col-md-9 register-right">
                     <h3 class="register-heading">Create a new genre for...</h3>
-                    <form action="{{URL::to('/save-film')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{URL::to('/save-genre')}}" method="post">
                     {{csrf_field()}}
                         <div class="form-wrap register-form">
                             <div class="container">

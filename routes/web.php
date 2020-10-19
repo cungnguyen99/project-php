@@ -43,5 +43,5 @@ Route::get('/edit-genre-film/{id_genre}','App\Http\Controllers\GenresFilm@edit_g
 Route::get('/delete-genre-film/{id_genre}','App\Http\Controllers\GenresFilm@delete_genre_film');
 Route::get('/all-genres-film','App\Http\Controllers\GenresFilm@all_genres_film');
 
-Route::post('/save-genre','App\Http\Controllers\GenresFilm@save_film');
-Route::post('/update-genre/{id_genre}','App\Http\Controllers\GenresFilm@update_film');
+Route::post('/save-genre','App\Http\Controllers\GenresFilm@save_genre');
+Route::post('/update-genre/{id_genre}','App\Http\Controllers\GenresFilm@update_genre');

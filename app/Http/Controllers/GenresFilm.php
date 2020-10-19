@@ -16,57 +16,29 @@ class GenresFilm extends Controller
         return view('admin.create_genre');
     }
 
-    public function all_category_films()
+    public function all_genres_film()
     {
-        //lấy hết hàng trong bảng films
-        $all_films=DB::table('tbl_films')->get();
-        //đưa dữ liệu sang bên file all_films trong view để hiện ra trang all_category_films
-        $data=view('admin.all_films')->with('allFilms',$all_films);
+        $all_films=DB::table('tbl_genres')->get();
+        $data=view('admin.all_genres')->with('allGenres',$all_films);
 
-        return view('admin_layout')->with('admin.all_films',$data);
+        return view('admin_layout')->with('admin.all_genres',$data);
     }
 
-    public function save_film(Request $req)
+    public function save_genre(Request $req)
     {
         $data=array();
-        //tên côt-tên của trường name trong input
-        $data['TenPhim']=$req->tenphim;
-        $data['IMDB']=$req->imdb;
-        $data['MaHSX']=$req->hangsx;
-        $data['MaTheLoai']=$req->theloai;
-        $data['DaoDIen']=$req->daodien;
-        $data['NgayKhoiChieu']=$req->ngaykc;
-        $data['NgayKetThuc']=$req->ngaykt;
-        $data['NamChinh']=$req->namchinh;
-        $data['NuChinh']=$req->nuchinh;
-        $data['TongChiPhi']=$req->tongchiphi;
 
-        $get_image=$req->file('url');
+        $data['TenTheLoai']=$req->tentheloai;
+        $data['MoTa']=$req->mota;
 
-        if($get_image){
-            //lấy tên file trong folder upload có cả đuôi mở rộng
-            $get_name_image=$get_image->getClientOriginalName();
-            //lấy tên file không có đuôi mở rộng current: lấy phần tử trc, end: lấy sau, explode: tách chuỗi
-            $name_image=current(explode('.',$get_name_image));
-            //lấy tên file
-            $new_image=$name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
-            //chuyển đến folder films
-            $get_image->move('public/uploads/films',$new_image);
-            //nếu có chọn ảnh thì cho vào màng $data
-            $data['Anh']= $new_image;
-            DB::table('tbl_films')->insert($data);
-            Session::put('message','Thêm phim thành công.');
-            return Redirect::to('all-category-films');
-        }
-        $data['Anh']= ' ';
-        DB::table('tbl_films')->insert($data);
-        Session::put('message','Thêm phim thành công.');
-        return Redirect::to('all-category-films');
+        DB::table('tbl_genres')->insert($data);
+        Session::put('message','Thêm thể loại thành công.');
+        return Redirect::to('all-genres-film');
     }
 
     public function edit_category_film($id_film)
     {
-        $all_films=DB::table('tbl_films')->where('ID',$id_film)->get();
+        $all_films=DB::table('tbl_genres')->where('ID',$id_film)->get();
         $data=view('admin.edit_film')->with('editFilm',$all_films);
 
         return view('admin_layout')->with('admin.all_films',$data);
