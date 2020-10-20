@@ -45,3 +45,12 @@ Route::get('/all-genres-film','App\Http\Controllers\GenresFilm@all_genres_film')
 
 Route::post('/save-genre','App\Http\Controllers\GenresFilm@save_genre');
 Route::post('/update-genre/{id_genre}','App\Http\Controllers\GenresFilm@update_genre');
+
+//manufacturer films:
+Route::get('/add-manufacturer-film','App\Http\Controllers\Manufacturers@add_manufacturer_film');
+Route::get('/edit-manufacturer-film/{id_manufacturer}','App\Http\Controllers\Manufacturers@edit_manufacturer_film');
+Route::get('/delete-manufacturer-film/{id_manufacturer}','App\Http\Controllers\Manufacturers@delete_manufacturer_film');
+Route::get('/all-manufacturers-film','App\Http\Controllers\Manufacturers@all_manufacturers_film');
+
+Route::post('/save-manufacturer','App\Http\Controllers\Manufacturers@save_manufacturer');
+Route::post('/update-manufacturer/{id_manufacturer}','App\Http\Controllers\Manufacturers@update_manufacturer');
