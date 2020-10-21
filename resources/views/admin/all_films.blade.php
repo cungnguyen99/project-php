@@ -60,6 +60,9 @@
             <th>Tên phim</th>
             <th>imdb</th>
             <th>Đạo diễn</th>
+            <th>Ảnh</th>
+            <th>Thể loại</th>
+            <th>Hãng sản xuất</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
@@ -70,6 +73,9 @@
             <td>{{$item->TenPhim}}</td>
             <td><span class="text-ellipsis">{{$item->IMDB}}</span></td>
             <td><span class="text-ellipsis">{{$item->DaoDien}}</span></td>
+            <td><img src="public/uploads/films/{{$item->Anh}}" height="100" witdh="100"></td>
+            <td><span class="text-ellipsis">{{$item->TenTheLoai}}</span></td>
+            <td><span class="text-ellipsis">{{$item->TenHSX}}</span></td>
             <td>
               <a href="{{URL::to('/edit-category-film/'.$item->ID)}}" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a> 
               <a onclick="return confirm('Bạn có muốn xóa không.')" href="{{URL::to('/delete-category-film/'.$item->ID)}}" class="active" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>

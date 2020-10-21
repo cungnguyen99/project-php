@@ -21,7 +21,10 @@ class CategoryFilms extends Controller
     public function all_category_films()
     {
         //lấy hết hàng trong bảng films
-        $all_films=DB::table('tbl_films')->get();
+        $all_films=DB::table('tbl_films')
+        ->join('tbl_genres','tbl_genres.ID','=','tbl_films.MaTheLoai')
+        ->join('tbl_manufacturers','tbl_manufacturers.ID','=','tbl_films.MaHSX')->orderby('tbl_films.ID','desc')->get();
+
         //đưa dữ liệu sang bên file all_films trong view để hiện ra trang all_category_films
         $data=view('admin.all_films')->with('allFilms',$all_films);
 
@@ -68,6 +71,8 @@ class CategoryFilms extends Controller
 
     public function edit_category_film($id_film)
     {
+        $genres_id=DB::table('tbl_genres')->orderby('ID','desc')->get();
+        $manufacturers_id=DB::table('tbl_manufacturers')->orderby('ID','desc')->get(); 
         $all_films=DB::table('tbl_films')->where('ID',$id_film)->get();
         $data=view('admin.edit_film')->with('editFilm',$all_films);
 
