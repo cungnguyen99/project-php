@@ -67,7 +67,7 @@
         @foreach($allManufacturers as $items => $item)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{$item->ID}}</td>
+            <td>{{$items+1}}</td>
             <td><span class="text-ellipsis">{{$item->TenHSX}}</span></td>
             <td><span class="text-ellipsis">{{$item->TenNuoc}}</span></td>
             <td>

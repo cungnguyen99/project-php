@@ -36,28 +36,28 @@ class Manufacturers extends Controller
         return Redirect::to('all-manufacturers-film');
     }
 
-    public function edit_manufacturer_film($id_film)
+    public function edit_manufacturer_film($id_manufacturer)
     {
-        $all_films=DB::table('tbl_manufacturers')->where('ID',$id_film)->get();
+        $all_films=DB::table('tbl_manufacturers')->where('ID',$id_manufacturer)->get();
         $data=view('admin.edit_manufacturer')->with('editManufacturer',$all_films);
 
         return view('admin_layout')->with('admin.all_manufacturers',$data);
     }
 
-    public function update_manufacturer($id_film, Request $req)
+    public function update_manufacturer($id_manufacturer, Request $req)
     {
         $data=array();
-        $data['TenTheLoai']=$req->tentheloai;
-        $data['MoTa']=$req->mota;
+        $data['TenHSX']=$req->tenhsx;
+        $data['TenNuoc']=$req->tennuoc;
 
-        DB::table('tbl_genres')->where('ID',$id_film)->update($data);
+        DB::table('tbl_manufacturers')->where('ID',$id_manufacturer)->update($data);
         Session::put('message','Sửa hãng sản xuất thành công.');
         return Redirect::to('all-manufacturers-film');        
     }
 
-    public function delete_manufacturer_film($id_film)
+    public function delete_manufacturer_film($id_manufacturer)
     {
-        DB::table('tbl_manufacturers')->where('ID',$id_film)->delete();
+        DB::table('tbl_manufacturers')->where('ID',$id_manufacturer)->delete();
         Session::put('message','Xóa hãng sản xuất thành công.');
         return Redirect::to('all-manufacturers-film');  
     }
