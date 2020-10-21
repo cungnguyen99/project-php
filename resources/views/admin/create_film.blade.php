@@ -14,8 +14,22 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                             <div class="form-group"><input class="form-control" type="text" name="tenphim" placeholder="Tên Phim *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="theloai" placeholder="Thể loại *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="hangsx" placeholder="Hãng sản xuất *" value="" /></div>
+                                            <div class="form-group">
+                                                <select class="form-control" type="text" name="theloai" style=" width: 60% ">
+                                                    <option value="" disabled selected>Thể loại phim *</option>
+                                                    @foreach($genres_id as $items=>$item)
+                                                        <option value="{{$item->ID}}">{{$item->TenTheLoai}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control" type="text" name="hangsx" style=" width: 60% ">
+                                                    <option value="" disabled selected>Hãng sản xuất *</option>
+                                                    @foreach($manufacturers_id as $items=>$item)
+                                                        <option value="{{$item->ID}}">{{$item->TenHSX}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                             <div class="form-group"><input class="form-control" type="text" name="daodien" placeholder="Đạo diễn *" value="" /></div>
                                             <div class="form-group"><input class="form-control" type="text" onfocus="(this.type='date')" name="ngaykc" placeholder="Ngày Khởi chiếu *" value="" /></div>
                                             <div class="form-group">

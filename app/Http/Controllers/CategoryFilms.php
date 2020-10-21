@@ -13,7 +13,9 @@ class CategoryFilms extends Controller
 {
     public function add_category_film()
     {
-        return view('admin.create_film');
+        $genres_id=DB::table('tbl_genres')->orderby('ID','desc')->get();
+        $manufacturers_id=DB::table('tbl_manufacturers')->orderby('ID','desc')->get();
+        return view('admin.create_film')->with('genres_id',$genres_id)->with('manufacturers_id',$manufacturers_id);
     }
 
     public function all_category_films()
