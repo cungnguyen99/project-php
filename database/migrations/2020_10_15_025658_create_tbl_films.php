@@ -14,7 +14,7 @@ class CreateTblFilms extends Migration
     public function up()
     {
         Schema::create('tbl_films', function (Blueprint $table) {
-            $table->Increments('ID');
+            $table->Increments('IDf');
             $table->String('TenPhim');
             $table->Integer('IMDB');
             $table->String('MaHSX');

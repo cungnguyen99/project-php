@@ -23,9 +23,10 @@
         '</div>
       </div>
     </div>';
+
 			//in xong rồi thì gán bằng null, chỉ cho in ra 1 lần
 			Session::put('message',null);
-		}
+    }
 	?>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
@@ -77,8 +78,8 @@
             <td><span class="text-ellipsis">{{$item->TenTheLoai}}</span></td>
             <td><span class="text-ellipsis">{{$item->TenHSX}}</span></td>
             <td>
-              <a href="{{URL::to('/edit-category-film/'.$item->ID)}}" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a> 
-              <a onclick="return confirm('Bạn có muốn xóa không.')" href="{{URL::to('/delete-category-film/'.$item->ID)}}" class="active" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
+              <a href="{{URL::to('/edit-category-film/'.$item->IDf)}}" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a> 
+              <a onclick="return confirm('Bạn có muốn xóa không.')" href="{{URL::to('/delete-category-film/'.$item->IDf)}}" class="active" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
             </td>
           </tr>
         @endforeach

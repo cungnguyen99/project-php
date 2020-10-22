@@ -22,8 +22,9 @@ class CategoryFilms extends Controller
     {
         //lấy hết hàng trong bảng films
         $all_films=DB::table('tbl_films')
-        ->join('tbl_genres','tbl_genres.ID','=','tbl_films.MaTheLoai')
-        ->join('tbl_manufacturers','tbl_manufacturers.ID','=','tbl_films.MaHSX')->orderby('tbl_films.ID','desc')->get();
+        ->join('tbl_manufacturers','tbl_films.MaHSX','=','tbl_manufacturers.ID')
+        ->join('tbl_genres','tbl_films.MaTheLoai','=','tbl_genres.ID')
+        ->orderby('tbl_films.IDf','desc')->get();
 
         //đưa dữ liệu sang bên file all_films trong view để hiện ra trang all_category_films
         $data=view('admin.all_films')->with('allFilms',$all_films);
@@ -73,8 +74,8 @@ class CategoryFilms extends Controller
     {
         $genres_id=DB::table('tbl_genres')->orderby('ID','desc')->get();
         $manufacturers_id=DB::table('tbl_manufacturers')->orderby('ID','desc')->get(); 
-        $all_films=DB::table('tbl_films')->where('ID',$id_film)->get();
-        $data=view('admin.edit_film')->with('editFilm',$all_films);
+        $all_films=DB::table('tbl_films')->where('IDf',$id_film)->get();
+        $data=view('admin.edit_film')->with('editFilm',$all_films)->with('genres',$genres_id)->with('manufacturers',$manufacturers_id);
 
         return view('admin_layout')->with('admin.all_films',$data);
     }
@@ -105,14 +106,14 @@ class CategoryFilms extends Controller
             Session::put('message','Thêm phim thành công.');
             return Redirect::to('all-category-films');
         }
-        DB::table('tbl_films')->where('ID',$id_film)->update($data);
+        DB::table('tbl_films')->where('IDf',$id_film)->update($data);
         Session::put('message','Sửa phim thành công.');
         return Redirect::to('all-category-films');        
     }
 
     public function delete_category_film($id_film)
     {
-        DB::table('tbl_films')->where('ID',$id_film)->delete();
+        DB::table('tbl_films')->where('IDf',$id_film)->delete();
         Session::put('message','Xóa phim thành công.');
         return Redirect::to('all-category-films');  
     }
