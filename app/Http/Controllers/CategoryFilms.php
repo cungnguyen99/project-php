@@ -11,8 +11,20 @@ session_start();
 
 class CategoryFilms extends Controller
 {
+    public function AuthLogin()
+    {
+        $id=Session::get('id');
+
+        if($id){
+            return Redirect::to('/dashboard');
+        }else{
+            return Redirect::to('/admin')->send(); 
+        }
+    }
+
     public function add_category_film()
     {
+        $this->AuthLogin();
         $genres_id=DB::table('tbl_genres')->orderby('ID','desc')->get();
         $manufacturers_id=DB::table('tbl_manufacturers')->orderby('ID','desc')->get();
         return view('admin.create_film')->with('genres_id',$genres_id)->with('manufacturers_id',$manufacturers_id);

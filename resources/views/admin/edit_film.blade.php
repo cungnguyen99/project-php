@@ -7,7 +7,7 @@
             <p>You are 30 seconds away from earning your own money!</p><input type="submit" name="" value="Login" /><br/></div>
         <div class="col-md-9 register-right">
                     <h3 class="register-heading">Edit info film...</h3>
-                        @foreach($editFilm as $items=>$item)
+                        @foreach($editFilm as $item)
                         <form action="{{URL::to('/update-film/'.$item->IDf)}}" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
                             <div class="form-wrap register-form">
@@ -18,7 +18,7 @@
                                                 <div class="form-group">
                                                     <select class="form-control" type="text" name="theloai" style=" width: 60% ">
                                                         <option value="" disabled selected>Thể loại phim *</option>
-                                                        @foreach($genres_id as $items=>$item)
+                                                        @foreach($genres as $items=>$item)
                                                             <option value="{{$item->ID}}">{{$item->TenTheLoai}}</option>
                                                         @endforeach
                                                     </select>
@@ -26,12 +26,13 @@
                                                 <div class="form-group">
                                                     <select class="form-control" type="text" name="hangsx" style=" width: 60% ">
                                                         <option value="" disabled selected>Hãng sản xuất *</option>
-                                                        @foreach($manufacturers_id as $items=>$item)
+                                                        @foreach($manufacturers as $items=>$item)
                                                             <option value="{{$item->ID}}">{{$item->TenHSX}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="form-group"><input class="form-control" type="text" name="daodien" placeholder="Đạo diễn *" value="{{$item->DaoDien}}" /></div>
+                                                <div class="form-group"><input class="form-control" type="text" name="daodien" placeholder="Đạo diễn *" 
+                                                value="{{$item->DaoDien}}" /></div>
                                                 <div class="form-group"><input class="form-control" type="text" onfocus="(this.type='date')" name="ngaykc" placeholder="Ngày Khởi chiếu *" value="{{$item->NgayKhoiChieu}}" /></div>
                                                 <div class="form-group">
                                                     <div class="maxl">

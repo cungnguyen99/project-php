@@ -27,6 +27,7 @@
 			//in xong rồi thì gán bằng null, chỉ cho in ra 1 lần
 			Session::put('message',null);
     }
+
 	?>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">

@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Redirect;
 session_start();
 class AdminController extends Controller
 {
+    public function AuthLogin()
+    {
+        $id=Session::get('id');
+
+        if($id){
+            return Redirect::to('/dashboard');
+        }else{
+            return Redirect::to('/admin')->send(); 
+        }
+    }
     public function index()
     {
         return view('admin_login');
@@ -17,6 +27,7 @@ class AdminController extends Controller
 
     public function show_dashboard()
     {
+        $this->AuthLogin();
         return view('admin.dashboard');
     }
 
@@ -42,6 +53,7 @@ class AdminController extends Controller
 
     public function logout()
     {
+        $this->AuthLogin();
         Session::put('name',null);
         Session::put('id',null);
         return Redirect::to('/admin');  
