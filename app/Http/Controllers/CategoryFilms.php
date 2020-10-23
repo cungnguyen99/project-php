@@ -84,8 +84,8 @@ class CategoryFilms extends Controller
 
     public function edit_category_film($id_film)
     {
-        $genres_id=DB::table('tbl_genres')->orderby('ID','desc')->get();
-        $manufacturers_id=DB::table('tbl_manufacturers')->orderby('ID','desc')->get(); 
+        $genres_id=DB::table('tbl_genres')->orderby('tbl_genres.ID','desc')->get();
+        $manufacturers_id=DB::table('tbl_manufacturers')->orderby('tbl_manufacturers.ID','desc')->get(); 
         $all_films=DB::table('tbl_films')->where('IDf',$id_film)->get();
         $data=view('admin.edit_film')->with('editFilm',$all_films)->with('genres',$genres_id)->with('manufacturers',$manufacturers_id);
 

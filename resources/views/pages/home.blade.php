@@ -5,15 +5,14 @@
 		<div class="row ipad-width">
 			<div class="col-md-8">
 				<div class="title-hd">
-					<h2>in theater</h2>
-					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+					<h2>Thể lọai</h2>
+					<a href="#" class="viewall">Xem thêm <i class="ion-ios-arrow-right"></i></a>
 				</div>
 				<div class="tabs">
 					<ul class="tab-links">
-						<li class="active"><a href="#tab1">#Popular</a></li>
-						<li><a href="#tab2"> #Coming soon</a></li>
-						<li><a href="#tab3">  #Top rated  </a></li>
-						<li><a href="#tab4"> #Most reviewed</a></li>                        
+					@foreach($genres as $key=> $genre)
+						<li class="<?php echo (0 == $key)? 'active' : ''; ?>"><a href="#tab{{$key+1}}">#{{$genre->TenTheLoai}}</a></li>
+					@endforeach                      
 					</ul>
 				    <div class="tab-content">
 				        <div id="tab1" class="tab active">
@@ -379,15 +378,14 @@
 				    </div>
 				</div>
 				<div class="title-hd">
-					<h2>on tv</h2>
-					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+					<h2>Hãng phim</h2>
+					<a href="#" class="viewall">Xem thêm <i class="ion-ios-arrow-right"></i></a>
 				</div>
 				<div class="tabs">
 					<ul class="tab-links-2">
-						<li><a href="#tab21">#Popular</a></li>
-						<li class="active"><a href="#tab22"> #Coming soon</a></li>
-						<li><a href="#tab23">  #Top rated  </a></li>
-						<li><a href="#tab24"> #Most reviewed</a></li>                        
+					@foreach($manufacturers as $key=> $manufacturer)
+						<li class="<?php echo (0 == $key)? 'active' : ''; ?>"><a href="#tab2{{$key+1}}">#{{$manufacturer->TenHSX}}</a></li>   
+					@endforeach                   
 					</ul>
 				    <div class="tab-content">
 				        <div id="tab21" class="tab">
@@ -871,7 +869,7 @@
 		<div class="row ipad-width">
 			<div class="col-md-12">
 				<div class="title-hd">
-					<h2>in theater</h2>
+					<h2> Trailer</h2>
 					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
 				</div>
 				<div class="videos">
@@ -968,7 +966,7 @@
 					<img src="{{('public/frontend/images/uploads/ads2.png')}}" alt="" width="728" height="106">
 				</div>
 				<div class="title-hd">
-					<h2>Latest news</h2>
+					<h2>Thông tin</h2>
 				</div>
 				<div class="tabs">
 					<ul class="tab-links-3">
@@ -982,9 +980,8 @@
 				            	<div class="blog-item-style-1">
 				            		<img src="{{('public/frontend/images/uploads/blog-it1.jpg')}}" alt="" width="170" height="250">
 				            		<div class="blog-it-infor">
-				            			<h3><a href="#">Brie Larson to play first female white house candidate Victoria Woodull in Amazon film</a></h3>
-				            			<span class="time">13 hours ago</span>
-				            			<p>Exclusive: <span>Amazon Studios </span>has acquired Victoria Woodhull, with Oscar winning Room star <span>Brie Larson</span> polsed to produce, and play the first female candidate for the presidency of the United States. Amazon bought it in a pitch package deal. <span> Ben Kopit</span>, who wrote the Warner Bros film <span>Libertine</span> that has...</p>
+				            			<h3><a href="#">Giới thiệu chung về rạp chiếu phim</a></h3>
+				            			<p>Exclusive: <span>Trung tâm Chiếu phim Block Buster </span>là đơn vị sự nghiệp công lập, trực thuộc Bộ Văn hóa, Thể thao và Du lịch, được thành lập vào ngày 29 tháng 12 năm 1997. <span>Trung tâm Chiếu phim Block Buster</span> có chức năng tổ chức chiếu phim phục vụ các nhiệm vụ chính trị, xã hội, hợp tác quốc tế; điều tra xã hội học...</p>
 				            		</div>
 				            	</div>
 				            </div>
