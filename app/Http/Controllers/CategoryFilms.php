@@ -129,4 +129,14 @@ class CategoryFilms extends Controller
         Session::put('message','Xóa phim thành công.');
         return Redirect::to('all-category-films');  
     }
+
+    public function single_film($id_film)
+    {        
+        $single_film=DB::table('tbl_films')
+        ->join('tbl_manufacturers','tbl_films.MaHSX','=','tbl_manufacturers.ID')
+        ->join('tbl_genres','tbl_films.MaTheLoai','=','tbl_genres.ID')
+        ->where('tbl_films.IDf', $id_film)
+        ->get();
+        return view('pages.movie_single')->with('singleFilm',$single_film); 
+    }
 }
