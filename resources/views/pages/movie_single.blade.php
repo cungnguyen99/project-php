@@ -65,11 +65,10 @@
 					<div class="movie-tabs">
 						<div class="tabs">
 							<ul class="tab-links tabs-mv">
-								<li class="active"><a href="#overview">Overview</a></li>
-								<li><a href="#reviews"> Reviews</a></li>
-								<li><a href="#cast">  Cast & Crew </a></li>
-								<li><a href="#media"> Media</a></li> 
-								<li><a href="#moviesrelated"> Related Movies</a></li>                        
+								<li class="active"><a href="#overview">Tổng quát</a></li>
+								<li><a href="#reviews"> Bình luận</a></li>
+								<li><a href="#cast">  Diễn Viên </a></li>
+								<li><a href="#moviesrelated">Phim liên quan </a></li>                        
 							</ul>
 						    <div class="tab-content">
 						        <div id="overview" class="tab active">
@@ -90,124 +89,81 @@
 												</div>
 											</div>
 											<div class="title-hd-sm">
-												<h4>cast</h4>
+												<h4>diễn viên</h4>
 												<a href="#" class="time">Full Cast & Crew  <i class="ion-ios-arrow-right"></i></a>
 											</div>
 											<!-- movie cast -->
 											<div class="mvcast-item">											
 												<div class="cast-it">
 													<div class="cast-left">
-														<img src="images/uploads/cast1.jpg" alt="">
-														<a href="#">Robert Downey Jr.</a>
+														<img src="{{URL::to('public/frontend/images/uploads/cast1.jpg')}}" alt="">
+														<a href="#">{{$film->NamChinh}}</a>
 													</div>
-													<p>...  Robert Downey Jr.</p>
+													<p>...  {{$film->NamChinh}}</p>
 												</div>
 												<div class="cast-it">
 													<div class="cast-left">
-														<img src="images/uploads/cast2.jpg" alt="">
-														<a href="#">Chris Hemsworth</a>
+														<img src="{{URL::to('public/frontend/images/uploads/cast5.jpg')}}" alt="">
+														<a href="#">{{$film->NuChinh}}</a>
 													</div>
-													<p>...  Thor</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast3.jpg" alt="">
-														<a href="#">Mark Ruffalo</a>
-													</div>
-													<p>...  Bruce Banner/ Hulk</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast4.jpg" alt="">
-														<a href="#">Chris Evans</a>
-													</div>
-													<p>...  Steve Rogers/ Captain America</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast5.jpg" alt="">
-														<a href="#">Scarlett Johansson</a>
-													</div>
-													<p>...  Natasha Romanoff/ Black Widow</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast6.jpg" alt="">
-														<a href="#">Jeremy Renner</a>
-													</div>
-													<p>...  Clint Barton/ Hawkeye</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast7.jpg" alt="">
-														<a href="#">James Spader</a>
-													</div>
-													<p>...  Ultron</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast9.jpg" alt="">
-														<a href="#">Don Cheadle</a>
-													</div>
-													<p>...  James Rhodes/ War Machine</p>
+													<p>...  {{$film->NuChinh}}</p>
 												</div>
 											</div>
 											<div class="title-hd-sm">
-												<h4>User reviews</h4>
-												<a href="#" class="time">See All 56 Reviews <i class="ion-ios-arrow-right"></i></a>
+												<h4>bình luận</h4>
+												<a href="#" class="time">xem tất cả <i class="ion-ios-arrow-right"></i></a>
 											</div>
 											<!-- movie user review -->
 											<div class="mv-user-review-item">
 												<h3>Best Marvel movie in my opinion</h3>
 												<div class="no-star">
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star last"></i>
+												<?php 
+														for ($x = 0; $x <$film->IMDB; $x++) {
+															echo "<i class='ion-android-star'></i>";
+															}
+													?>
 												</div>
 												<p class="time">
 													17 December 2016 by <a href="#"> hawaiipierson</a>
 												</p>
-												<p>This is by far one of my favorite movies from the MCU. The introduction of new Characters both good and bad also makes the movie more exciting. giving the characters more of a back story can also help audiences relate more to different characters better, and it connects a bond between the audience and actors or characters. Having seen the movie three times does not bother me here as it is as thrilling and exciting every time I am watching it. In other words, the movie is by far better than previous movies (and I do love everything Marvel), the plotting is splendid (they really do out do themselves in each film, there are no problems watching it more than once.</p>
+												<p>
+												Quên việc đứng chờ mỏi chân ở rạp để nhận vé đi! Giờ đây chỉ với chiếc điện thoại được cài đặt ứng dụng CGV bạn chỉ mất 5 phút cho việc đặt vé thôi. Bên cạnh đó còn vô số tiện ích khác như:
+												
+													</br>Nhận vé tại khu vực VIP nhanh chóng
+													</br>​Tích điểm thưởng đổi vé, combo nước - bỏng ngô
+													</br>Lựa chọn chỗ ngồi ưng ý
+													</br>Tiết kiệm thời gian: không phải đến trước xếp hàng mua vé
+													</br>Xem chi tiết các thông tin về phim như diễn viên, trailer, độ tuổi, thể loại,...
+												</p>
 											</div>
 						            	</div>
 						            	<div class="col-md-4 col-xs-12 col-sm-12">
 						            		<div class="sb-it">
-						            			<h6>Director: </h6>
-						            			<p><a href="#">Joss Whedon</a></p>
-						            		</div>
-						            		<div class="sb-it">
-						            			<h6>Writer: </h6>
-						            			<p><a href="#">Joss Whedon,</a> <a href="#">Stan Lee</a></p>
+						            			<h6>Đạo diễn: </h6>
+						            			<p><a href="#">{{$film->DaoDien}}</a></p>
 						            		</div>
 						            		<div class="sb-it">
 						            			<h6>Stars: </h6>
-						            			<p><a href="#">Robert Downey Jr,</a> <a href="#">Chris Evans,</a> <a href="#">Mark Ruffalo,</a><a href="#"> Scarlett Johansson</a></p>
+						            			<p><a href="#">{{$film->NamChinh}} </a>,<a href="#">{{$film->NuChinh}}</a></p>
 						            		</div>
 						            		<div class="sb-it">
-						            			<h6>Genres:</h6>
-						            			<p><a href="#">Action, </a> <a href="#"> Sci-Fi,</a> <a href="#">Adventure</a></p>
+						            			<h6>Thể loại:</h6>
+						            			<p><a href="#">{{$film->TenTheLoai}}</p>
 						            		</div>
 						            		<div class="sb-it">
-						            			<h6>Release Date:</h6>
-						            			<p>May 1, 2015 (U.S.A)</p>
+						            			<h6>Ngày Chiếu:</h6>
+						            			<p>{{$film->NgayKhoiChieu}} (V.N)</p>
 						            		</div>
 						            		<div class="sb-it">
 						            			<h6>Run Time:</h6>
 						            			<p>141 min</p>
 						            		</div>
 						            		<div class="sb-it">
-						            			<h6>MMPA Rating:</h6>
-						            			<p>PG-13</p>
+						            			<h6>IMDB:</h6>
+						            			<p>{{$film->IMDB}}</p>
 						            		</div>
 						            		<div class="sb-it">
-						            			<h6>Plot Keywords:</h6>
+						            			<h6>Từ khóa:</h6>
 						            			<p class="tags">
 						            				<span class="time"><a href="#">superhero</a></span>
 													<span class="time"><a href="#">marvel universe</a></span>
@@ -249,23 +205,26 @@
 												<div>
 													<h3>Best Marvel movie in my opinion</h3>
 													<div class="no-star">
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star last"></i>
+													<?php 
+														for ($x = 0; $x <$film->IMDB; $x++) {
+															echo "<i class='ion-android-star'></i>";
+															}
+													?>
 													</div>
 													<p class="time">
 														17 December 2016 by <a href="#"> hawaiipierson</a>
 													</p>
 												</div>
 											</div>
-											<p>This is by far one of my favorite movies from the MCU. The introduction of new Characters both good and bad also makes the movie more exciting. giving the characters more of a back story can also help audiences relate more to different characters better, and it connects a bond between the audience and actors or characters. Having seen the movie three times does not bother me here as it is as thrilling and exciting every time I am watching it. In other words, the movie is by far better than previous movies (and I do love everything Marvel), the plotting is splendid (they really do out do themselves in each film, there are no problems watching it more than once.</p>
+											<p>
+											Quên việc đứng chờ mỏi chân ở rạp để nhận vé đi! Giờ đây chỉ với chiếc điện thoại được cài đặt ứng dụng CGV bạn chỉ mất 5 phút cho việc đặt vé thôi. Bên cạnh đó còn vô số tiện ích khác như:
+
+Nhận vé tại khu vực VIP nhanh chóng
+​Tích điểm thưởng đổi vé, combo nước - bỏng ngô
+Lựa chọn chỗ ngồi ưng ý
+Tiết kiệm thời gian: không phải đến trước xếp hàng mua vé
+Xem chi tiết các thông tin về phim như diễn viên, trailer, độ tuổi, thể loại,...
+											</p>
 										</div>
 										<div class="mv-user-review-item">
 											<div class="user-infor">
@@ -413,9 +372,9 @@
 											<div class="cast-it">
 												<div class="cast-left">
 													<h4>JW</h4>
-													<a href="#">Joss Whedon</a>
+													<a href="#">{{$film->DaoDien}}</a>
 												</div>
-												<p>...  Director</p>
+												<p>...  Đạo diễn</p>
 											</div>
 										</div>
 										<!-- //== -->
