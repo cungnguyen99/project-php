@@ -86,8 +86,8 @@ class CategoryFilms extends Controller
     {
         $genres_id=DB::table('tbl_genres')->orderby('tbl_genres.ID','desc')->get();
         $manufacturers_id=DB::table('tbl_manufacturers')->orderby('tbl_manufacturers.ID','desc')->get(); 
-        $all_films=DB::table('tbl_films')->where('IDf',$id_film)->get();
-        $data=view('admin.edit_film')->with('editFilm',$all_films)->with('genres',$genres_id)->with('manufacturers',$manufacturers_id);
+        $all_films=DB::table('tbl_films')->where('IDf',$id_film)->first();
+        $data= view('admin.edit_film')->with('editFilm',$all_films)->with('genres',$genres_id)->with('manufacturers',$manufacturers_id);
 
         return view('admin_layout')->with('admin.all_films',$data);
     }
