@@ -137,6 +137,16 @@ class CategoryFilms extends Controller
         ->join('tbl_genres','tbl_films.MaTheLoai','=','tbl_genres.ID')
         ->where('tbl_films.IDf', $id_film)
         ->get();
-        return view('pages.movie_single')->with('singleFilm',$single_film); 
+
+        // dd($single_film[0]->DaoDien);
+
+        $related_films=DB::table('tbl_films')
+        ->join('tbl_manufacturers','tbl_films.MaHSX','=','tbl_manufacturers.ID')
+        ->join('tbl_genres','tbl_films.MaTheLoai','=','tbl_genres.ID')
+        ->where('tbl_films.MaTheloai', $single_film[0]->MaTheLoai)
+        ->get();
+
+
+        return view('pages.movie_single')->with('singleFilm',$single_film)->with('relatedFilms',$related_films); 
     }
 }

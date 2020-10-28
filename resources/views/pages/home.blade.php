@@ -170,10 +170,10 @@
 												<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
-					            				<h6><a href="#">{{$film->TenPhim}}</a></h6>
+					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
 					            				<p><i class="ion-android-star"></i><span>{{$film->IMDB}}</span> /10</p>
 					            			</div>
 					            		</div>
@@ -192,10 +192,10 @@
 											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
-					            				<h6><a href="#">{{$film->TenPhim}}</a></h6>
+					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
 					            				<p><i class="ion-android-star"></i><span>{{$film->IMDB}}</span> /10</p>
 					            			</div>
 					            		</div>
@@ -227,10 +227,10 @@
 											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
-					            				<h6><a href="#">{{$film->TenPhim}}</a></h6>
+					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
 					            				<p><i class="ion-android-star"></i><span>{{$film->IMDB}}</span> /10</p>
 					            			</div>
 					            		</div>
@@ -249,10 +249,10 @@
 											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
-					            				<h6><a href="#">{{$film->TenPhim}}</a></h6>
+					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
 					            				<p><i class="ion-android-star"></i><span>{{$film->IMDB}}</span> /10</p>
 					            			</div>
 					            		</div>
@@ -271,10 +271,10 @@
 											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
-					            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
-					            				<h6><a href="#">{{$film->TenPhim}}</a></h6>
+					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
 					            				<p><i class="ion-android-star"></i><span>{{$film->IMDB}}</span> /10</p>
 					            			</div>
 					            		</div>
@@ -443,7 +443,7 @@
 				        <div id="tab31" class="tab active">
 				            <div class="row">
 				            	<div class="blog-item-style-1">
-				            		<img src="{{('public/frontend/images/uploads/blog-it1.jpg')}}" alt="" width="170" height="250">
+				            		<img src="{{('public/frontend/images/uploads/thongtin.jpg')}}" alt="" width="170" height="250">
 				            		<div class="blog-it-infor">
 				            			<h3><a href="#">Giới thiệu chung</a></h3>
 				            			<p>Exclusive: <span>Trung tâm Chiếu phim Block Buster </span>là đơn vị sự nghiệp công lập, trực thuộc Bộ Văn hóa, Thể thao và Du lịch, được thành lập vào ngày 29 tháng 12 năm 1997. <span>Trung tâm Chiếu phim Block Buster</span> có chức năng tổ chức chiếu phim phục vụ các nhiệm vụ chính trị, xã hội, hợp tác quốc tế; điều tra xã hội học...</p>
