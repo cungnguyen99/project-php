@@ -412,7 +412,7 @@
 					       	 			<h2>{{$film->TenPhim}}</h2>
 										<div class="movie-item-style-2">
 										@foreach($relatedFilms as $film)
-											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="">
+											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" width="185" height="284" alt="">
 											<div class="mv-item-infor">
 												<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}} <span>(2012)</span></a></h6>
 												<p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10</p>
