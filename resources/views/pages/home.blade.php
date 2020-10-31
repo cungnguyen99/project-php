@@ -129,7 +129,7 @@
 			<div class="col-md-8">
 				<div class="title-hd">
 					<h2>Thể lọai</h2>
-					<a href="#" class="viewall">Xem thêm <i class="ion-ios-arrow-right"></i></a>
+					<a href="{{URL::to('/all-films')}}" class="viewall">Xem thêm <i class="ion-ios-arrow-right"></i></a>
 				</div>
 				<div class="tabs">
 					<ul class="tab-links">
@@ -208,7 +208,7 @@
 				</div>
 				<div class="title-hd">
 					<h2>Hãng phim</h2>
-					<a href="#" class="viewall">Xem thêm <i class="ion-ios-arrow-right"></i></a>
+					<a href="{{URL::to('/all-films')}}" class="viewall">Xem thêm <i class="ion-ios-arrow-right"></i></a>
 				</div>
 				<div class="tabs">
 					<ul class="tab-links-2">

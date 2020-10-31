@@ -29,7 +29,7 @@
 							<div><a href="https://www.youtube.com/embed/o-0hcF97wy0" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
 						</div>
 						<div class="btn-transform transform-vertical">
-							<div><a href="#" class="item item-1 yellowbtn"> <i class="ion-card"></i> Mua vé</a></div>
+							<div><a href="{{URL::to('/book-ticket)}}" class="item item-1 yellowbtn"> <i class="ion-card"></i> Mua vé</a></div>
 							<div><a href="#" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
 						</div>
 					</div>
@@ -59,8 +59,8 @@
 						<div class="rate-star">
 							<p>IMDB:  </p>
 							<?php
-								for ($x = 0; $x <$film->IMDB; $x++) {
-								echo "<i class='ion-ios-star'></i>";
+								for ($x = 0; $x < $film->IMDB; $x++) {
+									echo "<i class='ion-android-star'></i>";
 								}
 							?>
 						</div>
@@ -120,25 +120,15 @@
 											</div>
 											<!-- movie user review -->
 											<div class="mv-user-review-item">
-												<h3>Best Marvel movie in my opinion</h3>
-												<div class="no-star">
-												<?php 
-														for ($x = 0; $x <$film->IMDB; $x++) {
-															echo "<i class='ion-android-star'></i>";
-															}
-													?>
-												</div>
-												<p class="time">
-													17 December 2016 by <a href="#"> hawaiipierson</a>
-												</p>
+												<h3>Đặt vé ngay!</h3>
 												<p>
 												Quên việc đứng chờ mỏi chân ở rạp để nhận vé đi! Giờ đây chỉ với chiếc điện thoại được cài đặt ứng dụng CGV bạn chỉ mất 5 phút cho việc đặt vé thôi. Bên cạnh đó còn vô số tiện ích khác như:
-												
-													</br>Nhận vé tại khu vực VIP nhanh chóng
-													</br>​Tích điểm thưởng đổi vé, combo nước - bỏng ngô
-													</br>Lựa chọn chỗ ngồi ưng ý
-													</br>Tiết kiệm thời gian: không phải đến trước xếp hàng mua vé
-													</br>Xem chi tiết các thông tin về phim như diễn viên, trailer, độ tuổi, thể loại,...
+												<p style="text-indent: 30px"> Nhận vé tại khu vực VIP nhanh chóng </p>
+												<p style="text-indent: 30px">​Tích điểm thưởng đổi vé, combo nước - bỏng ngô</p>
+												<p style="text-indent: 30px">	Lựa chọn chỗ ngồi ưng ý</p>
+												<p style="text-indent: 30px">	Tiết kiệm thời gian: không phải đến trước xếp hàng mua vé</p>
+												<p style="text-indent: 30px">	Xem chi tiết các thông tin về phim như diễn viên, trailer, độ tuổi, thể loại,...</p>
+												</span>
 												</p>
 											</div>
 						            	</div>
@@ -290,7 +280,7 @@
 						        		<div class="rv-hd">
 						            		<div>
 						            			<h3>Videos & Photos of</h3>
-					       	 					<h2>Skyfall: Quantum of Spectre</h2>
+					       	 					<h2>{{$film->TenPhim}}</h2>
 						            		</div>
 						            	</div>
 						            	<div class="title-hd-sm">
@@ -299,8 +289,8 @@
 										<div class="mvsingle-item media-item">
 											<div class="vd-item">
 												<div class="vd-it">
-													<img class="vd-img" src="images/uploads/vd-item1.jpg" alt="">
-													<a class="fancybox-media hvr-grow"  href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="images/uploads/play-vd.png" alt=""></a>
+													<img class="vd-img" src="{{URL::to('public/frontend/images/uploads/vd-item1.jpg')}}" alt="">
+													<a class="fancybox-media hvr-grow"  href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="{{URL::to('public/frontend/images/uploads/play-vd.png')}}" alt=""></a>
 												</div>
 												<div class="vd-infor">
 													<h6> <a href="#">Trailer:  Watch New Scenes</a></h6>
@@ -309,8 +299,8 @@
 											</div>
 											<div class="vd-item">
 												<div class="vd-it">
-													<img class="vd-img" src="images/uploads/vd-item2.jpg" alt="">
-													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="images/uploads/play-vd.png" alt=""></a>
+													<img class="vd-img" src="{{URL::to('public/frontend/images/uploads/vd-item2.jpg')}}" alt="">
+													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="{{URL::to('public/frontend/images/uploads/play-vd.png')}}" alt=""></a>
 												</div>
 												<div class="vd-infor">
 													<h6> <a href="#">Featurette: “Avengers Re-Assembled</a></h6>
@@ -319,8 +309,8 @@
 											</div>
 											<div class="vd-item">
 												<div class="vd-it">
-													<img class="vd-img" src="images/uploads/vd-item3.jpg" alt="">
-													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="images/uploads/play-vd.png" alt=""></a>
+													<img class="vd-img" src="{{URL::to('public/frontend/images/uploads/vd-item3.jpg')}}" alt="">
+													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="{{URL::to('public/frontend/images/uploads/play-vd.png')}}" alt=""></a>
 												</div>
 												<div class="vd-infor">
 													<h6> <a href="#">Interview: Robert Downey Jr</a></h6>
@@ -329,8 +319,8 @@
 											</div>
 											<div class="vd-item">
 												<div class="vd-it">
-													<img class="vd-img" src="images/uploads/vd-item4.jpg" alt="">
-													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="images/uploads/play-vd.png" alt=""></a>
+													<img class="vd-img" src="{{URL::to('public/frontend/images/uploads/vd-item4.jpg')}}" alt="">
+													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="{{URL::to('public/frontend/images/uploads/play-vd.png')}}" alt=""></a>
 												</div>
 												<div class="vd-infor">
 													<h6> <a href="#">Interview: Scarlett Johansson</a></h6>
@@ -339,8 +329,8 @@
 											</div>
 											<div class="vd-item">
 												<div class="vd-it">
-													<img class="vd-img" src="images/uploads/vd-item1.jpg" alt="">
-													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="images/uploads/play-vd.png" alt=""></a>
+													<img class="vd-img" src="{{URL::to('public/frontend/images/uploads/vd-item1.jpg')}}" alt="">
+													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="{{URL::to('public/frontend/images/uploads/play-vd.png')}}" alt=""></a>
 												</div>
 												<div class="vd-infor">
 													<h6> <a href="#">Featurette: Meet Quicksilver & The Scarlet Witch</a></h6>
@@ -349,8 +339,8 @@
 											</div>
 											<div class="vd-item">
 												<div class="vd-it">
-													<img class="vd-img" src="images/uploads/vd-item2.jpg" alt="">
-													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="images/uploads/play-vd.png" alt=""></a>
+													<img class="vd-img" src="{{URL::to('public/frontend/images/uploads/vd-item2.jpg')}}" alt="">
+													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="{{URL::to('public/frontend/images/uploads/play-vd.png')}}" alt=""></a>
 												</div>
 												<div class="vd-infor">
 													<h6> <a href="#">Interview: Director Joss Whedon</a></h6>
@@ -359,8 +349,8 @@
 											</div>
 											<div class="vd-item">
 												<div class="vd-it">
-													<img class="vd-img" src="images/uploads/vd-item3.jpg" alt="">
-													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="images/uploads/play-vd.png" alt=""></a>
+													<img class="vd-img" src="{{URL::to('public/frontend/images/uploads/vd-item3.jpg')}}" alt="">
+													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="{{URL::to('public/frontend/images/uploads/play-vd.png')}}" alt=""></a>
 												</div>
 												<div class="vd-infor">
 													<h6> <a href="#">Interview: Mark Ruffalo</a></h6>
@@ -369,8 +359,8 @@
 											</div>
 											<div class="vd-item">
 												<div class="vd-it">
-													<img class="vd-img" src="images/uploads/vd-item4.jpg" alt="">
-													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="images/uploads/play-vd.png" alt=""></a>
+													<img class="vd-img" src="{{URL::to('public/frontend/images/uploads/vd-item4.jpg')}}" alt="">
+													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="{{URL::to('public/frontend/images/uploads/play-vd.png')}}" alt=""></a>
 												</div>
 												<div class="vd-infor">
 													<h6> <a href="#">Official Trailer #2</a></h6>
@@ -382,27 +372,27 @@
 											<h4>Photos <span> (21)</span></h4>
 										</div>
 										<div class="mvsingle-item">
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image11.jpg" ><img src="images/uploads/image1.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery"  href="images/uploads/image21.jpg" ><img src="images/uploads/image2.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image31.jpg" ><img src="images/uploads/image3.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image41.jpg" ><img src="images/uploads/image4.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image51.jpg" ><img src="images/uploads/image5.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image61.jpg" ><img src="images/uploads/image6.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image71.jpg" ><img src="images/uploads/image7.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image81.jpg" ><img src="images/uploads/image8.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image91.jpg" ><img src="images/uploads/image9.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image101.jpg" ><img src="images/uploads/image10.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image111.jpg" ><img src="images/uploads/image1-1.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image121.jpg" ><img src="images/uploads/image12.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image131.jpg" ><img src="images/uploads/image13.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image141.jpg" ><img src="images/uploads/image14.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image151.jpg" ><img src="images/uploads/image15.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image161.jpg" ><img src="images/uploads/image16.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image171.jpg" ><img src="images/uploads/image17.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image181.jpg" ><img src="images/uploads/image18.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image191.jpg" ><img src="images/uploads/image19.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image201.jpg" ><img src="images/uploads/image20.jpg" alt=""></a>
-											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image211.jpg" ><img src="images/uploads/image2-1.jpg" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image11.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image1.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image21.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image2.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image31.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image3.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image41.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image4.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image51.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image5.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image61.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image6.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image71.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image7.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image81.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image8.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image91.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image9.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image101.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image10.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image111.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image1-1.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image121.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image12.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image131.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image13.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image141.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image14.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image151.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image15.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image161.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image16.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image171.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image17.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image181.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image18.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image191.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image19.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image201.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image20.jpg')}}" alt=""></a>
+											<a class="img-lightbox"  data-fancybox-group="gallery" href="{{URL::to('public/frontend/images/uploads/image211.jpg')}}" ><img src="{{URL::to('public/frontend/images/uploads/image2-1.jpg')}}" alt=""></a>
 										</div>
 						        	</div>
 					       	 	</div>
@@ -410,16 +400,18 @@
 					       	 		<div class="row">
 					       	 			<h3>Phim liên quan</h3>
 					       	 			<h2>{{$film->TenPhim}}</h2>
-										<div class="movie-item-style-2">
 										@foreach($relatedFilms as $film)
-											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" width="185" height="284" alt="">
+										<div class="movie-item-style-2">
+											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" style="width:170px; height:261px" alt="">
 											<div class="mv-item-infor">
-												<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}} <span>(2012)</span></a></h6>
-												<p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10</p>
-												<p class="describe">Earth's mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity...</p>
+												<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
+												<p class="rate"><i class="ion-android-star"></i><span>{{$film->IMDB}}</span> /10</p>
+												<p class="describe"> Bộ phim <span>{{$film->TenPhim}}</span> của đạo diễn <span> {{$film->DaoDien}}</span> với sự tham gia của các diễn viên, nam chính
+											trong vai <span>{{$film->NamChinh}}</span>, nữ chính trong vai <span>{{$film->NuChinh}}</span> cùng một số diễn viên 
+											khác. Bộ phim thuộc hãng <span>{{$film->TenHSX}}</span> sản xuất thuộc thể loại <span>{{$film->TenTheLoai}}</span>.</p>
 												<p class="run-time"> Run Time: 2h21’    .     <span>MMPA: PG-13 </span>    .     <span>Release: 1 May 2015</span></p>
-												<p>Director: <a href="#">Joss Whedon</a></p>
-												<p>Stars: <a href="#">Robert Downey Jr.,</a> <a href="#">Chris Evans,</a> <a href="#">  Chris Hemsworth</a></p>
+												<p>Đạo diễn: <a href="#">{{$film->DaoDien}}</a></p>
+												<p>Diễn viên: <a href="#">{{$film->NamChinh}}, </a> <a href="#">{{$film->NuChinh}}</a></p>
 											</div>
 										</div>
 									@endforeach

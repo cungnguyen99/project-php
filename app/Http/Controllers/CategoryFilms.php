@@ -30,6 +30,13 @@ class CategoryFilms extends Controller
         return view('admin.create_film')->with('genres_id',$genres_id)->with('manufacturers_id',$manufacturers_id);
     }
 
+    public function all_films()
+    {
+        $films=DB::table('tbl_films')->orderby('IDf','desc')->get();
+
+        return view('pages.all_films')->with('films',$films);
+    }
+
     public function all_category_films()
     {
         //lấy hết hàng trong bảng films
@@ -138,8 +145,6 @@ class CategoryFilms extends Controller
         ->where('tbl_films.IDf', $id_film)
         ->get();
 
-        // dd($single_film[0]->DaoDien);
-
         $related_films=DB::table('tbl_films')
         ->join('tbl_manufacturers','tbl_films.MaHSX','=','tbl_manufacturers.ID')
         ->join('tbl_genres','tbl_films.MaTheLoai','=','tbl_genres.ID')
@@ -148,5 +153,11 @@ class CategoryFilms extends Controller
 
 
         return view('pages.movie_single')->with('singleFilm',$single_film)->with('relatedFilms',$related_films); 
+    }
+
+    public function book_ticket()
+    {
+        
+        return view('pages.book_ticket');
     }
 }
