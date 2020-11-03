@@ -16,7 +16,7 @@ body .card {
   width: 800px;
   height: 400px;
   background: transparent;
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   right: 0;
   margin: auto;
@@ -261,7 +261,68 @@ p.text {
 p.text span {
   color: #6feaf6;
 }
+.button {
+  display: inline-block;
+  font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  padding: 0.8em 1.4em;
+  padding-right: 4.7em;
+  border: none;
+  color:  #ffda00;
+  border: 2px solid #ffda00;
+  transition: 0.2s;
+}
+.button:before,
+.button:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding-top: inherit;
+  padding-bottom: inherit;
+  width: 2em;
+  content: "\00a0";
+  font-family: 'FontAwesome', sans-serif;
+  font-size: 1.2em;
+  text-align: center;
+  transition: 0.2s;
+  transform-origin: 50% 60%;
+}
+.button:before {
+  background: rgba(0, 0, 0, 0.1);
+}
+.button:hover {
+  background: #ffda00;
+}
+.button:active,
+.button:focus {
+  background: #ffda00;
+  outline: none;
+  color:black;
+}
+.button {
+  min-width: 14em;
+}
+.arrow {
+  background: black
+}
+.arrow:hover {
+  background: #ffda00;
+  color:black;
+}
+.arrow:active,
+.arrow:focus {
+  background: #ffda00;
+  color:black;
 
+}
+.arrow:after {
+  content: "\F054";
+}
+.arrow:hover:after {
+  animation: bounceright 0.3s alternate ease infinite;
+}
 
 </style>
 <div class="hero common-hero">
@@ -269,10 +330,10 @@ p.text span {
 		<div class="row">
 			<div class="col-md-12">
 				<div class="hero-ct">
-					<h1> movie listing - grid</h1>
+					<h1> Đặt vé online</h1>
 					<ul class="breadcumb">
 						<li class="active"><a href="#">Home</a></li>
-						<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+						<li> <span class="ion-ios-arrow-right"></span> Book ticket</li>
 					</ul>
 				</div>
 			</div>
@@ -288,7 +349,7 @@ p.text span {
 			<div class="col-md-8 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="card_left">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/343086/h8fnwL1.png"/>
+                        <img src="https://images.pexels.com/photos/2372945/pexels-photo-2372945.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
                     </div>
                     <div class="card_right">
                         <h1>KILL  BILL:  VOL.  1</h1>
@@ -336,7 +397,7 @@ p.text span {
     </p>
                             </div>
                             <div class="card_right__button">
-                                <button class="btn btn-outline-warning" >Mua vé</button>
+                                <button class="button  arrow" >Mua vé</button>
                             </div>
                         </div>
                     </div>

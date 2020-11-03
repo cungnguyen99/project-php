@@ -13,7 +13,7 @@
 	    	<div  class="slick-multiItemSlider">
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="{{('public/frontend/images/uploads/slider1.jpg')}}" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="{{ asset('public/frontend/images/uploads/slider1.jpg')}}" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -25,7 +25,7 @@
 	    		</div>
 				<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="{{('public/frontend/images/uploads/slider2.jpg')}}" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="{{ asset('public/frontend/images/uploads/slider2.jpg')}}" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -37,7 +37,7 @@
 	    		</div>
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="{{('public/frontend/images/uploads/slider3.jpg')}}" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="{{ asset('public/frontend/images/uploads/slider3.jpg')}}" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -49,7 +49,7 @@
 	    		</div>
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="{{('public/frontend/images/uploads/slider4.jpg')}}" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="{{ asset('public/frontend/images/uploads/slider4.jpg')}}" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -61,7 +61,7 @@
 	    		</div>
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="{{('public/frontend/images/uploads/slider1.jpg')}}" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="{{ asset('public/frontend/images/uploads/slider1.jpg')}}" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -73,7 +73,7 @@
 	    		</div>
 				<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="{{('public/frontend/images/uploads/slider2.jpg')}}" alt="" width="285" height="437"></a>
+	    				<a href="#"><img src="{{ asset('public/frontend/images/uploads/slider2.jpg')}}" alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -85,7 +85,7 @@
 	    		</div>
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<img src="{{('public/frontend/images/uploads/slider3.jpg')}}" alt="" width="285" height="437">
+	    				<img src="{{ asset('public/frontend/images/uploads/slider3.jpg')}}" alt="" width="285" height="437">
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -97,7 +97,7 @@
 	    		</div>
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<img src="{{('public/frontend/images/uploads/slider4.jpg')}}" alt="" width="285" height="437">
+	    				<img src="{{ asset('public/frontend/images/uploads/slider4.jpg')}}" alt="" width="285" height="437">
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -109,7 +109,7 @@
 	    		</div>
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<img src="{{('public/frontend/images/uploads/slider3.jpg')}}" alt="" width="285" height="437">
+	    				<img src="{{ asset('public/frontend/images/uploads/slider3.jpg')}}" alt="" width="285" height="437">
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
@@ -264,21 +264,21 @@
 				        <div id="tab23" class="tab">
 				        	<div class="row">
 				            	<div class="slick-multiItem">
-								@foreach($films_6 as $film)
-				            		<div class="slide-it">
-				            			<div class="movie-item">
-					            			<div class="mv-img">
-											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
-					            			</div>
-					            			<div class="hvr-inner">
-					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-					            			</div>
-					            			<div class="title-in">
-					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
-					            				<p><i class="ion-android-star"></i><span>{{$film->IMDB}}</span> /10</p>
-					            			</div>
-					            		</div>
-				            		</div>
+									@foreach($films_6 as $film)
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
+													<p><i class="ion-android-star"></i><span>{{$film->IMDB}}</span> /10</p>
+												</div>
+											</div>
+										</div>
 									@endforeach
 				            	</div>
 				            </div>
@@ -294,28 +294,28 @@
 					<div class="celebrities">
 						<h4 class="sb-title">Spotlight Celebrities</h4>
 						<div class="celeb-item">
-							<a href="#"><img src="{{('public/frontend/images/uploads/ava1.jpg')}}" alt="" width="70" height="70"></a>
+							<a href="#"><img src="{{ asset('public/frontend/images/uploads/ava1.jpg')}}" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
 								<h6><a href="#">Samuel N. Jack</a></h6>
 								<span>Actor</span>
 							</div>
 						</div>
 						<div class="celeb-item">
-							<a href="#"><img src="{{('public/frontend/images/uploads/ava2.jpg')}}" alt="" width="70" height="70"></a>
+							<a href="#"><img src="{{ asset('public/frontend/images/uploads/ava2.jpg')}}" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
 								<h6><a href="#">Benjamin Carroll</a></h6>
 								<span>Actor</span>
 							</div>
 						</div>
 						<div class="celeb-item">
-							<a href="#"><img src="{{('public/frontend/images/uploads/ava3.jpg')}}" alt="" width="70" height="70"></a>
+							<a href="#"><img src="{{ asset('public/frontend/images/uploads/ava3.jpg')}}" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
 								<h6><a href="#">Beverly Griffin</a></h6>
 								<span>Actor</span>
 							</div>
 						</div>
 						<div class="celeb-item">
-							<a href="#"><img src="{{('public/frontend/images/uploads/ava4.jpg')}}" alt="" width="70" height="70"></a>
+							<a href="#"><img src="{{ asset('public/frontend/images/uploads/ava4.jpg')}}" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
 								<h6><a href="#">Justin Weaver</a></h6>
 								<span>Actor</span>
@@ -363,7 +363,7 @@
 					<div class="slider-nav-2 thumb-ft">
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{('public/frontend/images/uploads/trailer7.jpg')}}"  alt="photo by Barn Images" width="4096" height="2737">
+								<img src="{{ asset('public/frontend/images/uploads/trailer7.jpg')}}"  alt="photo by Barn Images" width="4096" height="2737">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Wonder Woman</h4>
@@ -372,7 +372,7 @@
 						</div>
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{('public/frontend/images/uploads/trailer2.jpg')}}"  alt="photo by Barn Images" width="350" height="200">
+								<img src="{{ asset('public/frontend/images/uploads/trailer2.jpg')}}"  alt="photo by Barn Images" width="350" height="200">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Oblivion: Official Teaser Trailer</h4>
@@ -381,7 +381,7 @@
 						</div>
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{('public/frontend/images/uploads/trailer6.jpg')}}" alt="photo by Joshua Earle">
+								<img src="{{ asset('public/frontend/images/uploads/trailer6.jpg')}}" alt="photo by Joshua Earle">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Exclusive Interview:  Skull Island</h4>
@@ -390,7 +390,7 @@
 						</div>
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{('public/frontend/images/uploads/trailer3.png')}}" alt="photo by Alexander Dimitrov" width="100" height="56">
+								<img src="{{ asset('public/frontend/images/uploads/trailer3.png')}}" alt="photo by Alexander Dimitrov" width="100" height="56">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Logan: Director James Mangold Interview</h4>	
@@ -399,7 +399,7 @@
 						</div>
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{('public/frontend/images/uploads/trailer4.png')}}"  alt="photo by Wojciech Szaturski" width="100" height="56">
+								<img src="{{ asset('public/frontend/images/uploads/trailer4.png')}}"  alt="photo by Wojciech Szaturski" width="100" height="56">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Beauty and the Beast: Official Teaser Trailer 2</h4>	
@@ -408,7 +408,7 @@
 						</div>
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{('public/frontend/images/uploads/trailer5.jpg')}}"  alt="photo by Wojciech Szaturski" width="360" height="189">
+								<img src="{{ asset('public/frontend/images/uploads/trailer5.jpg')}}"  alt="photo by Wojciech Szaturski" width="360" height="189">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Fast&Furious 8</h4>	
@@ -428,7 +428,7 @@
 		<div class="row ipad-width">
 			<div class="col-md-8">
 				<div class="ads">
-					<img src="{{('public/frontend/images/uploads/ads2.png')}}" alt="" width="728" height="106">
+					<img src="{{ asset('public/frontend/images/uploads/ads2.png')}}" alt="" width="728" height="106">
 				</div>
 				<div class="title-hd">
 					<h2>Thông tin</h2>
@@ -443,7 +443,7 @@
 				        <div id="tab31" class="tab active">
 				            <div class="row">
 				            	<div class="blog-item-style-1">
-				            		<img src="{{('public/frontend/images/uploads/thongtin.jpg')}}" alt="" width="170" height="250">
+				            		<img src="{{ asset('public/frontend/images/uploads/thongtin.jpg')}}" alt="" width="170" height="250">
 				            		<div class="blog-it-infor">
 				            			<h3><a href="#">Giới thiệu chung</a></h3>
 				            			<p>Exclusive: <span>Trung tâm Chiếu phim Block Buster </span>là đơn vị sự nghiệp công lập, trực thuộc Bộ Văn hóa, Thể thao và Du lịch, được thành lập vào ngày 29 tháng 12 năm 1997. <span>Trung tâm Chiếu phim Block Buster</span> có chức năng tổ chức chiếu phim phục vụ các nhiệm vụ chính trị, xã hội, hợp tác quốc tế; điều tra xã hội học...</p>
@@ -454,7 +454,7 @@
 				        <div id="tab32" class="tab">
 				           <div class="row">
 				            	<div class="blog-item-style-1">
-				            		<img src="{{('public/frontend/images/uploads/blog-it2.jpg')}}" alt="" width="170" height="250">
+				            		<img src="{{ asset('public/frontend/images/uploads/blog-it2.jpg')}}" alt="" width="170" height="250">
 				            		<div class="blog-it-infor">
 				            			<h3><a href="#">Tab 2</a></h3>
 				            			<span class="time">13 hours ago</span>
@@ -466,7 +466,7 @@
 				        <div id="tab33" class="tab">
 				        	<div class="row">
 				            	<div class="blog-item-style-1">
-				            		<img src="{{('public/frontend/images/uploads/blog-it1.jpg')}}" alt="" width="170" height="250">
+				            		<img src="{{ asset('public/frontend/images/uploads/blog-it1.jpg')}}" alt="" width="170" height="250">
 				            		<div class="blog-it-infor">
 				            			<h3><a href="#">Tab 3</a></h3>
 				            			<span class="time">13 hours ago</span>

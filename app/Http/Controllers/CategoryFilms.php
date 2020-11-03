@@ -143,21 +143,22 @@ class CategoryFilms extends Controller
         ->join('tbl_manufacturers','tbl_films.MaHSX','=','tbl_manufacturers.ID')
         ->join('tbl_genres','tbl_films.MaTheLoai','=','tbl_genres.ID')
         ->where('tbl_films.IDf', $id_film)
-        ->get();
+        ->first();
 
         $related_films=DB::table('tbl_films')
         ->join('tbl_manufacturers','tbl_films.MaHSX','=','tbl_manufacturers.ID')
         ->join('tbl_genres','tbl_films.MaTheLoai','=','tbl_genres.ID')
-        ->where('tbl_films.MaTheloai', $single_film[0]->MaTheLoai)
+        ->where('tbl_films.MaTheloai', $single_film->MaTheLoai)
+        ->where('tbl_films.IDf', '!=', $single_film->IDf)
         ->get();
 
 
         return view('pages.movie_single')->with('singleFilm',$single_film)->with('relatedFilms',$related_films); 
     }
 
-    public function book_ticket()
-    {
+    // public function book_ticket()
+    // {
         
-        return view('pages.book_ticket');
-    }
+    //     return view('pages.book_ticket');
+    // }
 }

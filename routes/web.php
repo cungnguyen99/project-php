@@ -34,7 +34,6 @@ Route::get('/edit-category-film/{id_film}','App\Http\Controllers\CategoryFilms@e
 Route::get('/delete-category-film/{id_film}','App\Http\Controllers\CategoryFilms@delete_category_film');
 Route::get('/all-category-films','App\Http\Controllers\CategoryFilms@all_category_films');
 Route::get('/all-films','App\Http\Controllers\CategoryFilms@all_films');
-Route::get('/book-ticket','App\Http\Controllers\CategoryFilms@book_ticket');
 
 Route::post('/save-film','App\Http\Controllers\CategoryFilms@save_film');
 Route::post('/update-film/{id_film}','App\Http\Controllers\CategoryFilms@update_film');
@@ -59,3 +58,6 @@ Route::get('/all-manufacturers-film','App\Http\Controllers\Manufacturers@all_man
 
 Route::post('/save-manufacturer','App\Http\Controllers\Manufacturers@save_manufacturer');
 Route::post('/update-manufacturer/{id_manufacturer}','App\Http\Controllers\Manufacturers@update_manufacturer');
+
+//ticket
+Route::get('/book-ticket/{id_film}','App\Http\Controllers\BookTicket@book_ticket');
