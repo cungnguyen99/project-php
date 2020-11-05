@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 //FRONT END
 Route::get('/','App\Http\Controllers\HomeController@index');
-
 Route::get('/home', 'App\Http\Controllers\HomeController@index');
+Route::post('/search', 'App\Http\Controllers\HomeController@search');
+
 
 //BACKEND
 Route::get('/admin','App\Http\Controllers\AdminController@index');

@@ -22,7 +22,7 @@
 				<div class="movie-single-ct main-content">
 					<h1 class="bd-hd">The cinema films</h1>
 					<div class="social-btn">
-						<a href="#" class="parent-btn"><i class="ion-heart"></i> Like</a>
+						<a href="#" class="parent-btn"><i class="ion-heart"></i> like</a>
 						<div class="hover-bnt">
 							<a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>share</a>
 							<div class="hvr-item">
@@ -66,10 +66,18 @@
 		<div class="row ipad-width">
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
-					<p>All films <span>on block</span> buster</p>
-					<a  href="moviegrid.html" class="grid"><i class="ion-grid active"></i></a>
+                    <p>All films <span>on block</span> byuster</p>
+                    <a  href="moviegrid.html" class="grid"><i class="ion-grid active"></i></a>
 				</div>
 				<div class="flex-wrap-movielist">
+                <?php
+                        $mess=Session::get('mess');
+                        if($mess){
+                            echo '<p class="text-center">' ,$mess. '</p>';
+                    
+                            Session::put('mess',null);
+                        }
+                    ?>
 				@foreach($films as $film)
 						<div class="movie-item-style-2 movie-item-style-1">
 							<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="">
@@ -83,12 +91,6 @@
 						</div>
 				@endforeach	
 				</div>		
-				<div class="topbar-filter">
-					
-					<div class="pagination2">
-						{{$films->links()}}
-					</div>
-				</div>
 			</div>
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="sidebar">

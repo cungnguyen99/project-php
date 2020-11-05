@@ -292,7 +292,7 @@
 						<img src="images/uploads/ads1.png" alt="" width="336" height="296">
 					</div>
 					<div class="celebrities">
-						<h4 class="sb-title">Spotlight Celebrities</h4>
+						<h4 class="sb-title">Tìm phim theo diễn viên</h4>
 						<div class="celeb-item">
 							<a href="#"><img src="{{ asset('public/frontend/images/uploads/ava1.jpg')}}" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
@@ -476,35 +476,6 @@
 				            </div>
 			       	 	</div>
 				    </div>
-				</div>
-				<div class="morenew">
-					<div class="title-hd">
-						<h3>More news on Blockbuster</h3>
-						<a href="#" class="viewall">See all Movies news<i class="ion-ios-arrow-right"></i></a>
-					</div>
-					<div class="more-items">
-						<div class="left">
-							<div class="more-it">
-								<h6><a href="#">Michael Shannon Frontrunner to play Cable in “Deadpool 2”</a></h6>
-								<span class="time">13 hours ago</span>
-							</div>
-							<div class="more-it">
-								<h6><a href="#">French cannibal horror “Raw” inspires L.A. theater to hand out “Barf Bags”</a></h6>
-								
-								<span class="time">13 hours ago</span>
-							</div>
-						</div>
-						<div class="right">
-							<div class="more-it">
-								<h6><a href="#">Laura Dern in talks to join Justin Kelly’s biopic “JT Leroy”</a></h6>
-								<span class="time">13 hours ago</span>
-							</div>
-							<div class="more-it">
-								<h6><a href="#">China punishes more than 300 cinemas for box office cheating</a></h6>
-								<span class="time">13 hours ago</span>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="col-md-4">

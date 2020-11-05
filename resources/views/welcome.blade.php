@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
 <head>
 	<!-- Basic need -->
-	<title>Open Pediatrics</title>
+	<title>Rạp chiếu phim</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
@@ -22,13 +22,13 @@
 </head>
 <body>
 <!--preloading-->
-<div id="preloader">
+<!-- <div id="preloader">
     <img class="logo" src="{{('public/frontend/images/logo1.png')}}" alt="" width="119" height="58">
     <div id="status">
         <span></span>
         <span></span>
     </div>
-</div>
+</div> -->
 <!--end of preloading-->
 <!--login form popup-->
 <div class="login-wrapper" id="login-content">
@@ -134,31 +134,27 @@
 						</li>
 						<li class="first">
 							<a class="btn btn-default dropdown-toggle lv1" href="{{URL::to('/home')}}">
-							home
+							trang chủ
+							</a>
+						</li>
+						<li class="first">
+							<a  href="{{URL::to('/all-films')}}" class="btn btn-default dropdown-toggle lv1">
+							phim
 							</a>
 						</li>
 						<li class="first">
 							<a class="btn btn-default dropdown-toggle lv1">
-							movies
-							</a>
-						</li>
-						<li class="first">
-							<a class="btn btn-default dropdown-toggle lv1">
-							news
+							tin tức
 							</a>
 						</li>
 						<li class="first">
 							<a class="btn btn-default dropdown-toggle lv1" >
-							contact
+							liên hệ
 							</a>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-							pages <i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>       
-						<li><a href="#">Help</a></li>
+						<li><a href="#">trợ giúp</a></li>
 						<li class="loginLink"><a href="#">LOG In</a></li>
 						<li class="btn"><a href="{{URL::to('/admin')}}">sign up</a></li>
 					</ul>
@@ -167,13 +163,17 @@
 	    </nav>
 	    
 	    <!-- top search form -->
+			<form action="{{URL::to('/search')}}" method="POST">
 	    <div class="top-search">
 	    	<select>
-				<option value="united">TV show</option>
-				<option value="saab">Others</option>
+				<option value="united">search movies</option>
+				<option value="saab">movies</option>
 			</select>
-			<input type="text" placeholder="Search for a movie that you are looking for...">
+			{{csrf_field()}}
+				<input type="text" name="keyword" placeholder="tìm phim theo tên, đạo diễn...">
+				<input type="submit" name="btn_search" value=''>
 	    </div>
+			</form>
 	</div>
 </header>
 <!-- END | Header -->
@@ -186,23 +186,19 @@
 		<div class="flex-parent-ft">
 			<div class="flex-child-ft item1">
 				 <a href="index-2.html"><img class="logo" src="{{('public/frontend/images/logo1.png')}}" alt=""></a>
-				 <p>5th Avenue st, manhattan<br>
-				New York, NY 10001</p>
+				 <p>20 Lại yên, Hoài Dức<br>
+				Hà nội, HN 10001</p>
 				<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
 			</div>
 			<div class="flex-child-ft item2">
 				<h4>Resources</h4>
 				<ul>
-					<li><a href="#">About</a></li> 
-					<li><a href="#">Blockbuster</a></li>
-					<li><a href="#">Contact Us</a></li>
-					<li><a href="#">Forums</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Help Center</a></li>
+					<li><a href="#">Về chúng tôi</a></li> 
+					<li><a href="#">Liên hệ</a></li>
 				</ul>
 			</div>
 			<div class="flex-child-ft item3">
-				<h4>Legal</h4>
+				<h4>Điều khoản</h4>
 				<ul>
 					<li><a href="#">Terms of Use</a></li> 
 					<li><a href="#">Privacy Policy</a></li>	
@@ -210,28 +206,23 @@
 				</ul>
 			</div>
 			<div class="flex-child-ft item4">
-				<h4>Account</h4>
+				<h4>Tài khoản</h4>
 				<ul>
-					<li><a href="#">My Account</a></li> 
-					<li><a href="#">Watchlist</a></li>	
-					<li><a href="#">Collections</a></li>
-					<li><a href="#">User Guide</a></li>
+					<li><a href="#">Tài khoản của tôi</a></li> 
+					<li><a href="#">Hướng dẫn người dùng</a></li>
 				</ul>
 			</div>
 			<div class="flex-child-ft item5">
 				<h4>Newsletter</h4>
 				<p>Subscribe to our newsletter system now <br> to get latest news from us.</p>
 				<form action="#">
-					<input type="text" placeholder="Enter your email...">
+					<input type="text" placeholder="Nhập email...">
 				</form>
-				<a href="#" class="btn">Subscribe now <i class="ion-ios-arrow-forward"></i></a>
+				<a href="#" class="btn">Đăng kí ngay <i class="ion-ios-arrow-forward"></i></a>
 			</div>
 		</div>
 	</div>
 	<div class="ft-copyright">
-		<div class="ft-left">
-			<p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
-		</div>
 		<div class="backtotop">
 			<p><a href="#" id="back-to-top">Back to top  <i class="ion-ios-arrow-thin-up"></i></a></p>
 		</div>

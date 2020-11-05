@@ -32,7 +32,7 @@ class CategoryFilms extends Controller
 
     public function all_films()
     {
-        $films=DB::table('tbl_films')->orderby('IDf','desc')->get();
+        $films=DB::table('tbl_films')->orderby('IDf','desc')->paginate(8);
 
         return view('pages.all_films')->with('films',$films);
     }

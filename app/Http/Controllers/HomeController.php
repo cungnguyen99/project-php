@@ -40,4 +40,20 @@ class HomeController extends Controller
                ->with('films_5',$films_5)
                ->with('films_6',$films_6);
     }
+
+    public function search(Request $req)
+    {
+        $keyword=$req->keyword;
+
+        $films=DB::table('tbl_films')->where('TenPhim','like','%'.$keyword.'%')->get();
+
+        if(count($films)==0){
+
+            Session::put('mess','Không tìm thấy phim với từ khóa đã cho.');
+            return view('pages.search')->with('films',$films);
+
+        }else{
+            return view('pages.search')->with('films',$films);
+        }
+    }
 }
