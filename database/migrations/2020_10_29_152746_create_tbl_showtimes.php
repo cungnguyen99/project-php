@@ -15,8 +15,9 @@ class CreateTblShowtimes extends Migration
     {
         Schema::create('tbl_showtimes', function (Blueprint $table) {
             $table->Increments('showID');
-            $table->String('MaPhim');
-            $table->String('MaPhong');
+            $table->Integer('MaPhim');
+            $table->Integer('MaPhong');
+            $table->String('GioChieu');
             $table->String('NgayChieu');
             $table->timestamps();
         });

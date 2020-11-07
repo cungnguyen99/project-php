@@ -14,10 +14,10 @@ class CreateTblTickets extends Migration
     public function up()
     {
         Schema::create('tbl_tickets', function (Blueprint $table) {
-            $table->String('MaShow');
-            $table->String('MaGhe');
+            $table->Integer('MaShow');
+            $table->Integer('MaGhe');
             $table->Integer('GiaVe');
-            $table->String('MaKH');
+            $table->Integer('MaKH');
             $table->timestamps();
         });
     }
