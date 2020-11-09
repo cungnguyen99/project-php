@@ -351,56 +351,67 @@
                     <div class="card_left">
                         <img src="https://images.pexels.com/photos/2372945/pexels-photo-2372945.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
                     </div>
-                    <div class="card_right">
-                        <h1>{{$film->TenPhim}}</h1>
-                        <div class="card_right__details">
-                            <ul>
-                            <select style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="showtime">
-                                <option value="" disabled selected> Chọn lịch chiếu *</option>
-                                @foreach($showTimes as $items=>$item)
-                                    <option value="{{$item->showID}}">{{$item->GioChieu}} / {{$item->NgayChieu}}</option>
-                                @endforeach
-                            </select>
-                            </ul>
-                            <div class="card_right__review">
 
-                            <ul class="showcase">
-                            <li>
-                                <div class="seat"></div>
-                                <small>N/A</small>
-                            </li>
-                            <li>
-                                <div class="seat selected"></div>
-                                <small>Selected</small>
-                            </li>
-              
-                            </ul>
-
-                            <div class="container">
-                            <div class="screen"></div>
-
-                            <div class="row" style="margin-left:3px">
-                                <div class="seat"></div>
-                                <div class="seat"></div>
-                                <div class="seat"></div>
-                                <div class="seat"></div>
-                                <div class="seat"></div>
-                                <div class="seat"></div>
-                                <div class="seat"></div>
-                                <div class="seat"></div>
-                            </div>
-                            </div>
-
-    <p class="text">
-      You have selected <span id="count">0</span> seats for a total price of
-      $<span id="total">0</span>
-    </p>
-                            </div>
-                            <div class="card_right__button">
-                                <button class="button  arrow" >Mua vé</button>
-                            </div>
-                        </div>
-                    </div>
+                      <?php
+                        $mess=Session::get('mess');
+                        if($mess){
+                            echo ' <div class="card_right">
+                            <h1>',$mess.'</h1></div>';
+                    
+                            Session::put('mess',null);
+                        }else{
+                          echo ' <div class="card_right">
+                          <h1>',$film->TenPhim.'</h1>
+                          <div class="card_right__details">
+                              <ul>
+                              <select style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="showtime">
+                                  <option value="" disabled selected> Chọn lịch chiếu *</option>
+                                  @foreach($showTimes as $items=>$item)
+                                      <option value="{{$item->showID}}">{{$item->GioChieu}} / {{$item->NgayChieu}}</option>
+                                  @endforeach
+                              </select>
+                              </ul>
+                              <div class="card_right__review">
+  
+                                <ul class="showcase">
+                                <li>
+                                    <div class="seat"></div>
+                                    <small>N/A</small>
+                                </li>
+                                <li>
+                                    <div class="seat selected"></div>
+                                    <small>Selected</small>
+                                </li>
+                  
+                                </ul>
+  
+                              <div class="container">
+                              <div class="screen"></div>
+  
+                                <div class="row" style="margin-left:3px">
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                                </div>
+  
+                                <p class="text">
+                                  You have selected <span id="count">0</span> seats for a total price of
+                                  $<span id="total">0</span>
+                                </p>
+                              </div>
+                              <div class="card_right__button">
+                                  <button class="button  arrow" >Mua vé</button>
+                              </div>
+                          </div>
+                      </div>';
+                        }
+                      ?>
                 </div>
 			</div>
             <div class="col-md-2 col-sm-12 col-xs-12">
