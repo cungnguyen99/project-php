@@ -133,8 +133,6 @@
 
         }
 
-
-
         if ($.fn.plot) {
             var datatPie = [30, 50];
             // DONUT

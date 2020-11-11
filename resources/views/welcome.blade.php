@@ -230,10 +230,12 @@
 </footer>
 <!-- end of footer section-->
 
-<script src="{{asset('public/frontend/js/jquery.js')}}"></script>
+<!-- <script src="{{asset('public/frontend/js/jquery.js')}}"></script> -->
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script src="{{asset('public/frontend/js/plugins.js')}}"></script>
 <script src="{{asset('public/frontend/js/plugins2.js')}}"></script>
 <script src="{{asset('public/frontend/js/custom.js')}}"></script>
+@stack('scripts')
 </body>
 
 

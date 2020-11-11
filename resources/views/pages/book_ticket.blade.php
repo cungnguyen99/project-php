@@ -361,18 +361,19 @@
                             Session::put('mess',null);
                         }else{
                           echo ' <div class="card_right">
+                          
                           <h1>',$film->TenPhim.'</h1>
+                          <form action="{{URL::to(/book-ticket/".$film->IDf)}} method="post">
                           <div class="card_right__details">
-                              <ul>
-                              <select style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="showtime">
-                                  <option value="" disabled selected> Chọn lịch chiếu *</option>
-                                  @foreach($showTimes as $items=>$item)
-                                      <option value="{{$item->showID}}">{{$item->GioChieu}} / {{$item->NgayChieu}}</option>
-                                  @endforeach
-                              </select>
+                              <ul> 
+                              <select id="selectItem" style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="showtime">
+                                  <option value="" disabled selected> Chọn lịch chiếu *</option>';
+                                    foreach($showTimes as $items=>$item){
+                                    echo '<option value="',$item->showID.'">',$item->GioChieu. '/',$item->NgayChieu.'</option>';}} ?>
+                             </select>
                               </ul>
                               <div class="card_right__review">
-  
+                               
                                 <ul class="showcase">
                                 <li>
                                     <div class="seat"></div>
@@ -385,20 +386,10 @@
                   
                                 </ul>
   
-                              <div class="container">
-                              <div class="screen"></div>
-  
-                                <div class="row" style="margin-left:3px">
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                </div>
-                                </div>
+                              <div class="container click-seat">
+                                <div class="screen"></div>
+                                <div class="row chair" style="margin-left:3px"></div>
+                              </div>
   
                                 <p class="text">
                                   You have selected <span id="count">0</span> seats for a total price of
@@ -409,9 +400,9 @@
                                   <button class="button  arrow" >Mua vé</button>
                               </div>
                           </div>
-                      </div>';
-                        }
-                      ?>
+                          </form>
+                      </div>
+                      
                 </div>
 			</div>
             <div class="col-md-2 col-sm-12 col-xs-12">
@@ -419,4 +410,54 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  const container = document.querySelector(".click-seat");
+
+  container.addEventListener("click", e => {
+  if (
+        e.target.classList.contains("seat") &&
+        !e.target.classList.contains("occupied")
+      ) {
+        e.target.classList.toggle("selected");
+        e.target.classList.toggle("selected__item");
+      }
+    });
+  var seats=document.querySelectorAll(".row .seat:not(.selected)")
+
+  seats.forEach((seat, index) => {
+    seat.addEventListener("click", e => {
+      seat.togle("selected selected__item");
+  });
+      })
+})
+</script>
+@push('scripts')
+<script>
+$(document).ready(function(){
+  $("#selectItem").change(function(){
+    var time_id = $(this).val();
+    $.get('http://localhost/cinema/show_chairs/' + time_id).then(function(data){
+      if(data != null){
+        var html = "";
+        data.map(function(item,index){
+          if(item['type'] == true){
+            html += '<div class="seat selected style="pointer-events: none"></div>';
+          }
+          else{
+            html += '<div class="seat" id="'+item['id']+'" name="chai" value="223"></div>';
+          }
+        });
+
+        $('.chair').html(html);
+      }
+    }).catch(error => error.message);
+  })
+});
+</script>
+@endpush
 @endsection

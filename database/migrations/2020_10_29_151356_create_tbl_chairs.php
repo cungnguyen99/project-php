@@ -15,6 +15,7 @@ class CreateTblChairs extends Migration
     {
         Schema::create('tbl_chairs', function (Blueprint $table) {
             $table->Increments('chairID');
+            $table->Integer('MaPhong');
             $table->String('tenGhe');
             $table->timestamps();
         });
