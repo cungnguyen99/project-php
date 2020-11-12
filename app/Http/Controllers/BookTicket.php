@@ -69,4 +69,14 @@ class BookTicket extends Controller
            return response()->json("Error");
        }
     }
+
+    public function payment()
+    {
+        return view('pages.payment');
+    }
+
+    public function save_payment()
+    {
+        return Redirect::to('/payment'); 
+    }
 }

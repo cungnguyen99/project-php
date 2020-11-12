@@ -357,19 +357,19 @@
                         if($mess){
                             echo ' <div class="card_right">
                             <h1>',$mess.'</h1></div>';
-                    
                             Session::put('mess',null);
                         }else{
-                          echo ' <div class="card_right">
-                          
-                          <h1>',$film->TenPhim.'</h1>
-                          <form action="{{URL::to(/book-ticket/".$film->IDf)}} method="post">
+                          echo '<div class="card_right">
+                          <h1>',$film->TenPhim.'</h1>';}?>
+                            <form action="{{URL::to('/save-payment')}}" method="post">
+                            {{csrf_field()}}
                           <div class="card_right__details">
                               <ul> 
                               <select id="selectItem" style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="showtime">
-                                  <option value="" disabled selected> Chọn lịch chiếu *</option>';
-                                    foreach($showTimes as $items=>$item){
-                                    echo '<option value="',$item->showID.'">',$item->GioChieu. '/',$item->NgayChieu.'</option>';}} ?>
+                                  <option value="" disabled selected> Chọn lịch chiếu *</option>
+                                    @foreach($showTimes as $items=>$item)
+                                     <option value="{{$item->showID}}"> {{$item->GioChieu}} / {{$item->NgayChieu}}</option>
+                                    @endforeach
                              </select>
                               </ul>
                               <div class="card_right__review">
@@ -397,7 +397,7 @@
                                 </p>
                               </div>
                               <div class="card_right__button">
-                                  <button class="button  arrow" >Mua vé</button>
+                                  <input class="button arrow" type="submit" value="Mua vé"/>
                               </div>
                           </div>
                           </form>
