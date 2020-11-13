@@ -190,6 +190,8 @@
     height: 12px;
     width: 15px;
     margin: 3px;
+    color:white;
+    font-size:xx-small;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
@@ -361,15 +363,18 @@
                         }else{
                           echo '<div class="card_right">
                           <h1>',$film->TenPhim.'</h1>';}?>
+                          @if(!$mess)
                             <form action="{{URL::to('/save-payment')}}" method="post">
                             {{csrf_field()}}
                           <div class="card_right__details">
                               <ul> 
                               <select id="selectItem" style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="showtime">
                                   <option value="" disabled selected> Chọn lịch chiếu *</option>
-                                    @foreach($showTimes as $items=>$item)
+                                    @foreach($showTimes as $item)
                                      <option value="{{$item->showID}}"> {{$item->GioChieu}} / {{$item->NgayChieu}}</option>
                                     @endforeach
+                             </select>
+                             <select id="selectChair" style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="selectchair">
                              </select>
                               </ul>
                               <div class="card_right__review">
@@ -401,6 +406,7 @@
                               </div>
                           </div>
                           </form>
+                          @endif
                       </div>
                       
                 </div>
@@ -428,7 +434,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   var seats=document.querySelectorAll(".row .seat:not(.selected)")
-
   seats.forEach((seat, index) => {
     seat.addEventListener("click", e => {
       seat.togle("selected selected__item");
@@ -444,16 +449,20 @@ $(document).ready(function(){
     $.get('http://localhost/cinema/show_chairs/' + time_id).then(function(data){
       if(data != null){
         var html = "";
+        var selectchairs="";
         data.map(function(item,index){
           if(item['type'] == true){
             html += '<div class="seat selected style="pointer-events: none"></div>';
           }
           else{
-            html += '<div class="seat" id="'+item['id']+'" name="chai" value="223"></div>';
+            selectchairs+='<option value="'+item["id"]+'">'+ item["chair_des"]+'</option>'
+            html += '<div class="seat" id="'+item['id']+'"value="'+item['id']+'"><input type="hidden" id="fname" name="seat_seleted">'+item["chair_des"]+'</div>';
           }
         });
 
+        console.log(selectchairs)
         $('.chair').html(html);
+        $('#selectChair').html(selectchairs);
       }
     }).catch(error => error.message);
   })
