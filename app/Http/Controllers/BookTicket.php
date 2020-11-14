@@ -23,7 +23,7 @@ class BookTicket extends Controller
         $id=Session::get('id');
 
         if($id){
-            return Redirect::to('/cinema');
+            return Redirect::to('/all-films');
         }else{
             return Redirect::to('/admin')->send(); 
         }

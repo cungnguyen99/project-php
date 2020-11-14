@@ -156,6 +156,24 @@ class CategoryFilms extends Controller
         return view('pages.movie_single')->with('singleFilm',$single_film)->with('relatedFilms',$related_films); 
     }
 
+    public function cart($user_id)
+    {
+        $carts=DB::table('tbl_tickets')
+        ->join('tbl_showtimes','tbl_showtimes.showID','=','tbl_tickets.MaShow')
+        ->join('tbl_films','tbl_films.IDf','=','tbl_showtimes.MaPhim')
+        ->join('tbl_chairs','tbl_chairs.chairID','=','tbl_tickets.MaGhe')
+        ->join('tbl_admin','tbl_admin.id','=','MaKH')
+        ->where('tbl_tickets.MaKH',$user_id)->get();
+
+        return view('pages.cart')->with('carts',$carts);
+    }
+
+    public function cancel($time, $chair)
+    {
+        dd(DB::table('tbl_tickets')->where('MaShow',$time)->where('MaGhe',$chair));
+        Session::put('message','Xóa phim thành công.');
+        return Redirect::to('cart');  
+    }
     // public function book_ticket()
     // {
         

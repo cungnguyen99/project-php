@@ -155,8 +155,16 @@
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
 						<li><a href="#">trợ giúp</a></li>
-						<li class="loginLink"><a href="#">LOG In</a></li>
-						<li class="btn"><a href="{{URL::to('/admin')}}">sign up</a></li>
+						<?php
+						$id=Session::get('id');
+						$name=Session::get('name');
+						?>
+						@if($id)
+							<li class=''><a href="{{URL::to('/cart/'.$id)}}">Giỏ hàng</a></li>
+							<li class="btn"><a href="{{URL::to('/logout')}}">logout </a></li>
+						@else
+							<li class="btn"><a href="{{URL::to('/admin')}}">sign up </a></li>
+						@endif
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->
