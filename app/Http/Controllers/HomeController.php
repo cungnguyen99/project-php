@@ -29,6 +29,7 @@ class HomeController extends Controller
 
         $films_6=DB::table('tbl_films')->where('MaHSX','1')->orderby('IDf','asc')->get();
 
+        $films_7=DB::table('tbl_films')->select('DaoDien', DB::raw('count(*) as total'))->groupBy('DaoDien')->get();
 
         return view('pages.home')
                ->with('genres',$genres_id)
@@ -38,6 +39,7 @@ class HomeController extends Controller
                ->with('films_3',$films_3)
                ->with('films_4',$films_4)
                ->with('films_5',$films_5)
+               ->with('films_7',$films_7)
                ->with('films_6',$films_6);
     }
 

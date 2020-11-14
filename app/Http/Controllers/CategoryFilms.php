@@ -170,9 +170,15 @@ class CategoryFilms extends Controller
 
     public function cancel($time, $chair)
     {
-        dd(DB::table('tbl_tickets')->where('MaShow',$time)->where('MaGhe',$chair));
-        Session::put('message','Xóa phim thành công.');
-        return Redirect::to('cart');  
+        $id=Session::get('id');
+        DB::table('tbl_tickets')->where('MaShow',$time)->where('MaGhe',$chair)->delete();
+        return Redirect::to('cart/'.$id);  
+    }
+
+    public function films_actor($name)
+    {
+        $films_actor=DB::table('tbl_films')->where('DaoDien',$name)->paginate(8);
+        return view('pages.films_actor')->with('films', $films_actor); 
     }
     // public function book_ticket()
     // {

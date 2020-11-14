@@ -36,7 +36,9 @@ Route::get('/delete-category-film/{id_film}','App\Http\Controllers\CategoryFilms
 Route::get('/all-category-films','App\Http\Controllers\CategoryFilms@all_category_films');
 Route::get('/all-films','App\Http\Controllers\CategoryFilms@all_films');
 Route::get('/cart/{user_id}','App\Http\Controllers\CategoryFilms@cart');
-Route::get('/cancel-ticket/{id_ticket}/{id_chair}','App\Http\Controllers\CategoryFilms@cancel');
+Route::get('/cancel-ticket/{id_ticket}/{id_chair}','App\Http\Controllers\CategoryFilms@cancel')->name('cancel');
+Route::get('/actor/{name}','App\Http\Controllers\CategoryFilms@films_actor');
+
 
 Route::post('/save-film','App\Http\Controllers\CategoryFilms@save_film');
 Route::post('/update-film/{id_film}','App\Http\Controllers\CategoryFilms@update_film');
