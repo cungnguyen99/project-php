@@ -64,12 +64,11 @@
 						<div class="row">
 							<div class="col-md-6 form-it">
 								<label>Phòng chiếu</label>
-								<input type="text" value="{{$ticket->MaPhong}}" placeholder="Kennedy">
-
+								<input type="text" value="{{$room}}" placeholder="Kennedy">
 							</div>
 							<div class="col-md-6 form-it">
 								<label>Ghế</label>
-								<input type="text" value="{{$ticket->tenGhe}}" placeholder="Kennedy">
+								<input type="text" value="{{implode(',',$ticket)}}" placeholder="Kennedy">
 							</div>
 						</div>	
 					</form>

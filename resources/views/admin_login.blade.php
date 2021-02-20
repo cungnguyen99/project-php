@@ -19,10 +19,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="{{asset('public/backend/css/font-awesome.css')}}" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <script src="{{asset('public/backend/js/jquery2.0.3.min.js')}}"></script>
-</head>
-<body>
-<div class="log-w3">
-<div class="w3layouts-main">
+</head >
+<body >
+<div style="background-color: #020d18" class="log-w3">
+<div class="w3layouts-main" style="background-color: #020d18">
 	<h2>Sign In Now</h2>
 	<?php
 		// gán biến message ở hàm dashboard trong controller
@@ -38,8 +38,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		{{csrf_field()}}
 			<input type="text" class="ggg" name="email" placeholder="E-MAIL" required="">
 			<input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
-			<span><input type="checkbox" />Remember Me</span>
-			<h6><a href="#">Forgot Password?</a></h6>
 				<div class="clearfix"></div>
 				<input type="submit" value="Sign In" name="login">
 		</form>

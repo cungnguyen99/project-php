@@ -31,9 +31,15 @@ class GenresFilm extends Controller
         $data['TenTheLoai']=$req->tentheloai;
         $data['MoTa']=$req->mota;
 
-        DB::table('tbl_genres')->insert($data);
-        Session::put('message','Thêm thể loại thành công.');
-        return Redirect::to('all-genres-film');
+        // dd(is_numeric($req->tentheloai));
+        if(!is_numeric($req->tentheloai)&&!is_numeric($req->mota)){
+            DB::table('tbl_genres')->insert($data);
+            Session::put('message','Thêm thể loại thành công.');
+            return Redirect::to('all-genres-film');
+        }else{
+            Session::put('message','Thêm thể loại không thành công.');
+            return Redirect::to('all-genres-film');
+        }
     }
 
     public function edit_genre_film($id_film)

@@ -53,8 +53,10 @@ class BookTicket extends Controller
 
     public function show_chair($time_id)
     {
+       $room = DB::table('tbl_showtimes')->select('MaPhong')->where('showID','=',$time_id)->first()->MaPhong;
+       Session::put('room',$room);
        try{
-            $chair = DB::table('tbl_chairs')->get();
+            $chair = DB::table('tbl_chairs')->where('MaPhong','=', $room)->get();
             $array = array();
             foreach($chair as $item){
                 $ticker = DB::table('tbl_tickets')->where('MaShow', '=', $time_id)
@@ -81,31 +83,51 @@ class BookTicket extends Controller
        }
     }
 
-    public function payment()
+    public function payment(Request $req)
     {
         $showtime=Session::get('showtime');
         $id=Session::get('id');
-        $chair=Session::get('selectchair');
+        $room=Session::get('room');
         $user=DB::table('tbl_admin')->where('id',$id)->first();
-        $ticket=DB::table('tbl_chairs')->where('chairID',$chair)->first();
+        $max_created_at=DB::table('tbl_tickets')->max('created_at');
+        $ticker = DB::table('tbl_tickets')->select('MaGhe')->where('created_at','=',$max_created_at)->get();
+        $arr_ticket=array();
+        $chair=Session::get('selectchair');
+        for($i=0;$i<count($ticker);$i++){
+            $ticket=DB::table('tbl_chairs')->select('TenGhe')->where('chairID','=', $ticker[$i]->MaGhe)->first()->TenGhe;
+            array_push($arr_ticket,$ticket);
+            // DB::table('tbl_tickets')
+            //         ->where('MaGhe','=', $ticker[$i]->MaGhe)
+            //         ->update(['is_read' => 0]);
+        }
         $date=DB::table('tbl_showtimes')->where('showID',$showtime)->first();
         $filmTicket=DB::table('tbl_films')
         ->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')
         ->where('showID',$showtime)->first();
-        return view('pages.payment')->with('filmTicket',$filmTicket)->with('user',$user)->with('date',$date)->with('ticket',$ticket);
+        return view('pages.payment')
+        ->with('filmTicket',$filmTicket)
+        ->with('user',$user)
+        ->with('date',$date)
+        ->with('ticket',$arr_ticket)
+        ->with('room',$room);
     }
 
     public function save_payment(Request $req)
     {
         $id=Session::get('id');
         Session::put('showtime',$req->showtime);
-        Session::put('selectchair',$req->selectchair);
         $data=array();
-        $data['MaShow']=$req->showtime;
-        $data['MaGhe']=$req->selectchair;
-        $data['GiaVe']=5;
-        $data['MaKH']=$id;
-        DB::table('tbl_tickets')->insert($data);
+        $arr_chairs=array();
+        for($i = 0; $i < count((array)$req->arr_chairs); $i++){
+            array_push($arr_chairs,$req->arr_chairs[$i]);
+            $data['MaShow'] = $req->showtime;
+            $data['MaGhe'] = $req->arr_chairs[$i];
+            $data['GiaVe'] = $req->giaVe;
+            $data['MaKH'] = $id;
+            $data['is_read']=1;
+            DB::table('tbl_tickets')->insert($data);
+        }
+        Session::put('selectchair',$arr_chairs);
         return Redirect::to('/payment'); 
     }
 }

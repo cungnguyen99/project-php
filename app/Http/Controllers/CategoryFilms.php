@@ -7,6 +7,8 @@ use DB;
 use App\Http\Requests;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
+
 session_start();
 
 class CategoryFilms extends Controller
@@ -32,7 +34,12 @@ class CategoryFilms extends Controller
 
     public function all_films()
     {
+        $now = Carbon::now();
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d');
+        $weekEndDate = $now->endOfWeek()->format('Y-m-d');
         $films=DB::table('tbl_films')->orderby('IDf','desc')->paginate(8);
+
+        // $films=DB::table('tbl_films')->whereDate('NgayKhoiChieu','>=',date($weekStartDate))->whereDate('NgayKetThuc','<=', date($weekEndDate))->orderby('IDf','desc')->paginate(8);
 
         return view('pages.all_films')->with('films',$films);
     }

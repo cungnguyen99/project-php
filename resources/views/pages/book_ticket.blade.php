@@ -367,15 +367,15 @@
                             <form action="{{URL::to('/save-payment')}}" method="post">
                             {{csrf_field()}}
                           <div class="card_right__details">
-                              <ul> 
-                              <select id="selectItem" style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="showtime">
-                                  <option value="" disabled selected> Chọn lịch chiếu *</option>
-                                    @foreach($showTimes as $item)
-                                     <option value="{{$item->showID}}"> {{$item->GioChieu}} / {{$item->NgayChieu}}</option>
-                                    @endforeach
-                             </select>
-                             <select id="selectChair" style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="selectchair">
-                             </select>
+                              <ul>
+                                <select id="selectItem" style="display:inline; width: 60%; margin-left: 13%" class="form-control showtime" type="text" name="showtime">
+                                    <option value="" disabled selected> Chọn lịch chiếu *</option>
+                                      @foreach($showTimes as $item)
+                                      <option value="{{$item->showID}}"> {{$item->GioChieu}} / {{$item->NgayChieu}}</option>
+                                      @endforeach
+                              </select>
+                             {{-- <select id="selectChair" style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="selectchair">
+                             </select> --}}
                               </ul>
                               <div class="card_right__review">
                                
@@ -402,7 +402,7 @@
                                 </p>
                               </div>
                               <div class="card_right__button">
-                                  <input class="button arrow" type="submit" value="Mua vé"/>
+                                  <input class="button arrow ticket-button" type="submit" value="Mua vé"/>
                               </div>
                           </div>
                           </form>
@@ -417,28 +417,66 @@
 	</div>
 </div>
 <script type="text/javascript">
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
+  var showtime;
+  $('.showtime').on('change', (e) => {
+    console.log('ok', e.target.value);
+    showtime = e.target.value
+  })
 
   const container = document.querySelector(".click-seat");
-
+  const arr_chair=[]
   container.addEventListener("click", e => {
-  if (
-        e.target.classList.contains("seat") &&
-        !e.target.classList.contains("occupied")
-      ) {
-        e.target.classList.toggle("selected");
-        e.target.classList.toggle("selected__item");
+    const id_chair=e.target.id
+    arr_chair.push(id_chair)
+    if (
+          e.target.classList.contains("seat") &&
+          !e.target.classList.contains("occupied")
+        ) {
+          e.target.classList.toggle("selected");
+          e.target.classList.toggle("selected__item");
+        }
+      });
+    var seats=document.querySelectorAll(".row .seat:not(.selected)")
+    seats.forEach((seat, index) => {
+      seat.addEventListener("click", e => {
+        seat.togle("selected selected__item");
+    });
+  })
+  $('.ticket-button').click(e => {
+    // e.preventDefault()
+    $.ajax({
+      type:'post',
+      url:'/cinema/save-payment',
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"').attr('content')
+      },
+      data: {
+        arr_chairs: arr_chair,
+        showtime: showtime,
+        giaVe: 500,
+        maKH: 1
+        },
+      success:function(response) {
+        console.log('response', response);
       }
     });
-  var seats=document.querySelectorAll(".row .seat:not(.selected)")
-  seats.forEach((seat, index) => {
-    seat.addEventListener("click", e => {
-      seat.togle("selected selected__item");
-  });
-      })
+
+    $.ajax({
+      type:'post',
+      url:'/cinema/payment',
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"').attr('content')
+      },
+      data: {
+        //e gui cai nay sang ben hàm nay
+        arr_chairs: arr_chair,
+        },
+      success:function(response) {
+        console.log('response 2', response);
+      }
+    });
+  })
 })
 </script>
 @push('scripts')
@@ -452,21 +490,42 @@ $(document).ready(function(){
         var selectchairs="";
         data.map(function(item,index){
           if(item['type'] == true){
-            html += '<div class="seat selected style="pointer-events: none"></div>';
+            html += '<div class="seat selected" style="pointer-events: none"></div>';
           }
           else{
-            selectchairs+='<option value="'+item["id"]+'">'+ item["chair_des"]+'</option>'
+            selectchairs+='<option value="'+item["id"]+'">'+item["chair_des"]+'</option>'
             html += '<div class="seat" id="'+item['id']+'"value="'+item['id']+'"><input type="hidden" id="fname" name="seat_seleted">'+item["chair_des"]+'</div>';
           }
         });
 
-        console.log(selectchairs)
         $('.chair').html(html);
         $('#selectChair').html(selectchairs);
       }
     }).catch(error => error.message);
   })
+  const arr_chairs=[]
+  container.addEventListener("click", e => {
+    const id_chair=e.target.id
+    arr_chairs.push(id_chair)
+    console.log('arr', arr_chairs)
+  });
+
+  $.ajax({
+    type:'post',
+    url:'http://localhost/cinema/book-ticket/23',
+    data:arr_chairs,
+    success:function(data) {
+      $("#arr_chairs").html(data.arr_chairs);
+    }
+  });
 });
+// $('#selectChair').change(()=>{
+//     var selectitem=$("#selectChair").val();
+//     var id=''+selectitem;
+//     var idchair=$("#"+selectitem);
+//     console.log(idchair);
+//     idchair.addClass('selected')
+// });
 </script>
 @endpush
 @endsection

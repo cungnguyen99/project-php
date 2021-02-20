@@ -14,7 +14,7 @@
 	<!-- Mobile specific meta -->
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<meta name="format-detection" content="telephone-no">
-
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- CSS files -->
 	<link rel="stylesheet" href="{{asset('public/frontend/css/plugins.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/style.css')}}">
@@ -22,13 +22,13 @@
 </head>
 <body>
 <!--preloading-->
-<!-- <div id="preloader">
-    <img class="logo" src="{{('public/frontend/images/logo1.png')}}" alt="" width="119" height="58">
+<div id="preloader">
+    {{-- <img class="logo" src="{{('public/frontend/images/logo1.png')}}" alt="" width="119" height="58"> --}}
     <div id="status">
         <span></span>
         <span></span>
     </div>
-</div> -->
+</div>
 <!--end of preloading-->
 <!--login form popup-->
 <div class="login-wrapper" id="login-content">

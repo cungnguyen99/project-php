@@ -8,6 +8,8 @@ use App\Http\Requests;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 session_start();
+use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -46,8 +48,13 @@ class HomeController extends Controller
     public function search(Request $req)
     {
         $keyword=$req->keyword;
-
+        // $now = Carbon::now();
+        // $weekStartDate = $now->startOfWeek()->format('Y-m-d');
+        // $weekEndDate = $now->endOfWeek()->format('Y-m-d');
         $films=DB::table('tbl_films')->where('TenPhim','like','%'.$keyword.'%')->get();
+        // $films=DB::table('tbl_films')->where('TenPhim','like','%'.$keyword.'%')->get();
+        // $films=DB::table('tbl_films')->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')->where('GioChieu','like',$keyword.'%')->get();
+        // $films=DB::table('tbl_films')->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')->whereDate('NgayKhoiChieu','>=',date($weekStartDate))->whereDate('NgayKetThuc','<=', date($weekEndDate))->where('GioBatDau','<=',(int)$keyword[0])->where('GioKetThuc','>=',(int)$keyword[0])->get();
 
         if(count($films)==0){
 
