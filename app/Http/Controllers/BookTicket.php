@@ -146,4 +146,74 @@ class BookTicket extends Controller
         ->with('user',$user)
         ->with('date',$date);
     }
+
+    function PayURL($money = 0, $order_id = null)
+    {
+        $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        $vnp_Returnurl = route('vnpay_return');
+        $vnp_TmnCode = "FEST0RT1";
+        $vnp_HashSecret = "ZFUIJSMWYLIKQTEAJLGOTIRAQUQAESPW";
+
+        $vnp_TxnRef = $order_id;
+        $vnp_Amount = $money * 100;
+        $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+        $inputData = array(
+            "vnp_Version" => "2.0.0",
+            "vnp_TmnCode" => $vnp_TmnCode,
+            "vnp_Amount" => $vnp_Amount,
+            "vnp_Command" => "pay",
+            "vnp_CreateDate" => date('YmdHis'),
+            "vnp_CurrCode" => "VND",
+            "vnp_IpAddr" => $vnp_IpAddr,
+            "vnp_Locale" => 'vn',
+            "vnp_OrderInfo" => 'Thanh toan STARPHONE',
+            "vnp_OrderType" => 'billpayment',
+            "vnp_ReturnUrl" => $vnp_Returnurl,
+            "vnp_TxnRef" => $vnp_TxnRef,
+        );
+        ksort($inputData);
+        $query = "";
+        $i = 0;
+        $hashdata = "";
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashdata .= '&' . $key . "=" . $value;
+            } else {
+                $hashdata .= $key . "=" . $value;
+                $i = 1;
+            }
+            $query .= urlencode($key) . "=" . urlencode($value) . '&';
+        }
+
+        $vnp_Url = $vnp_Url . "?" . $query;
+        if (isset($vnp_HashSecret)) {
+            $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
+            $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
+        }
+        
+        return $vnp_Url;
+    }
+
+    public function SubmitVnPay(Request $request)
+    {
+        $vnp_Url = $this->PayURL(1000000, 12223);
+        return response()->json($vnp_Url, 200);
+    }
+
+    public function vnpayreturn(Request $request)
+    {
+        dd("Thanh toan thanh cong");
+        // $order_id = $request->vnp_TxnRef;
+        // $data['total_money'] = $total_money = $request->vnp_Amount;
+        // $data['order'] = $order = $this->order->where('order_id', $order_id)->first();
+        // $order->pay_status = config('const.PAID');
+        // $order->save();
+        // $data['products'] = $order->product()->get();
+        // $data['customer'] = $customer = $order->customer()->first();
+        // $data['detail'] = $order_detail = Cart::content();
+        // Mail::to($customer->email)
+        //     ->send(new OrderSuccess($order, $customer, $order_detail, $total_money));
+        // Cart::destroy();
+        // return view('website.cart.order_success', $data);
+    }
 }

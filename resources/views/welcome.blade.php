@@ -244,6 +244,7 @@
 <script src="{{asset('public/frontend/js/plugins2.js')}}"></script>
 <script src="{{asset('public/frontend/js/custom.js')}}"></script>
 @stack('scripts')
+@stack('scriptss')
 </body>
 
 
