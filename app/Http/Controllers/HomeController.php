@@ -19,13 +19,13 @@ class HomeController extends Controller
 
         $manufacturers_id=DB::table('tbl_manufacturers')->orderby('ID','desc')->get();
 
-        $films_1=DB::table('tbl_films')->where('MaTheLoai','6')->orderby('IDf','desc')->get();
+        $films_1=DB::table('tbl_films')->where('MaTheLoai','3')->orderby('IDf','desc')->get();
 
         $films_2=DB::table('tbl_films')->where('MaTheLoai','2')->orderby('IDf','asc')->get();
 
         $films_3=DB::table('tbl_films')->where('MaTheLoai','1')->orderby('IDf','desc')->get();
 
-        $films_4=DB::table('tbl_films')->where('MaHSX','4')->orderby('IDf','desc')->get();
+        $films_4=DB::table('tbl_films')->where('MaHSX','2')->orderby('IDf','desc')->get();
 
         $films_5=DB::table('tbl_films')->where('MaHSX','3')->orderby('IDf','desc')->get();
 

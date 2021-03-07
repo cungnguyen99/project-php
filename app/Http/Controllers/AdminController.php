@@ -43,7 +43,7 @@ class AdminController extends Controller
         if($res){
             Session::put('name',$res->name);
             Session::put('id',$res->id);
-            return Redirect::to('/book-ticket/23');
+            return Redirect::to('/book-ticket/1');
         }else{
             //biến message dùng trong view admin_login để hiện ra dòng chữ wrong pass...
             Session::put('message',"Wrong password or email!");

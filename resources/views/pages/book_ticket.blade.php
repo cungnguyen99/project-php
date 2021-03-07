@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // e.preventDefault()
     $.ajax({
       type:'post',
-      url:'/cinema/save-payment',
+      url:'/cinemas/save-payment',
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"').attr('content')
       },
@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     $.ajax({
       type:'post',
-      url:'/cinema/payment',
+      url:'/cinemas/payment',
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"').attr('content')
       },
@@ -484,9 +484,11 @@ document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function(){
   $("#selectItem").change(function(){
     var time_id = $(this).val();
-    $.get('http://localhost/cinema/show_chairs/' + time_id).then(function(data){
+    console.log(time_id)
+    $.get('http://localhost/cinemas/show_chairs/' + time_id).then(function(data){
       if(data != null){
         var html = "";
+        console.log(data)
         var selectchairs="";
         data.map(function(item,index){
           if(item['type'] == true){
@@ -512,7 +514,7 @@ $(document).ready(function(){
 
   $.ajax({
     type:'post',
-    url:'http://localhost/cinema/book-ticket/23',
+    url:'http://localhost/cinemas/book-ticket/1',
     data:arr_chairs,
     success:function(data) {
       $("#arr_chairs").html(data.arr_chairs);

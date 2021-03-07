@@ -130,4 +130,20 @@ class BookTicket extends Controller
         Session::put('selectchair',$arr_chairs);
         return Redirect::to('/payment'); 
     }
+
+    public function payment_online(Request $req)
+    {
+        $showtime=Session::get('showtime');
+        $id=Session::get('id');
+        $room=Session::get('room');
+        $user=DB::table('tbl_admin')->where('id',$id)->first();
+        $date=DB::table('tbl_showtimes')->where('showID',$showtime)->first();
+        $filmTicket=DB::table('tbl_films')
+        ->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')
+        ->where('showID',$showtime)->first();
+        return view('pages.payment_online')
+        ->with('filmTicket',$filmTicket)
+        ->with('user',$user)
+        ->with('date',$date);
+    }
 }

@@ -19,6 +19,7 @@ class CreateTblTickets extends Migration
             $table->Integer('GiaVe');
             $table->Integer('MaKH');
             $table->Integer('is_read');
+            $table->timestamp('created_at');
             $table->timestamps();
         });
     }

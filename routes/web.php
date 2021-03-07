@@ -73,4 +73,4 @@ Route::get('show_chairs/{time_id}', 'App\Http\Controllers\BookTicket@show_chair'
 Route::get('/payment', 'App\Http\Controllers\BookTicket@payment');
 Route::post('/save-payment', 'App\Http\Controllers\BookTicket@save_payment');
 
-
+Route::get('/payment-online', 'App\Http\Controllers\BookTicket@payment_online');
