@@ -10,13 +10,12 @@
     overflow-x: hidden !important;
   }
   .container{
-      margin-left:110px !important;
+    margin-left:110px !important;
   }
   body .card {
     width: 800px;
     height: 400px;
     background: transparent;
-    /* position: absolute; */
     left: 0;
     right: 0;
     margin: auto;

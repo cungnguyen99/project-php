@@ -1,5 +1,69 @@
 @extends('welcome')
 @section('content')
+<style>
+  .arrow {
+    background: black
+  }
+  .arrow:hover {
+    background: #ffda00;
+    color:black;
+  }
+  .arrow:active,
+  .arrow:focus {
+    background: #ffda00;
+    color:black;
+
+  }
+  .arrow:after {
+    content: "\F054";
+  }
+  .arrow:hover:after {
+    animation: bounceright 0.3s alternate ease infinite;
+  }
+  .button {
+    display: inline-block;
+    font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    padding: 0.8em 1.4em;
+    padding-right: 4.7em;
+    border: none;
+    color:  #ffda00;
+    border: 2px solid #ffda00;
+    transition: 0.2s;
+  }
+  .button:before,
+  .button:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: inherit;
+    padding-bottom: inherit;
+    width: 2em;
+    content: "\00a0";
+    font-family: 'FontAwesome', sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    transition: 0.2s;
+    transform-origin: 50% 60%;
+  }
+  .button:before {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .button:hover {
+    background: #ffda00;
+  }
+  .button:active,
+  .button:focus {
+    background: #ffda00;
+    outline: none;
+    color:black;
+  }
+  .button {
+    min-width: 14em;
+  }
+</style>
 <div class="hero user-hero">
 	<div class="container">
 		<div class="row">
@@ -98,7 +162,6 @@
 									</select>
 								</div>
 								<button type="button" class="btn btn-primary" data-url="{{ route('submit_vnpay') }}" id="btn-vnpay">Thanh toán Popup</button>
-								<button type="button" class="btn btn-default">Thanh toán Redirect</button>
 						</div>
 				</div>
 			</div>
@@ -109,7 +172,6 @@
 <script>
 	$(document).ready(function(){  
 		$("#btn-vnpay").click(function (e) {
-			alert( $(this).data('url'));
 			$.ajax({
 							url: $(this).data('url'),
 							method: 'POST',
@@ -117,15 +179,14 @@
 							data: {
 									_token: $('meta[name="csrf-token"]').attr('content'),
 									customer_id: $('#customer_id').val(),
-									ward_id: $('#ward').val(),
-									address: $('#customer_address').val(),
-									note: $('#note').val(),
+									money:$('').val(),
+									order_id:$('#order_id').val(),
+									note: $('#order_desc').val(),
 									payment_method: 1,
 									status: 0,
-									// Đây là thông tin e gửi lên controller để lưu thông tin đơn hàng
 							},
 							success: function (vnp_Url) {
-								debugger;
+								// debugger;
 								// chỗ này nó sẽ nhận cái url ở hàm SubmitVnPay trả về
 									window.location.href = vnp_Url;
 							},

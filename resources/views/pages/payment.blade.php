@@ -70,6 +70,9 @@
 								<label>Ghế</label>
 								<input type="text" value="{{implode(',',$ticket)}}" placeholder="Kennedy">
 							</div>
+							<div class="col-md-6 form-it">
+								<button class="button arrow ticket-button"><a href="{{URL::to('/payment-online/'.$user->id)}}">Thanh toán </a></button>
+							</div>
 						</div>	
 					</form>
 				</div>
