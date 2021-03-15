@@ -74,4 +74,4 @@ Route::get('/payment', 'App\Http\Controllers\BookTicket@payment');
 Route::post('/save-payment', 'App\Http\Controllers\BookTicket@save_payment');
 Route::get('/payment-online/{user_id}', 'App\Http\Controllers\BookTicket@payment_online');
 Route::post('submit_vnpay', 'App\Http\Controllers\BookTicket@SubmitVnPay')->name('submit_vnpay');
-Route::get('VnPayReturn', 'CartController@vnpayreturn')->name('vnpay_return');
+Route::get('VnPayReturn', 'App\Http\Controllers\BookTicket@vnpayreturn')->name('vnpay_return');

@@ -89,6 +89,7 @@
 							<li  class=""><a href="userprofile.html">{{$user->name}}</a></li>
 							<li><a href="userfavoritelist.html">{{$user->phone}}</a></li>
 							<li><a href="userrate.html">{{$user->email}}</a></li>
+							<input style="opacity:0; display:none" id='customer_id' class="button arrow ticket-button" readonly value="{{$user->id}}"/>
 						</ul>
 					</div>
 					<div class="user-fav">
@@ -104,7 +105,7 @@
 				<div class="form-style-1 user-pro" action="#">
 						<h4>Thanh toán</h4>
 						<div class="table-responsive">
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="language">Loại hàng hóa </label>
 									<select name="order_type" id="order_type" class="form-control">
 										<option value="topup">Nạp tiền điện thoại</option>
@@ -112,7 +113,7 @@
 										<option value="fashion">Thời trang</option>
 										<option value="other">Khác - Xem thêm tại VNPAY</option>
 									</select>
-								</div>
+								</div> -->
 								<div class="form-group">
 									<label for="order_id">Mã hóa đơn</label>
 									<input class="form-control" id="order_id" name="order_id" type="text" value="<?php echo date("YmdHis") ?>"/>
@@ -120,11 +121,11 @@
 								<div class="form-group">
 									<label for="amount">Số tiền</label>
 									<input class="form-control" id="amount"
-										   name="amount" type="number" value="10000"/>
+										  name="amount" type="number" value="{{$money}}"/>
 								</div>
 								<div class="form-group">
 									<label for="order_desc">Nội dung thanh toán</label>
-									<textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2">Noi dung thanh toan</textarea>
+									<input class="form-control" type='text' id="order_desc" name="order_desc" value='Noi dung thanh toan'/>
 								</div>
 								<div class="form-group">
 									<label for="bank_code">Ngân hàng</label>
@@ -173,29 +174,28 @@
 	$(document).ready(function(){  
 		$("#btn-vnpay").click(function (e) {
 			$.ajax({
-							url: $(this).data('url'),
-							method: 'POST',
-							dataType: 'json',
-							data: {
-									_token: $('meta[name="csrf-token"]').attr('content'),
-									customer_id: $('#customer_id').val(),
-									money:$('').val(),
-									order_id:$('#order_id').val(),
-									note: $('#order_desc').val(),
-									payment_method: 1,
-									status: 0,
-							},
-							success: function (vnp_Url) {
-								// debugger;
-								// chỗ này nó sẽ nhận cái url ở hàm SubmitVnPay trả về
-									window.location.href = vnp_Url;
-							},
-							error: function (data) {
-									alert('Lỗi rồi nha')
-							},
-					});
-		})
+				url: $(this).data('url'),
+				method: 'POST',
+				dataType: 'json',
+				data: {
+					_token: $('meta[name="csrf-token"]').attr('content'),
+					customer_id: $('#customer_id').val(),
+					money:$('#amount').val(),
+					order_id:$('#order_id').val(),
+					note: $('#order_desc').val(),
+					payment_method: 1,
+					status: 0,
+				},
+				success: function (vnp_Url) {
+					// debugger;
+					window.location.href = vnp_Url;
+				},
+				error: function (err) {
+					alert('Lỗi rồi nha ')
+				},
+		});
 	})
+})
 </script>
 @endpush
 @endsection

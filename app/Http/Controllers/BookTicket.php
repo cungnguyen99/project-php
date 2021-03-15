@@ -8,6 +8,7 @@ use DB;
 use App\Http\Requests;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
 session_start();
 
 class chairsTable{
@@ -93,6 +94,8 @@ class BookTicket extends Controller
         $ticker = DB::table('tbl_tickets')->select('MaGhe')->where('created_at','=',$max_created_at)->get();
         $arr_ticket=array();
         $chair=Session::get('selectchair');
+        $money=count($ticker)*50000;
+        Session::put('money',$money);
         for($i=0;$i<count($ticker);$i++){
             $ticket=DB::table('tbl_chairs')->select('TenGhe')->where('chairID','=', $ticker[$i]->MaGhe)->first()->TenGhe;
             array_push($arr_ticket,$ticket);
@@ -109,6 +112,7 @@ class BookTicket extends Controller
         ->with('user',$user)
         ->with('date',$date)
         ->with('ticket',$arr_ticket)
+        ->with('money',$money)
         ->with('room',$room);
     }
 
@@ -116,6 +120,8 @@ class BookTicket extends Controller
     {
         $id=Session::get('id');
         Session::put('showtime',$req->showtime);
+        $money=count((array)$req->arr_chairs)*50000;
+        Session::put('money',$money);
         $data=array();
         $arr_chairs=array();
         for($i = 0; $i < count((array)$req->arr_chairs); $i++){
@@ -136,6 +142,7 @@ class BookTicket extends Controller
         $showtime=Session::get('showtime');
         $id=Session::get('id');
         $room=Session::get('room');
+        $money=Session::get('money');
         $user=DB::table('tbl_admin')->where('id',$id)->first();
         $date=DB::table('tbl_showtimes')->where('showID',$showtime)->first();
         $filmTicket=DB::table('tbl_films')
@@ -144,7 +151,8 @@ class BookTicket extends Controller
         return view('pages.payment_online')
         ->with('filmTicket',$filmTicket)
         ->with('user',$user)
-        ->with('date',$date);
+        ->with('date',$date)
+        ->with('money',$money);
     }
 
     function PayURL($money = 0, $order_id = null)
@@ -194,15 +202,15 @@ class BookTicket extends Controller
         return $vnp_Url;
     }
 
-    public function SubmitVnPay(Request $request)
+    public function SubmitVnPay(Request $req)
     {
-        $vnp_Url = $this->PayURL(1000000, 12223);
+        $vnp_Url = $this->PayURL($req->money, $req->order_id);
         return response()->json($vnp_Url, 200);
     }
 
     public function vnpayreturn(Request $request)
     {
-        dd("Thanh toan thanh cong");
+        // dd("Thanh toan thanh cong");
         // $order_id = $request->vnp_TxnRef;
         // $data['total_money'] = $total_money = $request->vnp_Amount;
         // $data['order'] = $order = $this->order->where('order_id', $order_id)->first();
@@ -214,6 +222,6 @@ class BookTicket extends Controller
         // Mail::to($customer->email)
         //     ->send(new OrderSuccess($order, $customer, $order_detail, $total_money));
         // Cart::destroy();
-        // return view('website.cart.order_success', $data);
+        return view('pages.vnpay_return');
     }
 }

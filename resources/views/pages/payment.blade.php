@@ -54,7 +54,7 @@
 						<div class="row">
 							<div class="col-md-6 form-it">
 								<label>Tổng tiền</label>
-								<input type="text" value="5.000 VND" placeholder="Edward ">
+								<input type="text" value="{{$money}}" placeholder="Edward ">
 							</div>
 							<div class="col-md-6 form-it">
 								<label>Giờ chiếu</label>
