@@ -210,18 +210,23 @@ class BookTicket extends Controller
 
     public function vnpayreturn(Request $request)
     {
-        // dd("Thanh toan thanh cong");
-        // $order_id = $request->vnp_TxnRef;
-        // $data['total_money'] = $total_money = $request->vnp_Amount;
-        // $data['order'] = $order = $this->order->where('order_id', $order_id)->first();
-        // $order->pay_status = config('const.PAID');
-        // $order->save();
-        // $data['products'] = $order->product()->get();
-        // $data['customer'] = $customer = $order->customer()->first();
-        // $data['detail'] = $order_detail = Cart::content();
-        // Mail::to($customer->email)
-        //     ->send(new OrderSuccess($order, $customer, $order_detail, $total_money));
-        // Cart::destroy();
+        $order_id = $_GET['vnp_TxnRef'];
+        $id=Session::get('id');
+        $money = $_GET['vnp_Amount']/100;
+        $note = $_GET['vnp_OrderInfo'];
+        $vnp_response_code = $_GET['vnp_ResponseCode'];
+        $code_vnpay = $_GET['vnp_TransactionNo'];
+        $code_bank = $_GET['vnp_BankCode'];
+        $time = $_GET['vnp_PayDate'];
+        $data['user_id'] = $id;
+        $data['order_id'] = $order_id;
+        $data['money'] = $money;
+        $data['note'] = $note;
+        $data['vnp_response_code']=$vnp_response_code;
+        $data['code_vnpay'] = $code_vnpay;
+        $data['code_bank']=$code_bank;
+        $data['time']=$time;
+        DB::table('payments')->insert($data);
         return view('pages.vnpay_return');
     }
 }
