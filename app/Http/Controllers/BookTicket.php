@@ -174,7 +174,7 @@ class BookTicket extends Controller
             "vnp_CurrCode" => "VND",
             "vnp_IpAddr" => $vnp_IpAddr,
             "vnp_Locale" => 'vn',
-            "vnp_OrderInfo" => 'Thanh toan STARPHONE',
+            "vnp_OrderInfo" => 'Thanh toan ve xem phim',
             "vnp_OrderType" => 'billpayment',
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
