@@ -25,11 +25,11 @@ class HomeController extends Controller
 
         $films_3=DB::table('tbl_films')->where('MaTheLoai','1')->orderby('IDf','desc')->get();
 
-        $films_4=DB::table('tbl_films')->where('MaHSX','2')->orderby('IDf','desc')->get();
+        $films_4=DB::table('tbl_films')->where('MaHSX','2')->orderby('IDf','desc')->get();//marvel
 
-        $films_5=DB::table('tbl_films')->where('MaHSX','3')->orderby('IDf','desc')->get();
+        $films_5=DB::table('tbl_films')->where('MaHSX','3')->orderby('IDf','desc')->get();//bros
 
-        $films_6=DB::table('tbl_films')->where('MaHSX','1')->orderby('IDf','asc')->get();
+        $films_6=DB::table('tbl_films')->where('MaHSX','1')->orderby('IDf','asc')->get();//disney
 
         $films_7=DB::table('tbl_films')->select('DaoDien', DB::raw('count(*) as total'))->groupBy('DaoDien')->get();
 
