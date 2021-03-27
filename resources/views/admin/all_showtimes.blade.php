@@ -75,7 +75,7 @@
             <td><span class="text-ellipsis">{{$item->NgayChieu}}</span></td>
             <td><span class="text-ellipsis">{{$item->GioChieu}}</span></td>
             <td>
-              <a href="{{URL::to('/edit-manufacturer-film/'.$item->showID)}}" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a> 
+              <a href="{{URL::to('/edit-showtime/'.$item->showID)}}" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a> 
               <a onclick="return confirm('Bạn có muốn xóa không.')" href="{{URL::to('/delete-showtime/'.$item->showID)}}" class="active" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
             </td>
           </tr>

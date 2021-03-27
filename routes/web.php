@@ -77,7 +77,8 @@ Route::post('submit_vnpay', 'App\Http\Controllers\BookTicket@SubmitVnPay')->name
 Route::get('VnPayReturn', 'App\Http\Controllers\BookTicket@vnpayreturn')->name('vnpay_return');
 
 Route::get('/add-showtime','App\Http\Controllers\Showtime@add_showtime_film');
-// Route::get('/edit-showtime/{id_film}','App\Http\Controllers\Showtime@edit_manufacturer_film');
+Route::get('/edit-showtime/{id_film}','App\Http\Controllers\Showtime@edit_showtime_film');
 Route::get('/delete-showtime/{id_film}','App\Http\Controllers\Showtime@delete_showtime_film');
 Route::get('/all-showtimes','App\Http\Controllers\Showtime@all_showtimes_film');
 Route::post('/save-showtime','App\Http\Controllers\Showtime@save_showtime');
+Route::post('/update-showtime/{id_showtime}','App\Http\Controllers\Showtime@update_showtime');
