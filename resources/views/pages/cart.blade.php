@@ -114,8 +114,10 @@ button:hover {
                         <p>.</p>
                         <span>{{$cart->GioChieu}}</span>
                         <p>Phòng</p>
-                        <span>{{$cart->MaPhong}}</span>
-                        <a onclick="return confirm('Bạn có muốn xóa không.')" href={{route('cancel', ['id_ticket'=>$cart->MaShow,'id_chair'=>$cart->MaGhe])}}><button>Hủy vé</button></a>
+                        <span>{{$cart->MaPhong}}{{$cart->MaGhe}}</span>
+                        <p>Ngày đặt</p>
+                        <span>{{$cart->time}}</span>
+                        <a onclick="return confirm('Bạn có muốn xóa không.')" href={{route('cancel', ['order_id'=>$cart->MaDonHang])}}><button>Hủy vé</button></a>
                     </div>  
                     </div>
                 @endforeach

@@ -170,15 +170,18 @@ class CategoryFilms extends Controller
         ->join('tbl_films','tbl_films.IDf','=','tbl_showtimes.MaPhim')
         ->join('tbl_chairs','tbl_chairs.chairID','=','tbl_tickets.MaGhe')
         ->join('tbl_admin','tbl_admin.id','=','MaKH')
-        ->where('tbl_tickets.MaKH',$user_id)->get();
-
+        ->join('payments','payments.order_id','=','MaDonHang')
+        ->where('tbl_tickets.MaKH',$user_id)
+        ->groupBy('MaDonHang')
+        ->get();
         return view('pages.cart')->with('carts',$carts);
     }
 
-    public function cancel($time, $chair)
+    public function cancel($time)
     {
         $id=Session::get('id');
-        DB::table('tbl_tickets')->where('MaShow',$time)->where('MaGhe',$chair)->delete();
+        DB::table('tbl_tickets')->where('MaDonHang',$time)->delete();
+        DB::table('payments')->where('order_id',$time)->delete();
         return Redirect::to('cart/'.$id);  
     }
 
@@ -187,9 +190,4 @@ class CategoryFilms extends Controller
         $films_actor=DB::table('tbl_films')->where('DaoDien',$name)->paginate(8);
         return view('pages.films_actor')->with('films', $films_actor); 
     }
-    // public function book_ticket()
-    // {
-        
-    //     return view('pages.book_ticket');
-    // }
 }

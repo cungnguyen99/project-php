@@ -10,7 +10,13 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
 session_start();
-
+/**
+ * Ngân hàng: NCB
+ * Số thẻ: 9704198526191432198
+ * Tên chủ thẻ:NGUYEN VAN A
+ * Ngày phát hành:07/15
+ * Mật khẩu OTP:123456
+ */
 class chairsTable{
     public $id;
     public $chair_des;
@@ -99,9 +105,6 @@ class BookTicket extends Controller
         for($i=0;$i<count($ticker);$i++){
             $ticket=DB::table('tbl_chairs')->select('TenGhe')->where('chairID','=', $ticker[$i]->MaGhe)->first()->TenGhe;
             array_push($arr_ticket,$ticket);
-            // DB::table('tbl_tickets')
-            //         ->where('MaGhe','=', $ticker[$i]->MaGhe)
-            //         ->update(['is_read' => 0]);
         }
         $date=DB::table('tbl_showtimes')->where('showID',$showtime)->first();
         $filmTicket=DB::table('tbl_films')
@@ -218,7 +221,6 @@ class BookTicket extends Controller
         $code_vnpay = $_GET['vnp_TransactionNo'];
         $code_bank = $_GET['vnp_BankCode'];
         $time = $_GET['vnp_PayDate'];
-        $data['user_id'] = $id;
         $data['order_id'] = $order_id;
         $data['money'] = $money;
         $data['note'] = $note;
@@ -226,7 +228,9 @@ class BookTicket extends Controller
         $data['code_vnpay'] = $code_vnpay;
         $data['code_bank']=$code_bank;
         $data['time']=$time;
+        $max_created_at=DB::table('tbl_tickets')->max('created_at');
         DB::table('payments')->insert($data);
+        DB::table('tbl_tickets')->where('created_at','=',$max_created_at)->update(['MaDonHang'=>$order_id]);
         return view('pages.vnpay_return');
     }
 }
