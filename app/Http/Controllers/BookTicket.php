@@ -132,7 +132,6 @@ class BookTicket extends Controller
             $data['MaShow'] = $req->showtime;
             $data['MaGhe'] = $req->arr_chairs[$i];
             $data['GiaVe'] = $req->giaVe;
-            $data['MaKH'] = $id;
             $data['is_read']=1;
             DB::table('tbl_tickets')->insert($data);
         }
@@ -222,6 +221,7 @@ class BookTicket extends Controller
         $code_bank = $_GET['vnp_BankCode'];
         $time = $_GET['vnp_PayDate'];
         $data['order_id'] = $order_id;
+        $data['user_id']=$id;
         $data['money'] = $money;
         $data['note'] = $note;
         $data['vnp_response_code']=$vnp_response_code;

@@ -165,16 +165,22 @@ class CategoryFilms extends Controller
 
     public function cart($user_id)
     {
+        $chairs=DB::table('tbl_tickets')->select('MaGhe')->join('payments','payments.order_id','=','tbl_tickets.MaDonHang')
+        ->where('payments.user_id',$user_id)->get();
+        $arr_ticket=array();
+        foreach ($chairs as $value) {
+            $arr_ticket[]=$value->MaGhe;
+        }
         $carts=DB::table('tbl_tickets')
         ->join('tbl_showtimes','tbl_showtimes.showID','=','tbl_tickets.MaShow')
         ->join('tbl_films','tbl_films.IDf','=','tbl_showtimes.MaPhim')
         ->join('tbl_chairs','tbl_chairs.chairID','=','tbl_tickets.MaGhe')
-        ->join('tbl_admin','tbl_admin.id','=','MaKH')
         ->join('payments','payments.order_id','=','MaDonHang')
-        ->where('tbl_tickets.MaKH',$user_id)
+        ->join('tbl_admin','tbl_admin.id','=','payments.user_id')
+        ->where('payments.user_id',$user_id)
         ->groupBy('MaDonHang')
         ->get();
-        return view('pages.cart')->with('carts',$carts);
+        return view('pages.cart')->with('carts',$carts)->with('chairs',$arr_ticket);
     }
 
     public function cancel($time)

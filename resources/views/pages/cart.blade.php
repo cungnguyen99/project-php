@@ -114,7 +114,9 @@ button:hover {
                         <p>.</p>
                         <span>{{$cart->GioChieu}}</span>
                         <p>Phòng</p>
-                        <span>{{$cart->MaPhong}}{{$cart->MaGhe}}</span>
+                        <span>{{$cart->MaPhong}}</span>
+                        <p>Ghế</p>
+                        <span>{{implode('-',$chairs)}}</span>
                         <p>Ngày đặt</p>
                         <span>{{$cart->time}}</span>
                         <a onclick="return confirm('Bạn có muốn xóa không.')" href={{route('cancel', ['order_id'=>$cart->MaDonHang])}}><button>Hủy vé</button></a>
