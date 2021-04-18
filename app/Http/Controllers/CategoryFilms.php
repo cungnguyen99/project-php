@@ -71,8 +71,9 @@ class CategoryFilms extends Controller
         $data['NgayKetThuc']=$req->ngaykt;
         $data['NamChinh']=$req->namchinh;
         $data['NuChinh']=$req->nuchinh;
-        $data['TongChiPhi']=$req->tongchiphi;
-
+        $data['Trailer']=$req->tongchiphi;
+        $data['NoiDung']=$req->noidung;
+        
         $get_image=$req->file('url');
 
         if($get_image){
@@ -118,7 +119,8 @@ class CategoryFilms extends Controller
         $data['NgayKetThuc']=$req->ngaykt;
         $data['NamChinh']=$req->namchinh;
         $data['NuChinh']=$req->nuchinh;
-        $data['TongChiPhi']=$req->tongchiphi;
+        $data['Trailer']=$req->tongchiphi;
+        $data['NoiDung']=$req->noidung;
 
         $get_image=$req->file('url');
 

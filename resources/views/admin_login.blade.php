@@ -37,6 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<form action="{{URL::to('/admin-dashboard')}}" method="post">
 		{{csrf_field()}}
 			<input type="text" class="ggg" name="email" placeholder="E-MAIL" required="">
+			<input type="hidden" name="redirurl" value="<? echo $_SERVER['HTTP_REFERER']; ?>" />
 			<input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
 				<div class="clearfix"></div>
 				<input type="submit" value="Sign In" name="login">

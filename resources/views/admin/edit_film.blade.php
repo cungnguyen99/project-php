@@ -51,7 +51,7 @@
                                         <div class="col-md-6">
                                                 <div class="form-group"><input class="form-control" type="text" name="namchinh" placeholder="Nam chính *" value="{{$editFilm->NamChinh}}" /></div>
                                                 <div class="form-group"><input class="form-control" type="text" name="nuchinh" placeholder="Nữ chính *" value="{{$editFilm->NuChinh}}" /></div>
-                                                <div class="form-group"><input class="form-control" type="text" name="tongchiphi" placeholder="Tổng chi phí *" value="{{$editFilm->TongChiPhi}}" /></div>
+                                                <div class="form-group"><input class="form-control" type="text" name="tongchiphi" placeholder="Tổng chi phí *" value="{{$editFilm->Trailer}}" /></div>
                                                 <div class="form-group"><input class="form-control" type="text" name="imdb" placeholder="IMDB *" value="{{$editFilm->IMDB}}" /></div>
                                                 <div class="form-group"><input class="form-control" type="text" onfocus="(this.type='date')" name="ngaykt" placeholder="Ngày Kết thúc *" value="{{$editFilm->NgayKetThuc}}" /></div>
                                                 <input class="btnRegister" type="submit" value="Update" /></div>

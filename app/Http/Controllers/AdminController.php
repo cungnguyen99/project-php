@@ -39,11 +39,22 @@ class AdminController extends Controller
         $password=md5($req->password);
 
         $res=DB::table('tbl_admin')->where ('email',$email)->where('password',$password)->first();
-
+        
         if($res){
             Session::put('name',$res->name);
             Session::put('id',$res->id);
             return Redirect::to('/book-ticket/1');
+            // if(isset($_REQUEST['redirurl'])) 
+            // {
+
+            //     $url = $_REQUEST['redirurl'];
+            // }
+            // else {
+    
+            //     $url = "student_account.php";
+            // }
+            // dd($url, $_SERVER['HTTP_REFERER']);
+            // header("Location:$url");
         }else{
             //biến message dùng trong view admin_login để hiện ra dòng chữ wrong pass...
             Session::put('message',"Wrong password or email!");

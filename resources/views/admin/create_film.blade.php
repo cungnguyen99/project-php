@@ -41,9 +41,10 @@
                                     <div class="col-md-6">
                                             <div class="form-group"><input class="form-control" type="text" name="namchinh" placeholder="Nam chính *" value="" /></div>
                                             <div class="form-group"><input class="form-control" type="text" name="nuchinh" placeholder="Nữ chính *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="tongchiphi" placeholder="Tổng chi phí *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="imdb" placeholder="IMDB *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" name="tongchiphi" placeholder="Trailer *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="number" min="0" max="10" name="imdb" placeholder="IMDB *" value="" /></div>
                                             <div class="form-group"><input class="form-control" type="text" onfocus="(this.type='date')" name="ngaykt" placeholder="Ngày Kết thúc *" value="" /></div>
+                                            <div class="form-group"><input class="form-control" type="text" name="noidung" placeholder="Nội dung *" value="" /></div>
                                             <input class="btnRegister" type="submit" value="Tạo mới" /></div>
                                     </div>
                                 </div>
