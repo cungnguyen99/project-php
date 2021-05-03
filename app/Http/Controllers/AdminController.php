@@ -40,10 +40,11 @@ class AdminController extends Controller
 
         $res=DB::table('tbl_admin')->where ('email',$email)->where('password',$password)->first();
         
-        if($res){
+        if($res&&$res->role==0){
             Session::put('name',$res->name);
             Session::put('id',$res->id);
-            return Redirect::to('/book-ticket/1');
+            return Redirect::to('/');
+            // return Redirect::to('/book-ticket/1');
             // if(isset($_REQUEST['redirurl'])) 
             // {
 
@@ -55,12 +56,20 @@ class AdminController extends Controller
             // }
             // dd($url, $_SERVER['HTTP_REFERER']);
             // header("Location:$url");
+        }else if($res&&$res->role==1){
+            Session::put('name',$res->name);
+            Session::put('id',$res->id);
+            return Redirect::to('/dashboard');
         }else{
             //biến message dùng trong view admin_login để hiện ra dòng chữ wrong pass...
             Session::put('message',"Wrong password or email!");
             return Redirect::to('/admin');
         }
     }
+
+    // protected function redirectTo(){
+    //     return Request::session()->get('url.intended')??'/home';
+    // }
 
     public function logout()
     {

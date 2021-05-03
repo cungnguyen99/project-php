@@ -30,7 +30,7 @@ Route::get('/logout','App\Http\Controllers\AdminController@logout');
 Route::post('/admin-dashboard','App\Http\Controllers\AdminController@dashboard');
 
 //films:
-Route::get('/add-category-film','App\Http\Controllers\CategoryFilms@add_category_film');
+Route::get('/add-category-film','App\Http\Controllers\CategoryFilms@add_category_film')->middleware('auth.roles');
 Route::get('/edit-category-film/{id_film}','App\Http\Controllers\CategoryFilms@edit_category_film');
 Route::get('/delete-category-film/{id_film}','App\Http\Controllers\CategoryFilms@delete_category_film');
 Route::get('/all-category-films','App\Http\Controllers\CategoryFilms@all_category_films');

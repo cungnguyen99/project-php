@@ -16,8 +16,9 @@ class CategoryFilms extends Controller
     public function AuthLogin()
     {
         $id=Session::get('id');
+        $res=DB::table('tbl_admin')->where ('id',$id)->first();
 
-        if($id){
+        if($id && $res->role=1){
             return Redirect::to('/dashboard');
         }else{
             return Redirect::to('/admin')->send(); 
