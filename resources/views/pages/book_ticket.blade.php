@@ -186,8 +186,8 @@
 
   .seat {
     background-color: #1f2833;
-    height: 12px;
-    width: 15px;
+    height: 15px;
+    width: 20px;
     display: inline-block;
     margin: 3px;
     color:white;
@@ -393,7 +393,7 @@
   
                               <div class="container click-seat">
                                 <div class="screen"></div>
-                                <div class="row chair" style="display: inline-block"></div>
+                                <div class="row chair" style="display: inline-block; margin-left: -40px"></div>
                               </div>
   
                                 <p class="text">
@@ -454,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function() {
       data: {
         arr_chairs: arr_chair,
         showtime: showtime,
-        giaVe: 500,
+        giaVe: 50000,
         maKH: 1
         },
       success:function(response) {

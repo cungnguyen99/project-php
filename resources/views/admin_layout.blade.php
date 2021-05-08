@@ -137,7 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </a>
                     <ul class="sub">
 						<li><a href="{{URL::to('/revenue-films')}}">Doanh thu phim</a></li>
-						<li><a href="{{URL::to('/all-manufacturers-film')}}">Liệt kê hãng phim</a></li>
+						<li><a href="{{URL::to('/revenue-month')}}">Doanh thu tháng</a></li>
                     </ul>
                 </li>
                 
