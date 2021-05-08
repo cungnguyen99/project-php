@@ -14,7 +14,7 @@
   }
   body .card {
     width: 800px;
-    height: 400px;
+    height: 500px;
     background: transparent;
     left: 0;
     right: 0;
@@ -28,14 +28,14 @@
   }
   body .card_left {
     width: 40%;
-    height: 400px;
+    height: 100%;
     float: left;
     overflow: hidden;
     background: transparent;
   }
   body .card_left img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 10px 0 0 10px;
     -webkit-border-radius: 10px 0 0 10px;
     -moz-border-radius: 10px 0 0 10px;
@@ -45,7 +45,7 @@
     width: 60%;
     float: left;
     background: #000000;
-    height: 400px;
+    height: 100%;
     border-radius: 0 10px 10px 0;
     -webkit-border-radius: 0 10px 10px 0;
     -moz-border-radius: 0 10px 10px 0;
@@ -188,6 +188,7 @@
     background-color: #1f2833;
     height: 12px;
     width: 15px;
+    display: inline-block;
     margin: 3px;
     color:white;
     font-size:xx-small;
@@ -203,12 +204,12 @@
     background-color: #fff;
   }
 
-  .seat:nth-of-type(2) {
+  .seat:nth-of-type(10n-8) {
     margin-right: 15px;
   }
 
-  .seat:nth-last-of-type(2) {
-    margin-left: 15px;
+  .seat:nth-of-type(10n-2) {
+    margin-right: 15px;
   }
 
   .seat:not(.occupied):hover {
@@ -392,7 +393,7 @@
   
                               <div class="container click-seat">
                                 <div class="screen"></div>
-                                <div class="row chair" style="margin-left:3px"></div>
+                                <div class="row chair" style="display: inline-block"></div>
                               </div>
   
                                 <p class="text">
@@ -487,15 +488,23 @@ $(document).ready(function(){
     $.get('http://localhost/cinemas/show_chairs/' + time_id).then(function(data){
       if(data != null){
         var html = "";
-        console.log(data)
         var selectchairs="";
         data.map(function(item,index){
           if(item['type'] == true){
-            html += '<div class="seat selected" style="pointer-events: none"></div>';
+            if(index%10==0&&index!=0){
+              html += '<br><div class="seat selected" style="pointer-events: none"></div>';
+            }else{
+              html += '<div class="seat selected" style="pointer-events: none; display: inline-block"></div>';
+            }
           }
           else{
-            selectchairs+='<option value="'+item["id"]+'">'+item["chair_des"]+'</option>'
-            html += '<div class="seat" id="'+item['id']+'"value="'+item['id']+'"><input type="hidden" id="fname" name="seat_seleted">'+item["chair_des"]+'</div>';
+            if(index%10==0&&index!=0){
+              selectchairs+='<option value="'+item["id"]+'">'+item["chair_des"]+'</option>'
+              html += '<br><div class="seat" id="'+item['id']+'"value="'+item['id']+'"><input type="hidden" id="fname" name="seat_seleted">'+item["chair_des"]+'</div>';
+            }else{
+              selectchairs+='<option value="'+item["id"]+'">'+item["chair_des"]+'</option>'
+              html += '<div class="seat" id="'+item['id']+'"value="'+item['id']+'"><input type="hidden" id="fname" name="seat_seleted">'+item["chair_des"]+'</div>';
+            }
           }
         });
 

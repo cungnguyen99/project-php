@@ -38,6 +38,7 @@ Route::get('/all-films','App\Http\Controllers\CategoryFilms@all_films');
 Route::get('/cart/{user_id}','App\Http\Controllers\CategoryFilms@cart');
 Route::get('/cancel-ticket/{order_id}','App\Http\Controllers\CategoryFilms@cancel')->name('cancel');
 Route::get('/actor/{name}','App\Http\Controllers\CategoryFilms@films_actor');
+Route::get('/revenue-films','App\Http\Controllers\CategoryFilms@revenue_films');
 
 
 Route::post('/save-film','App\Http\Controllers\CategoryFilms@save_film');

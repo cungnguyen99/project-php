@@ -130,6 +130,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="{{URL::to('/all-showtimes')}}">Liệt kê lịch chiếu</a></li>
                     </ul>
                 </li>
+								<li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Doanh thu</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/revenue-films')}}">Doanh thu phim</a></li>
+						<li><a href="{{URL::to('/all-manufacturers-film')}}">Liệt kê hãng phim</a></li>
+                    </ul>
+                </li>
                 
             </ul>            </div>
         <!-- sidebar menu end-->

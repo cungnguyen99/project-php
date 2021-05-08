@@ -199,4 +199,10 @@ class CategoryFilms extends Controller
         $films_actor=DB::table('tbl_films')->where('DaoDien',$name)->paginate(8);
         return view('pages.films_actor')->with('films', $films_actor); 
     }
+
+    public function revenue_films()
+    {
+        $films_actor=DB::table('tbl_films')->where('DaoDien',$name);
+        return view('admin.revenue_films'); 
+    }
 }
