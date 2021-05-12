@@ -20,9 +20,26 @@ class AdminController extends Controller
             return Redirect::to('/admin')->send(); 
         }
     }
+    
     public function index()
     {
         return view('admin_login');
+    }
+
+    public function index_signin()
+    {
+        return view('sign_in');
+    }
+
+    public function save_sigin(Request $req)
+    {
+        $data=array();
+        $data['name']=$req->name;
+        $data['email']=$req->email;
+        $data['password']=md5($req->password);
+        $data['phone']=$req->phone;
+        DB::table('tbl_admin')->insert($data);
+        return Redirect::to('/admin');
     }
 
     public function show_dashboard()

@@ -105,7 +105,7 @@ button:hover {
 <div class="page-single">
 	<div class="container">
 		<div class="row ipad-width">
-                @foreach($carts as $cart)
+                @foreach($carts as $key=>$cart)
                 <div class="col-md-4">
                     <div class='gold'>
                         <h1>{{$cart->TenPhim}}</h1>
@@ -116,7 +116,7 @@ button:hover {
                         <p>Phòng</p>
                         <span>{{$cart->MaPhong}}</span>
                         <p>Ghế</p>
-                        <span>{{implode('-',$chairs)}}</span>
+                        <span>{{implode('-',$chairs[$cart->MaDonHang])}}</span>
                         <p>Ngày đặt</p>
                         <span>{{$cart->time}}</span>
                         <a onclick="return confirm('Bạn có muốn xóa không.')" href={{route('cancel', ['order_id'=>$cart->MaDonHang])}}><button>Hủy vé</button></a>

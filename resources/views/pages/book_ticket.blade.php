@@ -388,7 +388,10 @@
                                     <div class="seat selected"></div>
                                     <small>Selected</small>
                                 </li>
-                  
+                                                            <li>
+                                  <div class="seat occupied"></div>
+                                  <small>Occupied</small>
+                                </li>  
                                 </ul>
   
                               <div class="container click-seat">
@@ -436,6 +439,12 @@ document.addEventListener('DOMContentLoaded', function() {
           e.target.classList.toggle("selected");
           e.target.classList.toggle("selected__item");
         }
+        const selectedSeats = document.querySelectorAll('.row .seat.selected.selected__item');
+        const total = document.getElementById('total');
+        const count = document.getElementById('count');
+        const selectedSeatsCount = selectedSeats.length;
+        count.innerText = selectedSeatsCount;
+        total.innerText = selectedSeatsCount * 50000;
       });
     var seats=document.querySelectorAll(".row .seat:not(.selected)")
     seats.forEach((seat, index) => {
@@ -492,9 +501,9 @@ $(document).ready(function(){
         data.map(function(item,index){
           if(item['type'] == true){
             if(index%10==0&&index!=0){
-              html += '<br><div class="seat selected" style="pointer-events: none"></div>';
+              html += '<br><div class="seat occupied" style="pointer-events: none"></div>';
             }else{
-              html += '<div class="seat selected" style="pointer-events: none; display: inline-block"></div>';
+              html += '<div class="seat occupied" style="pointer-events: none; display: inline-block"></div>';
             }
           }
           else{

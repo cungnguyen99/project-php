@@ -21,6 +21,8 @@ Route::post('/search', 'App\Http\Controllers\HomeController@search');
 
 //BACKEND
 Route::get('/admin','App\Http\Controllers\AdminController@index');
+Route::get('/admin-signin','App\Http\Controllers\AdminController@index_signin');
+Route::post('/save-sigin','App\Http\Controllers\AdminController@save_sigin');
 Route::get('/dashboard','App\Http\Controllers\AdminController@show_dashboard');
 
 //logout
@@ -40,6 +42,7 @@ Route::get('/cancel-ticket/{order_id}','App\Http\Controllers\CategoryFilms@cance
 Route::get('/actor/{name}','App\Http\Controllers\CategoryFilms@films_actor');
 Route::get('/revenue-films','App\Http\Controllers\CategoryFilms@revenue_films');
 Route::get('/revenue-month','App\Http\Controllers\CategoryFilms@revenue_month');
+Route::get('/manager-users','App\Http\Controllers\CategoryFilms@manager_users');
 
 
 Route::post('/save-film','App\Http\Controllers\CategoryFilms@save_film');

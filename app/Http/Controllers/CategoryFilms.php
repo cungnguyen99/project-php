@@ -168,18 +168,17 @@ class CategoryFilms extends Controller
 
     public function cart($user_id)
     {
-        $chairs=DB::table('tbl_tickets')->select('MaGhe')->join('payments','payments.order_id','=','tbl_tickets.MaDonHang')
+        $chairs=DB::table('tbl_tickets')->join('payments','payments.order_id','=','tbl_tickets.MaDonHang')
         ->where('payments.user_id',$user_id)->get();
         $arr_ticket=array();
         foreach ($chairs as $value) {
-            $arr_ticket[]=$value->MaGhe;
+            $arr_ticket[$value->MaDonHang][] = $value->MaGhe;
         }
         $carts=DB::table('tbl_tickets')
         ->join('tbl_showtimes','tbl_showtimes.showID','=','tbl_tickets.MaShow')
         ->join('tbl_films','tbl_films.IDf','=','tbl_showtimes.MaPhim')
         ->join('tbl_chairs','tbl_chairs.chairID','=','tbl_tickets.MaGhe')
         ->join('payments','payments.order_id','=','MaDonHang')
-        ->join('tbl_admin','tbl_admin.id','=','payments.user_id')
         ->where('payments.user_id',$user_id)
         ->groupBy('MaDonHang')
         ->get();
@@ -218,5 +217,11 @@ class CategoryFilms extends Controller
         ->select(DB::raw('sum(tbl_tickets.GiaVe) as revenue'), 'tbl_films.*')
         ->groupBy('tbl_films.IDf')->get();
         return view('admin.revenue_films')->with('revenue',$revenue); 
+    }
+
+    public function manager_users()
+    {
+        $accounts=DB::table('tbl_admin')->get();
+        return view('admin.manager_user')->with('accounts',$accounts); 
     }
 }

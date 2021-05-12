@@ -22,13 +22,13 @@
 </head>
 <body>
 <!--preloading-->
-<div id="preloader">
+<!-- <div id="preloader">
     {{-- <img class="logo" src="{{('public/frontend/images/logo1.png')}}" alt="" width="119" height="58"> --}}
     <div id="status">
         <span></span>
         <span></span>
     </div>
-</div>
+</div> -->
 <!--end of preloading-->
 <!--login form popup-->
 <div class="login-wrapper" id="login-content">

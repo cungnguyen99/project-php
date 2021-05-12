@@ -23,7 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body >
 <div class="log-w3">
 <div class="w3layouts-main">
-	<h2>Sign In Now</h2>
+	<h2>ĐĂNG KÝ</h2>
 	<?php
 		// gán biến message ở hàm dashboard trong controller
 		$mess=Session::get('message');
@@ -34,15 +34,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
 	?>
 	<!-- action gui den ham thuc hien trong controller adminController -->
-		<form action="{{URL::to('/admin-dashboard')}}" method="post">
+		<form action="{{URL::to('/save-sigin')}}" method="post">
 		{{csrf_field()}}
-			<input type="text" class="ggg" name="email" placeholder="E-MAIL" required="">
+			<input type="text" class="ggg" name="name" placeholder="NAME" required="">
+			<input type="number" class="ggg" name="phone" placeholder="PHONE" required="">
+      <input type="text" class="ggg" name="email" placeholder="E-MAIL" required="">
 			<input type="hidden" name="redirurl" value="<? echo $_SERVER['HTTP_REFERER']; ?>" />
 			<input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
 				<div class="clearfix"></div>
-				<input type="submit" value="Sign In" name="login">
+				<input type="submit" value="Đăng ký" name="login">
 		</form>
-		<p>Don't Have an Account ?<a href="/cinemas/admin-signin">Create an account</a></p>
 </div>
 </div>
 <script src="{{asset('public/backend/js/bootstrap.js')}}"></script>
