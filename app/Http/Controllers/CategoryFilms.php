@@ -224,4 +224,25 @@ class CategoryFilms extends Controller
         $accounts=DB::table('tbl_admin')->get();
         return view('admin.manager_user')->with('accounts',$accounts); 
     }
+
+    public function delete_user($id)
+    {
+        DB::table('tbl_admin')->where('id',$id)->delete();
+        Session::put('message','Xóa user thành công.');
+        return Redirect::to('/manager-users');  
+    }
+
+    public function active_user($id)
+    {
+        DB::table('tbl_admin')->where('id',$id)->update(['role'=>1]);
+        Session::put('message','Cấp quyền thành công.');
+        return Redirect::to('/manager-users');  
+    }
+
+    public function unactive_user($id)
+    {
+        DB::table('tbl_admin')->where('id',$id)->update(['role'=>0]);
+        Session::put('message','Cấp quyền thành công.');
+        return Redirect::to('/manager-users');  
+    }
 }

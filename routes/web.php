@@ -43,7 +43,9 @@ Route::get('/actor/{name}','App\Http\Controllers\CategoryFilms@films_actor');
 Route::get('/revenue-films','App\Http\Controllers\CategoryFilms@revenue_films');
 Route::get('/revenue-month','App\Http\Controllers\CategoryFilms@revenue_month');
 Route::get('/manager-users','App\Http\Controllers\CategoryFilms@manager_users');
-
+Route::get('/delete-user/{id_user}','App\Http\Controllers\CategoryFilms@delete_user');
+Route::get('/unactive-user/{id_user}','App\Http\Controllers\CategoryFilms@unactive_user');
+Route::get('/active-user/{id_user}','App\Http\Controllers\CategoryFilms@active_user');
 
 Route::post('/save-film','App\Http\Controllers\CategoryFilms@save_film');
 Route::post('/update-film/{id_film}','App\Http\Controllers\CategoryFilms@update_film');

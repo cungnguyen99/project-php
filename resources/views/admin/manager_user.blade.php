@@ -11,13 +11,6 @@
  if($mess){
  echo '<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
       <div class="toast" style="position: absolute; top: 0; right: 0;">
-        <div class="toast-header">
-          <i class="fa fa-check-square"></i>  
-          <strong class="mr-auto">Cinema</strong>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="toast-body">'
           ,$mess.
         '</div>
@@ -61,8 +54,7 @@
             <th>Tên </th>
             <th>Email</th>
             <th>Số điện thoại</th>
-            <th>Vai trò</th>
-            <th>Cấp quyền</th>
+            <th>Admin</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
@@ -74,11 +66,20 @@
             <td><span class="text-ellipsis">{{$item->name}}</span></td>
             <td><span class="text-ellipsis">{{$item->email}}</span></td>
             <td><span class="text-ellipsis">{{$item->phone}}</span></td>
-            <td><span class="text-ellipsis">{{$item->role==1?'Admin':'Khách hàng'}}</span></td>
+            <td>          
+              <?php  
+                if($item->role==1){
+                  ?> <a href="{{URL::to("/unactive-user/".$item->id)}}"><i class="fa fa-check"></i></a>
+                <?php
+              }else{
+                ?>
+                <a href="{{URL::to("/active-user/".$item->id)}}"><i style="color:#f05050" class="fa fa-ban"></i></a>
+                <?php
+                }
+              ?>
             <td>
-              <input type="checkbox" checked="checked" id="vehicle1" name="vehicle1" value="Bike">
-              Admin <br><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-              Khách hàng</td>
+            <a onclick="return confirm('Bạn có muốn xóa không.')" href="{{URL::to('/delete-user/'.$item->id)}}" class="active" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
+          </td>
           </tr>
         @endforeach
         </tbody>
