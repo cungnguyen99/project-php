@@ -74,7 +74,7 @@
 						<div class="movie-item-style-2 movie-item-style-1">
 							<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="">
 							<div class="hvr-inner">
-	            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+	            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Xem thêm <i class="ion-android-arrow-dropright"></i> </a>
 	            			</div>
 							<div class="mv-item-infor">
 								<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>

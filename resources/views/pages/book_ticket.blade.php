@@ -175,7 +175,7 @@
 
   .movie-container select {
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 5px !important;
     font-size: 14px;
     margin-left: 10px;
     padding: 5px 15px 5px 15px;
@@ -366,14 +366,15 @@
                           @if(!$mess)
                             <form action="{{URL::to('/save-payment')}}" method="post">
                             {{csrf_field()}}
-                          <div class="card_right__details">
+                          <div class="card_right__details movie-container">
                               <ul>
-                                <select id="selectItem" style="display:inline; width: 60%; margin-left: 13%" class="form-control showtime" type="text" name="showtime">
+                                <select id="selectItem" style="display:inline; width: 39%; margin-left: 13%" class="form-control showtime" type="text" name="showtime">
                                     <option value="" disabled selected> Chọn lịch chiếu *</option>
                                       @foreach($showTimes as $item)
                                       <option value="{{$item->showID}}"> {{$item->GioChieu}} / {{$item->NgayChieu}}</option>
                                       @endforeach
                               </select>
+                              <h6 class='room' style='display:inline-block; color:white; margin-left:5%'></h6>
                              {{-- <select id="selectChair" style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="selectchair">
                              </select> --}}
                               </ul>
@@ -498,7 +499,7 @@ $(document).ready(function(){
       if(data != null){
         var html = "";
         var selectchairs="";
-        data.map(function(item,index){
+        data[0].map(function(item,index){
           if(item['type'] == true){
             if(index%10==0&&index!=0){
               html += '<br><div class="seat occupied" style="pointer-events: none"></div>';
@@ -519,6 +520,7 @@ $(document).ready(function(){
 
         $('.chair').html(html);
         $('#selectChair').html(selectchairs);
+        $('.room').html('Phòng: '+data[1]);
       }
     }).catch(error => error.message);
   })

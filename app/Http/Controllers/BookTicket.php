@@ -83,7 +83,7 @@ class BookTicket extends Controller
 
                 $array[] = $chairs;
             }
-            return response()->json($array);
+            return response()->json([$array,$room]);
        }
        catch(Exception $ex){
            return response()->json("Error");

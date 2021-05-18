@@ -148,7 +148,7 @@
 					            				<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 					            			</div> 
 					            			<div class="hvr-inner">
-					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Xem thêm <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
 					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
@@ -170,7 +170,7 @@
 												<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
-					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Xem thêm <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
 					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
@@ -192,7 +192,7 @@
 											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
-					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Xem thêm <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
 					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
@@ -227,7 +227,7 @@
 											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
-					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Xem thêm <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
 					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
@@ -249,7 +249,7 @@
 											<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 					            			</div>
 					            			<div class="hvr-inner">
-					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            				<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Xem thêm <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
 					            			<div class="title-in">
 					            				<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>
@@ -271,7 +271,7 @@
 													<img src="{{URL::to('public/uploads/films/'.$film->Anh)}}" alt="" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													<a  href="{{URL::to('/single-film/'.$film->IDf)}}"> Xem thêm <i class="ion-android-arrow-dropright"></i> </a>
 												</div>
 												<div class="title-in">
 													<h6><a href="{{URL::to('/single-film/'.$film->IDf)}}">{{$film->TenPhim}}</a></h6>

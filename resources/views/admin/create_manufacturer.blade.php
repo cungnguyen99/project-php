@@ -1,19 +1,53 @@
 @extends('admin_layout')
 @section('admin_content')
+<style>
+.register{
+    background: none !important;
+    margin-top: 0%;
+    padding: 6% 2%;
+}
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-top-right-radius: 10% 50%;
+    border-bottom-right-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+input, select{
+    display: block;
+    width: 85% !important;
+    border: 1px solid #ebebeb;
+    padding: 11px 20px;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 13px;
+}
+input:not([disabled]):not([type="submit"]):focus, select:focus, textarea:focus {
+    border: 1px solid #ff6801;
+    outline:none;
+}
+.register .register-form{
+    padding: 10% 2%;
+    margin: 0% 0% !important;
+}
+input.btnRegister{
+    width:26% !important;
+    margin-left:60%;
+}
+</style>
 <div class="container-fluid register">
     <div class="row">
         <div class="col-md-3 register-left"><img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-            <h3>Welcome</h3>
-            <p>You are 30 seconds away from earning your own money!</p><input type="submit" name="" value="Login" /><br/></div>
+        <h3>Admin</h3>
+            <p>Nhập đầy đủ các trường để thêm phim mới vào hệ thống!<br/></div>
         <div class="col-md-9 register-right">
-                    <h3 class="register-heading">Create a new genre for...</h3>
                     <form action="{{URL::to('/save-manufacturer')}}" method="post">
                     {{csrf_field()}}
                         <div class="form-wrap register-form">
                             <div class="container">
                                 <div class="row">
-                                            <div class="form-group"><input class="form-control" type="text" name="tenhsx" placeholder="Tên hãng sản xuất *" value="" /></div>
-                                            <div class="form-group"><input class="form-control" type="text" name="tennuoc" placeholder="Tên Nước *" value="" /></div>
+                                            <div class="form-group"><input  type="text" name="tenhsx" placeholder="Tên hãng sản xuất *" value="" /></div>
+                                            <div class="form-group"><input  type="text" name="tennuoc" placeholder="Tên Nước *" value="" /></div>
                                             <input class="btnRegister" style="width:26%;  margin-top:2.5%;" type="submit" value="Tạo mới" /></div>
                                 </div>
                             </div>
