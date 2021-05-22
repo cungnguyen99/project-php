@@ -3,7 +3,7 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      THỐNG KÊ DANH MỤC PHIM
+      THỐNG KÊ HÓA ĐƠN
     </div>
     <?php
 		// gán biến message ở hàm dashboard trong controller
@@ -59,35 +59,27 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Tên phim</th>
-            <th>imdb</th>
-            <th>Đạo diễn</th>
-            <th>Ảnh</th>
-            <th>Thể loại</th>
-            <th>Hãng sản xuất</th>
-            <th style="width:30px;"></th>
+            <th>STT</th>
+            <th>Khách hàng</th>
+            <th>Ngày chuyển</th>
+            <th>Ngân hàng</th>
+            <th>Số tiền</th>
           </tr>
         </thead>
         <tbody>
-        @foreach($allFilms as $items => $item)
+        @foreach($revenue as $items => $item)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{$item->TenPhim}}</td>
-            <td><span class="text-ellipsis">{{$item->IMDB}}</span></td>
-            <td><span class="text-ellipsis">{{$item->DaoDien}}</span></td>
-            <td><img src="public/uploads/films/{{$item->Anh}}" height="100" witdh="100"></td>
-            <td><span class="text-ellipsis">{{$item->TenTheLoai}}</span></td>
-            <td><span class="text-ellipsis">{{$item->TenHSX}}</span></td>
-            <td>
-              <a href="{{URL::to('/edit-category-film/'.$item->IDf)}}" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a> 
-              <a onclick="return confirm('Bạn có muốn xóa không.')" href="{{URL::to('/delete-category-film/'.$item->IDf)}}" class="active" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
-            </td>
+            <td>{{$items+1}}</td>
+            <td><span class="text-ellipsis">{{$item->name}}</span></td>
+            <td><span class="text-ellipsis">{{$item->time}}</span></td>
+            <td><span class="text-ellipsis">{{$item->code_bank}}</span></td>
+            <td><span class="text-ellipsis">{{$item->money}}</span></td>
           </tr>
         @endforeach
         </tbody>
       </table>
     </div>
-
   </div>
 </div>
 @endsection

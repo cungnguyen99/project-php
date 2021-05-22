@@ -1,12 +1,46 @@
 @extends('admin_layout')
 @section('admin_content')
+<style>
+.register{
+    background: none !important;
+    margin-top: 0%;
+    padding: 6% 2%;
+}
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-top-right-radius: 10% 50%;
+    border-bottom-right-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+input, select,textarea{
+    display: block;
+    width: 85% !important;
+    border: 1px solid #ebebeb;
+    padding: 11px 20px;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 13px;
+}
+input:not([disabled]):not([type="submit"]):focus, select:focus, textarea:focus {
+    border: 1px solid #ff6801;
+    outline:none;
+}
+.register .register-form{
+    padding: 10% 2%;
+    margin: 0% 0% !important;
+}
+input.btnRegister{
+    width:26% !important;
+    margin-left:60%;
+}
+</style>
 <div class="container-fluid register">
     <div class="row">
         <div class="col-md-3 register-left"><img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-            <h3>Welcome</h3>
-            <p>You are 30 seconds away from earning your own money!</p><input type="submit" name="" value="Login" /><br/></div>
-        <div class="col-md-9 register-right">
-                    <h3 class="register-heading">Edit showtimes film...</h3>
+        <h3>Admin</h3>
+            <p>Nhập đầy đủ các trường để thêm phim mới vào hệ thống!
+            </div>            <div class="col-md-9 register-right">
                     @foreach($editshow as $items=>$item1)
                     <form action="{{URL::to('/update-showtime/'.$item1->showID)}}" method="post">
                     {{csrf_field()}}
@@ -14,9 +48,9 @@
                             <div class="container">
                                 <div class="row">
                                 <div class="col-md-6">
-                                            <div class="form-group"><input class="form-control" type="text" onfocus="(this.type='date')" name="ngaykc" placeholder="Ngày Khởi chiếu *" value="{{$item1->NgayChieu}}" /></div>
+                                            <div class="form-group"><input  type="text" onfocus="(this.type='date')" name="ngaykc" placeholder="Ngày Khởi chiếu *" value="{{$item1->NgayChieu}}" /></div>
                                             <div class="form-group">
-                                                <select class="form-control" type="text" name="tenphong" style=" width: 60% ">
+                                                <select  type="text" name="tenphong" style=" width: 60% ">
                                                     <option value="" disabled selected>Tên phòng *</option>
                                                     @foreach($rooms as $items=>$item3)
                                                         @if($item1->MaPhong==$item3->roomID)
@@ -28,7 +62,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <select class="form-control" type="text" name="tenphim" style=" width: 60% ">
+                                                <select  type="text" name="tenphim" style=" width: 60% ">
                                                     <option value="" disabled selected>Tên phim *</option>
                                                     @foreach($films_id as $items=>$item2)
                                                         @if($item1->MaPhim==$item2->IDf)
@@ -42,7 +76,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <select class="form-control" type="text" name="gbd" style=" width: 35% ">
+                                                <select  type="text" name="gbd" style=" width: 35% ">
                                                     <option value="" disabled selected>Giờ bắt đầu*</option>
                                                     <?php
                                                         for ($x = 0; $x <= 23; $x++) {
@@ -55,7 +89,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <select class="form-control" type="text" name="gkt" style=" width: 35% ">
+                                                <select  type="text" name="gkt" style=" width: 35% ">
                                                     <option value="" disabled selected>Giờ kết thúc*</option>
                                                     <?php
                                                          for ($x = 0; $x <= 23; $x++) {

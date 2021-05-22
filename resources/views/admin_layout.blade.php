@@ -133,11 +133,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Doanh thu</span>
+                        <span>Báo cáo</span>
                     </a>
                     <ul class="sub">
 						<li><a href="{{URL::to('/revenue-films')}}">Doanh thu phim</a></li>
-						<li><a href="{{URL::to('/revenue-month')}}">Doanh thu tháng</a></li>
+						<li><a href="{{URL::to('/payment-report')}}">Hóa đơn</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

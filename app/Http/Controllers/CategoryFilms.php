@@ -219,6 +219,15 @@ class CategoryFilms extends Controller
         return view('admin.revenue_films')->with('revenue',$revenue); 
     }
 
+    public function payment_report()
+    {
+        $revenue=DB::table('payments')
+        ->join('tbl_admin','tbl_admin.id','=','payments.user_id')
+        ->get();
+
+        return view('admin.all_payment')->with('revenue',$revenue); 
+    }
+
     public function manager_users()
     {
         $accounts=DB::table('tbl_admin')->get();

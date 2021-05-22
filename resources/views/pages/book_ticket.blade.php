@@ -401,8 +401,8 @@
                               </div>
   
                                 <p class="text">
-                                  You have selected <span id="count">0</span> seats for a total price of
-                                  $<span id="total">0</span>
+                                  Bạn đã chọn <span id="count">0</span> ghế với tổng tiền là 
+                                 <span id="total">0</span> VNĐ
                                 </p>
                               </div>
                               <div class="card_right__button">

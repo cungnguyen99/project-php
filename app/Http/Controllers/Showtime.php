@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use Session;
+use DateTime;
 use Illuminate\Support\Facades\Redirect;
 session_start();
 class ShowTime extends Controller
@@ -23,16 +24,77 @@ class ShowTime extends Controller
     }
     public function save_showtime(Request $req)
     {
+        $allShowtime=DB::table('tbl_showtimes')->get();
+
+        $allShowtime_arr=array();
+        $allStartHours_arr=array();
+        $allEndHours_arr=array();
+        $allRoom_arr=array();
+
+        for ($x = 0; $x < count($allShowtime); $x++) {
+            $allShowtime_arr[$x]=$allShowtime[$x]->NgayChieu;
+            $allStartHours_arr[$x]=$allShowtime[$x]->GioBatDau;
+            $allEndHours_arr[$x]=$allShowtime[$x]->GioKetThuc;
+            if($allShowtime[$x]->NgayChieu===(new DateTime($req->ngaykc))->format('d-m-Y')){
+                $allRoom_arr[$x]=$allShowtime[$x]->MaPhong;
+            }
+        }
+        $check_date=in_array((new DateTime($req->ngaykc))->format('d-m-Y'),$allShowtime_arr);
+        $check_room=in_array($req->tenphong,$allRoom_arr);
+        $check_time=true;
         $data=array();
-        $data['MaPhim']=$req->tenphim;
-        $data['MaPhong']=$req->tenphong;
-        $data['NgayChieu']=$req->ngaykc;
-        $data['GioBatDau']=$req->gbd;
-        $data['GioKetThuc']=$req->gkt;
-        $data['GioChieu']=$req->gbd.'h-'.$req->gkt.'h';
-        DB::table('tbl_showtimes')->insert($data);
-        Session::put('message','Thêm lịch chiếu thành công.');
-        return Redirect::to('all-showtimes');
+        for ($x = 0; $x < count($allShowtime); $x++) {
+            if(
+            $allShowtime[$x]->NgayChieu==(new DateTime($req->ngaykc))->format('d-m-Y')&&
+            $allShowtime[$x]->MaPhong==$req->tenphong&&
+            ((int)($req->gbd)>=$allStartHours_arr[$x]&&(int)($req->gbd)<=$allEndHours_arr[$x]||
+            (int)($req->gkt)>=$allStartHours_arr[$x]&&(int)($req->gkt)<=$allEndHours_arr[$x]))
+            {
+                $check_time=true;   
+                break;
+            }else{
+                $check_time=false;
+            }
+        }
+        if($check_date){
+            if($check_room){
+                if($check_time){
+                    Session::put('error','Lịch chiếu đã có.');
+                    return Redirect::to('all-showtimes');
+                }else{
+                    $data['MaPhim']=$req->tenphim;
+                    $data['MaPhong']=$req->tenphong;
+                    $data['NgayChieu']=(new DateTime($req->ngaykc))->format('d-m-Y');
+                    $data['GioBatDau']=$req->gbd;
+                    $data['GioKetThuc']=$req->gkt;
+                    $data['GioChieu']=$req->gbd.'h-'.$req->gkt.'h';
+                    DB::table('tbl_showtimes')->insert($data);
+                    Session::put('message','Thêm lịch chiếu thành công.');
+                    return Redirect::to('all-showtimes');
+                }
+            }else{
+                $data['MaPhim']=$req->tenphim;
+                $data['MaPhong']=$req->tenphong;
+                $data['NgayChieu']=(new DateTime($req->ngaykc))->format('d-m-Y');
+                $data['GioBatDau']=$req->gbd;
+                $data['GioKetThuc']=$req->gkt;
+                $data['GioChieu']=$req->gbd.'h-'.$req->gkt.'h';
+                DB::table('tbl_showtimes')->insert($data);
+                Session::put('message','Thêm lịch chiếu thành công.');
+                return Redirect::to('all-showtimes');
+            }
+        }else{
+            $data['MaPhim']=$req->tenphim;
+            $data['MaPhong']=$req->tenphong;
+            $data['NgayChieu']=(new DateTime($req->ngaykc))->format('d-m-Y');
+            $data['GioBatDau']=$req->gbd;
+            $data['GioKetThuc']=$req->gkt;
+            $data['GioChieu']=$req->gbd.'h-'.$req->gkt.'h';
+            DB::table('tbl_showtimes')->insert($data);
+            Session::put('message','Thêm lịch chiếu thành công.');
+            return Redirect::to('all-showtimes');
+        }
+
     }
     public function edit_showtime_film($id_film)
     {
