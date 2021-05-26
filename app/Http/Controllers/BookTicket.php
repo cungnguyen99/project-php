@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use Session;
+use DateTime;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
 session_start();
@@ -42,18 +43,35 @@ class BookTicket extends Controller
         $film=DB::table('tbl_films')
         ->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')
         ->where('IDf',$id_film)->first();
-
-        $show_times=DB::table('tbl_showtimes')->where('MaPhim',$id_film)->get();
-
-        if($film===null){
-
-            Session::put('mess','Phim chưa có lịch chiếu.');
-            return view('pages.book_ticket');
-
+        $date=Session::get('date');
+        if($date){
+            $d=(new DateTime($date))->format('d-m-Y');
+            $show_times=DB::table('tbl_showtimes')->where('MaPhim',$id_film)->where('NgayChieu','=',$d)->get();
+            
+            if($film===null){
+                
+                Session::put('mess','Phim chưa có lịch chiếu.');
+                return view('pages.book_ticket');
+                
+            }else{
+                Session::put('date',null);  
+                return view('pages.book_ticket')
+                ->with('film',$film)
+                ->with('showTimes',$show_times);
+            }
         }else{
-            return view('pages.book_ticket')
-               ->with('film',$film)
-               ->with('showTimes',$show_times);
+            $show_times=DB::table('tbl_showtimes')->where('MaPhim',$id_film)->get();
+    
+            if($film===null){
+    
+                Session::put('mess','Phim chưa có lịch chiếu.');
+                return view('pages.book_ticket');
+    
+            }else{
+                return view('pages.book_ticket')
+                   ->with('film',$film)
+                   ->with('showTimes',$show_times);
+            }
         }
 
     }
@@ -133,7 +151,6 @@ class BookTicket extends Controller
             $data['MaGhe'] = $req->arr_chairs[$i];
             $data['GiaVe'] = $req->giaVe;
             $data['is_read']=1;
-            DB::table('tbl_tickets')->insert($data);
         }
         Session::put('selectchair',$arr_chairs);
         return Redirect::to('/payment'); 

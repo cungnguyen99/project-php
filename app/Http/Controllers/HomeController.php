@@ -50,25 +50,26 @@ class HomeController extends Controller
     {
         $keyword=$req->keyword;
         $time=$req->time;
-        $date=str_replace('T',' ',$req->date);
-        $t= (new DateTime($date))->format('H');
-        $d=(new DateTime($date))->format('d-m-Y');
+        $dates=$req->date;
+        // $t= (new DateTime($date))->format('H');
+        $d=(new DateTime($dates))->format('d-m-Y');
         // $now = Carbon::now();
         // $weekStartDate = $now->startOfWeek()->format('Y-m-d');
         // $weekEndDate = $now->endOfWeek()->format('Y-m-d');
         $films=DB::table('tbl_films')
         ->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')
-        ->where('tbl_showtimes.GioChieu','like','%'.$t.'%')->orWhere('tbl_showtimes.NgayChieu','like','%'.$d.'%')->get();
+        ->where('tbl_showtimes.NgayChieu','like','%'.$d.'%')->get();
         // $films=DB::table('tbl_films')->where('TenPhim','like','%'.$keyword.'%')->get();
         // $films=DB::table('tbl_films')->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')->where('GioChieu','like',$keyword.'%')->get();
         // $films=DB::table('tbl_films')->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')->whereDate('NgayKhoiChieu','>=',date($weekStartDate))->whereDate('NgayKetThuc','<=', date($weekEndDate))->where('GioBatDau','<=',(int)$keyword[0])->where('GioKetThuc','>=',(int)$keyword[0])->get();
-
+        
         if(count($films)==0){
-
+            
             Session::put('mess','Không tìm thấy phim với từ khóa đã cho.');
             return view('pages.search')->with('films',$films);
-
+            
         }else{
+            Session::put('date',$dates);
             return view('pages.search')->with('films',$films);
         }
     }

@@ -454,7 +454,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   })
   $('.ticket-button').click(e => {
-    // e.preventDefault()
+    const selectedSeats = document.querySelectorAll('.row .seat.selected.selected__item');
+    if(selectedSeats.length===0){
+      if(confirm("Chọn ít nhất một ghế để tiếp tục.")) {
+          e.preventDefault();
+          window.location.href = window.location.href
+      }
+    }
     $.ajax({
       type:'post',
       url:'/cinemas/save-payment',

@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="hero-ct">
-					<h1>Đặt vé thành công</h1>
+					<h1>Thông tin đơn hàng</h1>
 				</div>
 			</div>
 		</div>

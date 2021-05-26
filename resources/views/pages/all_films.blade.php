@@ -99,7 +99,7 @@
 							<div class="row">
 								<div class="col-md-12 form-it">
 									<label>Ngày chiếu</label>
-									<input type="datetime-local" name='date' placeholder="Ngày chiếu">
+									<input type="date" name='date' placeholder="Ngày chiếu">
 								</div>
 								<div class="col-md-12 ">
 									<input class="submit" name="btn_search" type="submit" value="Tìm kiếm">

@@ -110,7 +110,7 @@ class ShowTime extends Controller
         $data=array();
         $data['MaPhong']=$req->tenphong;
         $data['MaPhim']=$req->tenphim;
-        $data['NgayChieu']=$req->ngaykc;
+        $data['NgayChieu']=(new DateTime($req->ngaykc))->format('d-m-Y');
         $data['GioBatDau']=$req->gbd;
         $data['GioKetThuc']=$req->gkt;
         $data['GioChieu']=$req->gbd.'h-'.$req->gkt.'h';
