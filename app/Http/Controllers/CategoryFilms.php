@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use Session;
+use App\Exports\ExcelExport;
+use Excel;
+use App\Revenue;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
 
@@ -207,6 +210,11 @@ class CategoryFilms extends Controller
         ->select(DB::raw('sum(tbl_tickets.GiaVe) as revenue'), 'tbl_films.*')
         ->groupBy('tbl_films.IDf')->get();
         return view('admin.revenue_films')->with('revenue',$revenue); 
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new ExcelExport, 'test.xlsx');
     }
 
     public function revenue_month()

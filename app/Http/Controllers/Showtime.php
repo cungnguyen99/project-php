@@ -56,6 +56,12 @@ class ShowTime extends Controller
                 $check_time=false;
             }
         }
+
+        if((int)($req->gbd)>=(int)($req->gkt)){
+            Session::put('error','Giờ bắt đầu phải nhỏ hơn giờ kết thúc.');
+            return Redirect::to('all-showtimes');
+        }
+        
         if($check_date){
             if($check_room){
                 if($check_time){
