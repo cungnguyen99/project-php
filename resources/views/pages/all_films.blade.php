@@ -20,7 +20,7 @@
 			</div>
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<div class="movie-single-ct main-content">
-					<h1 class="bd-hd">The cinema films</h1>
+					<h1 class="bd-hd">RẠP CHIẾU PHIM BLOCK</h1>
 					<div class="social-btn">
 						<a href="#" class="parent-btn"><i class="ion-heart"></i> Like</a>
 						<div class="hover-bnt">
@@ -40,7 +40,7 @@
 							</p>
 						</div>
 						<div class="rate-star">
-							<p>Rate This Movie:  </p>
+							<p>Đánh Giá:  </p>
 							<i class="ion-ios-star"></i>
 							<i class="ion-ios-star"></i>
 							<i class="ion-ios-star"></i>
@@ -66,7 +66,7 @@
 		<div class="row ipad-width">
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
-					<p>All films <span>on block</span> buster</p>
+					<p>Xem tất cả <span>bộ phim</span> trên buster</p>
 					<a  href="moviegrid.html" class="grid"><i class="ion-grid active"></i></a>
 				</div>
 				<div class="flex-wrap-movielist">

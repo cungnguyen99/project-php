@@ -3,13 +3,7 @@
 <div class="slider movie-items">
 	<div class="container">
 		<div class="row">
-			<div class="social-link">
-				<p>Follow us: </p>
-				<a href="#"><i class="ion-social-facebook"></i></a>
-				<a href="#"><i class="ion-social-twitter"></i></a>
-				<a href="#"><i class="ion-social-googleplus"></i></a>
-				<a href="#"><i class="ion-social-youtube"></i></a>
-			</div>
+		
 	    	<div  class="slick-multiItemSlider">
 	    		<div class="movie-item">
 	    			<div class="mv-img">
@@ -289,19 +283,22 @@
 			<div class="col-md-4">
 				<div class="sidebar">
 					<div class="ads">
-						<img src="images/uploads/ads1.png" alt="" width="336" height="296">
+						<img src="{{URL::to('public/frontend/images/uploads/ads1.png')}}" alt="" width="336" height="296">
 					</div>
-					<div class="celebrities">
-						<h4 class="sb-title">Tìm phim theo Đạo Diễn</h4>
-						@foreach($films_7 as $items => $film)
-						<div class="celeb-item">
-							<a href="{{URL::to('/actor/'.$film->DaoDien)}}"><img src="{{asset('public/frontend/images/uploads/ava1.jpg')}}" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="{{URL::to('/actor/'.$film->DaoDien)}}">{{$film->DaoDien}}</a></h6>
-								<span>Actor</span>
+					<div class="searh-form">
+						<h4 class="sb-title">Tìm phim theo giờ chiếu</h4>
+						<form class="form-style-1" action="{{URL::to('/search')}}" method="POST">
+						{{csrf_field()}}
+							<div class="row">
+								<div class="col-md-12 form-it">
+									<label>Ngày chiếu</label>
+									<input type="date" name='date' placeholder="Ngày chiếu">
+								</div>
+								<div class="col-md-12 ">
+									<input class="submit" name="btn_search" type="submit" value="Tìm kiếm">
+								</div>
 							</div>
-						</div>
-						@endforeach
+						</form>
 					</div>
 				</div>
 			</div>
@@ -320,22 +317,22 @@
 				<div class="videos">
 				 	<div class="slider-for-2 video-ft">
 				 		<div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/1Q8fG0TtVAY"></iframe>
+					    	<iframe class="item-video" src="https://www.youtube.com/embed/1Q8fG0TtVAY" data-src="https://www.youtube.com/embed/1Q8fG0TtVAY"></iframe>
 					    </div>
 					    <div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/w0qQkSuWOS8"></iframe>
+					    	<iframe class="item-video" src="https://www.youtube.com/embed/w0qQkSuWOS8" data-src="https://www.youtube.com/embed/w0qQkSuWOS8"></iframe>
 					    </div>
 					    <div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/44LdLqgOpjo"></iframe>
+					    	<iframe class="item-video" src="https://www.youtube.com/embed/44LdLqgOpjo" data-src="https://www.youtube.com/embed/44LdLqgOpjo"></iframe>
 					    </div>
 					    <div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/gbug3zTm3Ws"></iframe>
+					    	<iframe class="item-video" src="https://www.youtube.com/embed/gbug3zTm3Ws" data-src="https://www.youtube.com/embed/gbug3zTm3Ws"></iframe>
 					    </div>
 					    <div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/e3Nl_TCQXuw"></iframe>
+					    	<iframe class="item-video" src="https://www.youtube.com/embed/e3Nl_TCQXuw" data-src="https://www.youtube.com/embed/e3Nl_TCQXuw"></iframe>
 					    </div>
 					    <div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/NxhEZG0k9_w"></iframe>
+					    	<iframe class="item-video" src="https://www.youtube.com/embed/NxhEZG0k9_w" data-src="https://www.youtube.com/embed/NxhEZG0k9_w"></iframe>
 					    </div>
 						
 						
@@ -343,7 +340,7 @@
 					<div class="slider-nav-2 thumb-ft">
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{ asset('public/frontend/images/uploads/trailer7.jpg')}}"  alt="photo by Barn Images" width="4096" height="2737">
+								<img src="{{URL::to('public/frontend/images/uploads/trailer7.jpg')}}"  alt="photo by Barn Images" width="4096" height="2737">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Wonder Woman</h4>
@@ -352,7 +349,7 @@
 						</div>
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{ asset('public/frontend/images/uploads/trailer2.jpg')}}"  alt="photo by Barn Images" width="350" height="200">
+								<img src="{{URL::to('public/frontend/images/uploads/trailer2.jpg')}}"  alt="photo by Barn Images" width="350" height="200">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Oblivion: Official Teaser Trailer</h4>
@@ -361,7 +358,7 @@
 						</div>
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{ asset('public/frontend/images/uploads/trailer6.jpg')}}" alt="photo by Joshua Earle">
+								<img src="{{URL::to('public/frontend/images/uploads/trailer6.jpg')}}" alt="photo by Joshua Earle">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Exclusive Interview:  Skull Island</h4>
@@ -370,7 +367,7 @@
 						</div>
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{ asset('public/frontend/images/uploads/trailer3.png')}}" alt="photo by Alexander Dimitrov" width="100" height="56">
+								<img src="{{URL::to('public/frontend/images/uploads/trailer3.png')}}" alt="photo by Alexander Dimitrov" width="100" height="56">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Logan: Director James Mangold Interview</h4>	
@@ -379,7 +376,7 @@
 						</div>
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{ asset('public/frontend/images/uploads/trailer4.png')}}"  alt="photo by Wojciech Szaturski" width="100" height="56">
+								<img src="{{URL::to('public/frontend/images/uploads/trailer4.png')}}"  alt="photo by Wojciech Szaturski" width="100" height="56">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Beauty and the Beast: Official Teaser Trailer 2</h4>	
@@ -388,7 +385,7 @@
 						</div>
 						<div class="item">
 							<div class="trailer-img">
-								<img src="{{ asset('public/frontend/images/uploads/trailer5.jpg')}}"  alt="photo by Wojciech Szaturski" width="360" height="189">
+								<img src="{{URL::to('public/frontend/images/uploads/trailer5.jpg')}}"  alt="photo by Wojciech Szaturski" width="360" height="189">
 							</div>
 							<div class="trailer-infor">
 	                        	<h4 class="desc">Fast&Furious 8</h4>	
@@ -408,7 +405,7 @@
 		<div class="row ipad-width">
 			<div class="col-md-8">
 				<div class="ads">
-					<img src="{{ asset('public/frontend/images/uploads/ads2.png')}}" alt="" width="728" height="106">
+					<img src="{{URL::to('public/frontend/images/uploads/ads2.png')}}" alt="" width="728" height="106">
 				</div>
 				<div class="title-hd">
 					<h2>Thông tin</h2>
@@ -459,21 +456,9 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="sidebar">
-					<div class="sb-facebook sb-it">
-						<h4 class="sb-title">Find us on Facebook</h4>
-						<iframe src="#" data-src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftemplatespoint.net%2F%3Ffref%3Dts&tabs=timeline&width=300&height=315px&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=true&appId" width="300" height="315" style="border:none;overflow:hidden" ></iframe>
+			<div class="ads">
+						<img src="{{URL::to('public/frontend/images/uploads/ads1.png')}}" alt="" width="336" height="296">
 					</div>
-					<div class="sb-twitter sb-it">
-						<h4 class="sb-title">Tweet to us</h4>
-						<div class="slick-tw">
-							<div class="tweet item" id=""><!-- Put your twiter id here -->
-							</div>
-							<div class="tweet item" id=""><!-- Put your 2nd twiter account id here -->
-							</div>
-						</div>					
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

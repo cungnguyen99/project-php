@@ -58,7 +58,9 @@ class HomeController extends Controller
         // $weekEndDate = $now->endOfWeek()->format('Y-m-d');
         $films=DB::table('tbl_films')
         ->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')
-        ->where('tbl_showtimes.NgayChieu','like','%'.$d.'%')->get();
+        ->where('tbl_showtimes.NgayChieu','like','%'.$d.'%')
+        ->groupBy('MaPhim')
+        ->get();
         // $films=DB::table('tbl_films')->where('TenPhim','like','%'.$keyword.'%')->get();
         // $films=DB::table('tbl_films')->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')->where('GioChieu','like',$keyword.'%')->get();
         // $films=DB::table('tbl_films')->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')->whereDate('NgayKhoiChieu','>=',date($weekStartDate))->whereDate('NgayKetThuc','<=', date($weekEndDate))->where('GioBatDau','<=',(int)$keyword[0])->where('GioKetThuc','>=',(int)$keyword[0])->get();
