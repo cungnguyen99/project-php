@@ -9,15 +9,8 @@
 		// gán biến message ở hàm dashboard trong controller
 		$mess=Session::get('message');
 		if($mess){
-			echo '<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+			echo '<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 40px;">
       <div class="toast" style="position: absolute; top: 0; right: 0;">
-        <div class="toast-header">
-          <i class="fa fa-check-square"></i>  
-          <strong class="mr-auto">Cinema</strong>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="toast-body">'
           ,$mess.
         '</div>

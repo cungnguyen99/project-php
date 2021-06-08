@@ -67,17 +67,20 @@ class CategoryFilms extends Controller
         $data=array();
         //tên côt-tên của trường name trong input
         $data['TenPhim']=$req->tenphim;
-        $data['IMDB']=$req->imdb;
-        $data['MaHSX']=$req->hangsx;
-        $data['MaTheLoai']=$req->theloai;
-        $data['DaoDIen']=$req->daodien;
+        $data['IMDB']=$req->imdb ?? 0;
+        $data['MaHSX']=$req->hangsx ?? 1;
+        $data['MaTheLoai']=$req->theloai ?? 1;
+        $data['DaoDIen']=$req->daodien ?? '';
         $data['NgayKhoiChieu']=$req->ngaykc;
         $data['NgayKetThuc']=$req->ngaykt;
-        $data['NamChinh']=$req->namchinh;
-        $data['NuChinh']=$req->nuchinh;
-        $data['Trailer']=$req->tongchiphi;
-        $data['NoiDung']=$req->noidung;
-        
+        $data['NamChinh']=$req->namchinh ??'';
+        $data['NuChinh']=$req->nuchinh ??'';
+        $data['Trailer']=$req->tongchiphi??'0';
+        $data['NoiDung']=$req->noidung??'';
+        if(  $req->tenphim == null || $req->ngaykt == null || $req->ngaykc == null ){
+                Session::put('message','Nhập đầy đủ thông tin cho ít nhất các trường: tên phim, ngày khởi chiếu và ngày kết thúc để tiếp tục.');
+                return Redirect::to('add-category-film');
+             }
         $get_image=$req->file('url');
 
         if($get_image){

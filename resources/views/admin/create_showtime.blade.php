@@ -38,7 +38,18 @@ input.btnRegister{
     <div class="row">
         <div class="col-md-3 register-left"><img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
         <h3>Admin</h3>
-            <p>Nhập đầy đủ các trường để thêm phim mới vào hệ thống!<br/></div>
+            <p>Nhập đầy đủ các trường để thêm phim mới vào hệ thống!<br/></p>
+            <?php
+                $error=Session::get('error');
+                if($error){
+                    echo '
+                <p>'
+                ,$error.
+                '</p>';
+                Session::put('error',null);
+                }
+            ?>
+        </div>
         <div class="col-md-9 register-right">
                     <form action="{{URL::to('/save-showtime')}}" method="post">
                     {{csrf_field()}}

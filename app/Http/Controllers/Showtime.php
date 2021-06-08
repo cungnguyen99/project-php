@@ -57,6 +57,12 @@ class ShowTime extends Controller
             }
         }
 
+        if($req->gbd == null || $req->gkt == null || $req->tenphim == null ||
+           $req->ngaykc == null || $req->tenphong == null ){
+            Session::put('error','Nhập đầy đủ thông tin cho các trường để tiếp tục.');
+            return Redirect::to('add-showtime');
+        }
+
         if((int)($req->gbd)>=(int)($req->gkt)){
             Session::put('error','Giờ bắt đầu phải nhỏ hơn giờ kết thúc.');
             return Redirect::to('all-showtimes');

@@ -12,8 +12,8 @@ class Revenue extends Model
         $revenue=DB::table('tbl_films')
         ->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')
         ->join('tbl_tickets','tbl_showtimes.showID','=','tbl_tickets.MaShow')
-        ->select(DB::raw('sum(tbl_tickets.GiaVe) as revenue'), 'tbl_films.*')
-        ->groupBy('tbl_films.IDf')->get();
+        ->select('tbl_films.TenPhim', 'tbl_films.NgayKhoiChieu', 'tbl_films.NgayKetThuc', DB::raw('sum(tbl_tickets.GiaVe) as revenue'))
+        ->groupBy('tbl_films.IDf')->get(['TenPhim', 'revenue']);
         return $revenue;
     }
 }

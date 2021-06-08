@@ -20,7 +20,7 @@
 			</div>
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<div class="movie-single-ct main-content">
-					<h1 class="bd-hd">The cinema films</h1>
+					<h1 class="bd-hd">RẠP CHIẾU PHIM BLOCK</h1>
 					<div class="social-btn">
 						<a href="#" class="parent-btn"><i class="ion-heart"></i> like</a>
 						<div class="hover-bnt">

@@ -34,11 +34,23 @@ input.btnRegister{
     padding: 2.5% 0;
 }
 </style>
+
 <div class="container-fluid register">
     <div class="row">
         <div class="col-md-3 register-left"><img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
             <h3>Admin</h3>
-            <p>Nhập đầy đủ các trường để thêm phim mới vào hệ thống!<br/></div>
+            <p>Nhập đầy đủ các trường để thêm phim mới vào hệ thống!<br/></p>
+            <?php
+                $mess=Session::get('message');
+                if($mess){
+                    echo '
+                <p>'
+                ,$mess.
+                '</p>';
+                Session::put('message',null);
+                }
+            ?>
+        </div>
         <div class="col-md-9 register-right">
                     <form action="{{URL::to('/save-film')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}

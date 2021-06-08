@@ -43,7 +43,7 @@
         <div class="input-group">
         <form action="{{URL::to('/export-excel')}}" method="post" >
           {{csrf_field()}}
-          <input type="submit" class="input-sm form-control" value="Xuất file Excel">
+          <input type="submit" class="input-sm form-control btn btn-primary" value="Xuất file Excel">
           </form>
         </div>
       </div>
