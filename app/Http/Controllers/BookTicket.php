@@ -151,6 +151,7 @@ class BookTicket extends Controller
             $data['MaGhe'] = $req->arr_chairs[$i];
             $data['GiaVe'] = $req->giaVe;
             $data['is_read']=1;
+            DB::table('tbl_tickets')->insert($data);
         }
         Session::put('selectchair',$arr_chairs);
         return Redirect::to('/payment'); 

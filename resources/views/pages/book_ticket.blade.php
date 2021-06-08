@@ -454,6 +454,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   })
   $('.ticket-button').click(e => {
+    // e.preventDefault();
     const selectedSeats = document.querySelectorAll('.row .seat.selected.selected__item');
     if(selectedSeats.length===0){
       if(confirm("Chọn ít nhất một ghế để tiếp tục.")) {
@@ -474,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
         maKH: 1
         },
       success:function(response) {
-        console.log('response', response);
+        console.log('response', arr_chair);
       }
     });
 
