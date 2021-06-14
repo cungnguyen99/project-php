@@ -44,7 +44,7 @@ input.btnRegister{
                 $mess=Session::get('message');
                 if($mess){
                     echo '
-                <p>'
+                <p style="font-weight: 700; color: #cc2121">'
                 ,$mess.
                 '</p>';
                 Session::put('message',null);

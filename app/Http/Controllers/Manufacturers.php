@@ -57,6 +57,7 @@ class Manufacturers extends Controller
 
     public function delete_manufacturer_film($id_manufacturer)
     {
+        DB::table('tbl_films')->where('MaHSX',$id_manufacturer)->delete();
         DB::table('tbl_manufacturers')->where('ID',$id_manufacturer)->delete();
         Session::put('message','Xóa hãng sản xuất thành công.');
         return Redirect::to('all-manufacturers-film');  

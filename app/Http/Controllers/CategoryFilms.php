@@ -38,12 +38,17 @@ class CategoryFilms extends Controller
 
     public function all_films()
     {
-        $now = Carbon::now();
-        $weekStartDate = $now->startOfWeek()->format('Y-m-d');
-        $weekEndDate = $now->endOfWeek()->format('Y-m-d');
-        $films=DB::table('tbl_films')->orderby('IDf','desc')->paginate(8);
-
-        // $films=DB::table('tbl_films')->whereDate('NgayKhoiChieu','>=',date($weekStartDate))->whereDate('NgayKetThuc','<=', date($weekEndDate))->orderby('IDf','desc')->paginate(8);
+        $now = Carbon::now()->month;
+        // $weekStartDate = $now->startOfMonth()->format('d-m-Y');
+        // $weekEndDate = $now->endOfMonth()->format('d-m-Y');
+        // $films=DB::table('tbl_films')->orderby('IDf','desc')->paginate(8);
+        // $films=DB::table('tbl_films')->where('NgayKhoiChieu','like','%'.$now.'%')->orWhere('NgayKetThuc','like','%'.$now.'%')->get();
+        // dd($films);
+        // $films=DB::table('tbl_films')->where('NgayKhoiChieu','like','%'.$now.'%')->orWhere('NgayKetThuc','like','%'.$now.'%')->orderby('IDf','desc')->paginate(8);
+        $films=DB::table('tbl_films')
+        ->where(DB::raw("Month(STR_TO_DATE(NgayKhoiChieu, '%d-%m-%Y'))"), $now)
+        ->orWhere(DB::raw("Month(STR_TO_DATE(NgayKetThuc, '%d-%m-%Y'))"), $now)
+        ->orderby('IDf','desc')->paginate(8);
 
         return view('pages.all_films')->with('films',$films);
     }
@@ -78,9 +83,16 @@ class CategoryFilms extends Controller
         $data['Trailer']=$req->tongchiphi??'0';
         $data['NoiDung']=$req->noidung??'';
         if(  $req->tenphim == null || $req->ngaykt == null || $req->ngaykc == null ){
-                Session::put('message','Nhập đầy đủ thông tin cho ít nhất các trường: tên phim, ngày khởi chiếu và ngày kết thúc để tiếp tục.');
-                return Redirect::to('add-category-film');
-             }
+            Session::put('message','Nhập đầy đủ thông tin cho ít nhất các trường: tên phim, ngày khởi chiếu và ngày kết thúc để tiếp tục.');
+            return Redirect::to('add-category-film');
+        }
+        if((new Carbon($req->ngaykc))>(new Carbon($req->ngaykt)) 
+            || (new Carbon($req->ngaykc)) < (Carbon::now())
+            || (new Carbon($req->ngaykt)) < (Carbon::now())
+        ){
+            Session::put('message','Ngày kết thúc phải lớn hơn ngày chiếu và lớn hơn ngày hiện tại.');
+            return Redirect::to('add-category-film');
+        }
         $get_image=$req->file('url');
 
         if($get_image){

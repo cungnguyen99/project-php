@@ -43,7 +43,7 @@ input.btnRegister{
                 $error=Session::get('error');
                 if($error){
                     echo '
-                <p>'
+                <p style="font-weight: 700; color: #cc2121">'
                 ,$error.
                 '</p>';
                 Session::put('error',null);

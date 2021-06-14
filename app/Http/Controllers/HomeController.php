@@ -20,17 +20,49 @@ class HomeController extends Controller
 
         $manufacturers_id=DB::table('tbl_manufacturers')->orderby('ID','desc')->get();
 
-        $films_1=DB::table('tbl_films')->where('MaTheLoai','3')->orderby('IDf','desc')->get();
+        $now = Carbon::now()->month;
 
-        $films_2=DB::table('tbl_films')->where('MaTheLoai','2')->orderby('IDf','asc')->get();
+        $films_1=DB::table('tbl_films')->where('MaTheLoai','3')
+        ->where(function($query) use ($now) {
+            $query->where(DB::raw("Month(STR_TO_DATE(NgayKhoiChieu, '%d-%m-%Y'))"), $now);
+            $query->orWhere(DB::raw("Month(STR_TO_DATE(NgayKetThuc, '%d-%m-%Y'))"), $now);
+        })
+        ->orderby('IDf','desc')->get();
 
-        $films_3=DB::table('tbl_films')->where('MaTheLoai','1')->orderby('IDf','desc')->get();
+        $films_2=DB::table('tbl_films')->where('MaTheLoai','2')
+        ->where(function($query) use ($now) {
+            $query->where(DB::raw("Month(STR_TO_DATE(NgayKhoiChieu, '%d-%m-%Y'))"), $now);
+            $query->orWhere(DB::raw("Month(STR_TO_DATE(NgayKetThuc, '%d-%m-%Y'))"), $now);
+        })
+        ->orderby('IDf','asc')->get();
 
-        $films_4=DB::table('tbl_films')->where('MaHSX','2')->orderby('IDf','desc')->get();//marvel
+        $films_3=DB::table('tbl_films')->where('MaTheLoai','1')
+        ->where(function($query) use ($now) {
+            $query->where(DB::raw("Month(STR_TO_DATE(NgayKhoiChieu, '%d-%m-%Y'))"), $now);
+            $query->orWhere(DB::raw("Month(STR_TO_DATE(NgayKetThuc, '%d-%m-%Y'))"), $now);
+        })
+        ->orderby('IDf','desc')->get();
 
-        $films_5=DB::table('tbl_films')->where('MaHSX','3')->orderby('IDf','desc')->get();//bros
+        $films_4=DB::table('tbl_films')->where('MaHSX','2')
+        ->where(function($query) use ($now) {
+            $query->where(DB::raw("Month(STR_TO_DATE(NgayKhoiChieu, '%d-%m-%Y'))"), $now);
+            $query->orWhere(DB::raw("Month(STR_TO_DATE(NgayKetThuc, '%d-%m-%Y'))"), $now);
+        })
+        ->orderby('IDf','desc')->get();//marvel
 
-        $films_6=DB::table('tbl_films')->where('MaHSX','1')->orderby('IDf','asc')->get();//disney
+        $films_5=DB::table('tbl_films')->where('MaHSX','3')
+        ->where(function($query) use ($now) {
+            $query->where(DB::raw("Month(STR_TO_DATE(NgayKhoiChieu, '%d-%m-%Y'))"), $now);
+            $query->orWhere(DB::raw("Month(STR_TO_DATE(NgayKetThuc, '%d-%m-%Y'))"), $now);
+        })
+        ->orderby('IDf','desc')->get();//bros
+
+        $films_6=DB::table('tbl_films')->where('MaHSX','1')
+        ->where(function($query) use ($now) {
+            $query->where(DB::raw("Month(STR_TO_DATE(NgayKhoiChieu, '%d-%m-%Y'))"), $now);
+            $query->orWhere(DB::raw("Month(STR_TO_DATE(NgayKetThuc, '%d-%m-%Y'))"), $now);
+        })
+        ->orderby('IDf','asc')->get();//disney
 
         $films_7=DB::table('tbl_films')->select('DaoDien', DB::raw('count(*) as total'))->groupBy('DaoDien')->get();
 

@@ -63,6 +63,7 @@ class GenresFilm extends Controller
 
     public function delete_genre_film($id_film)
     {
+        DB::table('tbl_films')->where('MaTheLoai',$id_film)->delete();
         DB::table('tbl_genres')->where('ID',$id_film)->delete();
         Session::put('message','Xóa thể loại thành công.');
         return Redirect::to('all-genres-film');  
