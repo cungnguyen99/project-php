@@ -78,8 +78,9 @@ input.btnRegister{
                                             <div class="form-group"><input  type="text" name="daodien" placeholder="Đạo diễn *" value="" /></div>
                                             <div class="form-group"><input  type="text" onfocus="(this.type='date')" name="ngaykc" placeholder="Ngày Khởi chiếu *" value="" /></div>
                                             <div class="form-group">
-                                                <div class="maxl">
-                                                    <div class="button-wrapper"><span class="label" style='background:#0062cc'>Upload File</span><input class="form-control custom-file-input" id="upload" name="url" type="file" /></div>
+                                                <div class="maxl" id='create-film'>
+                                                    <div class="button-wrapper"><span class="label" style='background:#0062cc'>Upload File</span>
+                                                    <span style='font-size: smaller; width: auto; white-space: pre' id='filename'></span><input class="form-control custom-file-input" id="upload" name="url" type="file" /></div>
                                                 </div>
                                             </div>
                                     </div>
@@ -98,4 +99,14 @@ input.btnRegister{
                 </div>
     </div>
 </div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+  $('#create-film').on('click', (e) => {
+    $('#filename').html(this.val());
+  })
+  document.getElementById('upload').onchange = function () {
+    $('#filename').html(this.value);
+};
+})
+</script>
 @endsection

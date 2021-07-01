@@ -37,6 +37,11 @@ Route::get('/edit-category-film/{id_film}','App\Http\Controllers\CategoryFilms@e
 Route::get('/delete-category-film/{id_film}','App\Http\Controllers\CategoryFilms@delete_category_film')->middleware('auth.roles');
 Route::get('/all-category-films','App\Http\Controllers\CategoryFilms@all_category_films')->middleware('auth.roles');
 Route::get('/all-films','App\Http\Controllers\CategoryFilms@all_films');
+
+Route::get('/update_info/{user_id}','App\Http\Controllers\CategoryFilms@updateInfo');
+Route::post('/save-info/{id}','App\Http\Controllers\CategoryFilms@save_info');
+Route::post('/save-password/{id}','App\Http\Controllers\CategoryFilms@save_password');
+
 Route::get('/cart/{user_id}','App\Http\Controllers\CategoryFilms@cart');
 Route::get('/cancel-ticket/{order_id}','App\Http\Controllers\CategoryFilms@cancel')->name('cancel');
 Route::get('/actor/{name}','App\Http\Controllers\CategoryFilms@films_actor');

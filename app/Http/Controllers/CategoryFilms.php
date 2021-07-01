@@ -203,6 +203,46 @@ class CategoryFilms extends Controller
         return view('pages.cart')->with('carts',$carts)->with('chairs',$arr_ticket);
     }
 
+    public function updateInfo($user_id)
+    {
+        $user=DB::table('tbl_admin')->where('id',$user_id)->first();
+        return view('pages.update_info')->with('user',$user);
+    }    
+
+    public function save_info($id, Request $req)
+    {
+        $data=array();
+
+        $data['name']=$req->name;
+        $data['email']=$req->email;
+        $data['phone']=$req->phone;
+
+        DB::table('tbl_admin')->where('id', $id)->update($data);
+        Session::put('message','Cập nhật thông tin thành công.');
+        return Redirect::back();
+    }
+
+    public function save_password($id, Request $req)
+    {
+        $data=array();
+
+        $old=$req->oldPass;
+        $new=$req->newPass;
+        $cf=$req->cfPass;
+        $data['password']=md5($req->newPass);
+
+        $res=DB::table('tbl_admin')->where('password',md5($old))->first();
+
+        if(!$res){
+            Session::put('wrong','sai mật khẩu.');
+            return Redirect::back();
+        }
+        
+        DB::table('tbl_admin')->where('id', $id)->update($data);
+        Session::put('pass','Cập nhật thông tin thành công.');
+        return Redirect::back();
+    }
+
     public function cancel($time)
     {
         $id=Session::get('id');

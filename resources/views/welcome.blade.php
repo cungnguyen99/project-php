@@ -143,23 +143,18 @@
 							</a>
 						</li>
 						<li class="first">
-							<a class="btn btn-default dropdown-toggle lv1">
-							tin tức
-							</a>
-						</li>
-						<li class="first">
 							<a class="btn btn-default dropdown-toggle lv1" >
 							liên hệ
 							</a>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-						<li><a href="#">trợ giúp</a></li>
 						<?php
 						$id=Session::get('id');
 						$name=Session::get('name');
 						?>
 						@if($id)
+							<li><a href="{{URL::to('/update_info/'.$id)}}">Tài khoản</a></li>
 							<li class=''><a href="{{URL::to('/cart/'.$id)}}">Giỏ hàng</a></li>
 							<li class="btn"><a href="{{URL::to('/logout')}}">logout </a></li>
 						@else

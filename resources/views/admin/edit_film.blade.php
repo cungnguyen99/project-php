@@ -77,7 +77,10 @@ input.btnRegister{
                                                 <div class="form-group"><input  type="text" onfocus="(this.type='date')" name="ngaykc" placeholder="Ngày Khởi chiếu *" value="{{$editFilm->NgayKhoiChieu}}" /></div>
                                                 <div class="form-group">
                                                     <div class="maxl">
-                                                        <div class="button-wrapper"><span class="label">Upload File</span><input value="{{$editFilm->Anh}}" class="form-control custom-file-input" id="upload" name="url" type="file" /></div>
+                                                        <div class="button-wrapper">
+                                                        <span class="label">Upload File</span>
+                                                        <span style='font-size: smaller; width: auto; white-space: pre' id='filename'>{{$editFilm->Anh}}</span>
+                                                        <input value="{{$editFilm->Anh}}" class="form-control custom-file-input" id="upload" name="url" type="file" /></div>
                                                     </div>
                                                 </div>
                                         </div>
