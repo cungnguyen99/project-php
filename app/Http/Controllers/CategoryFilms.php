@@ -267,6 +267,19 @@ class CategoryFilms extends Controller
         return view('admin.revenue_films')->with('revenue',$revenue); 
     }
 
+    public function revenue(){
+        $revenues=DB::table('payments')
+        ->select(DB::raw('sum(payments.money) as revenue'), DB::raw('MONTH(time) month'))
+        ->groupBy(DB::raw('MONTH(time)'))->get();
+        $arr_label=array();
+        $arr_month=array();
+        foreach ($revenues as $value) {
+            $arr_label[] = $value->revenue;
+            $arr_month[] = "Tháng ".$value->month;
+        }
+        return response()->json([$arr_label,$arr_month]);
+    }
+
     public function export_excel()
     {
         return Excel::download(new ExcelExport, 'test.xlsx');
@@ -274,11 +287,9 @@ class CategoryFilms extends Controller
 
     public function revenue_month()
     {
-        $revenue=DB::table('tbl_films')
-        ->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')
-        ->join('tbl_tickets','tbl_showtimes.showID','=','tbl_tickets.MaShow')
-        ->select(DB::raw('sum(tbl_tickets.GiaVe) as revenue'), 'tbl_films.*')
-        ->groupBy('tbl_films.IDf')->get();
+        $revenue=DB::table('payments')
+        ->select(DB::raw('sum(payments.money) as revenue'), '.*')
+        ->groupBy('Month(payments.time)')->get();
         return view('admin.revenue_films')->with('revenue',$revenue); 
     }
 

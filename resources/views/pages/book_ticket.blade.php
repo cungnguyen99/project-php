@@ -368,11 +368,13 @@
                             {{csrf_field()}}
                           <div class="card_right__details movie-container">
                               <ul>
-                                <select id="selectItem" style="display:inline; width: 39%; margin-left: 13%" class="form-control showtime" type="text" name="showtime">
-                                    <option value="" disabled selected> Chọn lịch chiếu *</option>
+                                <select id="selectItem" style="display:inline; width: 25%;" class="form-control showtime" type="text" name="showtime">
+                                    <option value="" disabled selected> Lịch chiếu *</option>
                                       @foreach($showTimes as $item)
-                                      <option value="{{$item->showID}}"> {{$item->GioChieu}} / {{$item->NgayChieu}}</option>
+                                      <option value="{{$item->showID}}">{{$item->NgayChieu}}</option>
                                       @endforeach
+                              </select>
+                              <select id="selectItemTime" style="display:inline; width: 25%; margin-left: 7%" class="form-control" type="text" name="time">
                               </select>
                               <h6 class='room' style='display:inline-block; color:white; margin-left:5%'></h6>
                              {{-- <select id="selectChair" style="display:inline; width: 60%; margin-left: 13%" class="form-control" type="text" name="selectchair">
@@ -383,15 +385,15 @@
                                 <ul class="showcase">
                                 <li>
                                     <div class="seat"></div>
-                                    <small>N/A</small>
+                                    <small>Ghế trống</small>
                                 </li>
                                 <li>
                                     <div class="seat selected"></div>
-                                    <small>Selected</small>
+                                    <small>Đã chọn</small>
                                 </li>
                                                             <li>
                                   <div class="seat occupied"></div>
-                                  <small>Occupied</small>
+                                  <small>Đã đặt</small>
                                 </li>  
                                 </ul>
   
@@ -423,7 +425,7 @@
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
   var showtime;
-  $('.showtime').on('change', (e) => {
+  $('#selectItemTime').on('change', (e) => {
     console.log('ok', e.target.value);
     showtime = e.target.value
   })
@@ -499,10 +501,27 @@ document.addEventListener('DOMContentLoaded', function() {
 @push('scripts')
 <script>
 $(document).ready(function(){
+  
   $("#selectItem").change(function(){
-    var time_id = $(this).val();
-    console.log(time_id)
-    $.get('http://localhost/cinemas/show_chairs/' + time_id).then(function(data){
+    var timeshow = $("#selectItem option:selected").text();
+    $('.chair').html('');
+    $('#selectChair').html('');
+    $('.room').html('');
+    var id = window.location.pathname[window.location.pathname.length-1];
+    $.get('http://localhost/cinemas/time_show/' + id + '/' + timeshow).then(function(data){
+      if(data!=null){
+        var html_time=""
+        html_time+='<option value="" disabled selected> Giờ chiếu *</option>'
+        data.map(function(item,index){
+          html_time+='<option value="'+item['showID']+'">'+item['GioChieu']+'</option>'
+        })
+        $('#selectItemTime').html(html_time);
+      }
+    }).catch(error => error.message);
+
+    $("#selectItemTime").change(function(){
+      var time_id = $('#selectItemTime').val();
+      $.get('http://localhost/cinemas/show_chairs/' + id + '/' + time_id + '/'+timeshow).then(function(data){
       if(data != null){
         var html = "";
         var selectchairs="";
@@ -524,13 +543,14 @@ $(document).ready(function(){
             }
           }
         });
-
         $('.chair').html(html);
         $('#selectChair').html(selectchairs);
         $('.room').html('Phòng: '+data[1]);
       }
     }).catch(error => error.message);
+    })
   })
+
   const arr_chairs=[]
   container.addEventListener("click", e => {
     const id_chair=e.target.id

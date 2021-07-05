@@ -40,8 +40,7 @@ h2 {
   letter-spacing: 1px;
 }
 
-p {
-  color: rgba(0, 0, 0, 0.4);
+#text_gold p {
   margin: 10px 0;
   font-weight: 100;
   font-size: .75em;
@@ -102,12 +101,12 @@ button:hover {
 		</div>
 	</div>
 </div>
-<div class="page-single">
+<div class="page-single cart">
 	<div class="container">
 		<div class="row ipad-width">
                 @foreach($carts as $key=>$cart)
                 <div class="col-md-4">
-                    <div class='gold'>
+                    <div id="text_gold" class='gold'>
                         <h1>{{$cart->TenPhim}}</h1>
                         <h2>Ngày Chiếu: {{$cart->NgayChieu}}</h2>
                         <div class='price'><img style="border-radius:50%" src="{{URL::to('public/uploads/films/'.$cart->Anh)}}" alt=""></div>

@@ -35,9 +35,9 @@
                     <div class="movie-single-ct main-content">
                         <h1 class="bd-hd">{{$singleFilm->TenPhim}}</h1>
                         <div class="social-btn">
-                            <a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
+                            <a href="#" class="parent-btn"></a>
                             <div class="hover-bnt">
-                                <a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>share</a>
+                                <a href="#" class="parent-btn"></a>
                                 <div class="hvr-item">
                                     <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
                                     <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
@@ -81,7 +81,6 @@
                                                 </div>
                                                 <div class="title-hd-sm">
                                                     <h4>diễn viên</h4>
-                                                    <a href="#" class="time">Full Cast & Crew  <i class="ion-ios-arrow-right"></i></a>
                                                 </div>
                                                 <!-- movie cast -->
                                                 <div class="mvcast-item">
@@ -115,8 +114,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="title-hd-sm">
-                                                    <h4>bình luận</h4>
-                                                    <a href="#" class="time">Xem tất cả <i class="ion-ios-arrow-right"></i></a>
                                                 </div>
                                                 <!-- movie user review -->
                                                 <div class="mv-user-review-item">
@@ -137,7 +134,7 @@
                                                     <p><a href="#">{{$singleFilm->DaoDien}}</a></p>
                                                 </div>
                                                 <div class="sb-it">
-                                                    <h6>Stars: </h6>
+                                                    <h6>Diễn viên chính: </h6>
                                                     <p><a href="#">{{$singleFilm->NamChinh}} </a>,<a href="#">{{$singleFilm->NuChinh}}</a></p>
                                                 </div>
                                                 <div class="sb-it">
@@ -149,23 +146,14 @@
                                                     <p>{{$singleFilm->NgayKhoiChieu}} (V.N)</p>
                                                 </div>
                                                 <div class="sb-it">
-                                                    <h6>Run Time:</h6>
-                                                    <p>141 min</p>
+                                                    <!-- <h6>Run Time:</h6>
+                                                    <p>141 min</p> -->
                                                 </div>
                                                 <div class="sb-it">
                                                     <h6>IMDB:</h6>
                                                     <p>{{$singleFilm->IMDB}}</p>
                                                 </div>
-                                                <div class="sb-it">
-                                                    <h6>Từ khóa:</h6>
-                                                    <p class="tags">
-                                                        <span class="time"><a href="#">superhero</a></span>
-                                                        <span class="time"><a href="#">marvel universe</a></span>
-                                                        <span class="time"><a href="#">comic</a></span>
-                                                        <span class="time"><a href="#">blockbuster</a></span>
-                                                        <span class="time"><a href="#">final battle</a></span>
-                                                    </p>
-                                                </div>
+                                  
                                                 <div class="ads">
                                                     <img src="images/uploads/ads1.png" alt="">
                                                 </div>
@@ -174,7 +162,6 @@
                                     </div>
                                     <div id="cast" class="tab">
                                         <div class="row">
-                                            <h3>Cast & Crew of</h3>
                                             <h2>{{$singleFilm->TenPhim}}</h2>
                                             <!-- //== -->
                                             <div class="title-hd-sm">

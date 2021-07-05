@@ -83,7 +83,10 @@ Route::post('/update-manufacturer/{id_manufacturer}','App\Http\Controllers\Manuf
 Route::get('/book-ticket/{id_film}','App\Http\Controllers\BookTicket@book_ticket');
 Route::post('/showtime','App\Http\Controllers\BookTicket@getShowtime');
 
-Route::get('show_chairs/{time_id}', 'App\Http\Controllers\BookTicket@show_chair')->name("show_chair");
+Route::get('/show_chairs/{id}/{time_id}/{timeshow}', 'App\Http\Controllers\BookTicket@show_chair')->name("show_chair");
+Route::get('/time_show/{id}/{date}/', 'App\Http\Controllers\BookTicket@time_show')->name("time_show");
+Route::get('/revenue', 'App\Http\Controllers\CategoryFilms@revenue')->name("revenue");
+
 Route::get('/payment', 'App\Http\Controllers\BookTicket@payment');
 Route::post('/save-payment', 'App\Http\Controllers\BookTicket@save_payment');
 Route::get('/payment-online/{user_id}', 'App\Http\Controllers\BookTicket@payment_online');

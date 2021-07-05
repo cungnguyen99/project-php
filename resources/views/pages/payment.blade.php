@@ -55,7 +55,7 @@
 									<label for="order_desc">Nội dung thanh toán</label>
 									<input class="form-control" type='text' id="order_desc" name="order_desc" value='Noi dung thanh toan'/>
 								</div>
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="bank_code">Ngân hàng</label>
 									<select name="bank_code" id="bank_code" class="form-control">
 										<option value="">Không chọn</option>
@@ -82,14 +82,14 @@
 										<option value="IVB"> Ngan hang IVB</option>
 										<option value="VISA"> Thanh toan qua VISA/MASTER</option>
 									</select>
-								</div>
-								<div class="form-group">
+								</div> -->
+								<!-- <div class="form-group">
 									<label for="language">Ngôn ngữ</label>
 									<select name="language" id="language" class="form-control">
 										<option value="vn">Tiếng Việt</option>
 										<option value="en">English</option>
 									</select>
-								</div>
+								</div> -->
 						</div>
 						<div class="row">
 							<div class="col-md-6 form-it">
@@ -122,7 +122,9 @@
 							</div>
 						</div>	
 					</form>
-						<button type="button" class="btn btn-primary" data-url="{{ route('submit_vnpay') }}" id="btn-vnpay">Thanh toán Popup</button>
+					<p>Chú ý: Nhấn thanh toán để thanh toán tiền vé online qua cổng ngân hàng. Bỏ qua nếu muốn thanh toán 
+					trực tiếp tại quầy trước 1 ngày. Vé sẽ bị hủy nếu không thanh toán trước 1 ngày.</p>
+						<button type="button" class="btn btn-primary" data-url="{{ route('submit_vnpay') }}" id="btn-vnpay">Thanh toán</button>
 				</div>
 			</div>
 		</div>

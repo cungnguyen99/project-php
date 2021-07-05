@@ -156,9 +156,9 @@
 						@if($id)
 							<li><a href="{{URL::to('/update_info/'.$id)}}">Tài khoản</a></li>
 							<li class=''><a href="{{URL::to('/cart/'.$id)}}">Giỏ hàng</a></li>
-							<li class="btn"><a href="{{URL::to('/logout')}}">logout </a></li>
+							<li class="btn"><a href="{{URL::to('/logout')}}">Đăng xuất </a></li>
 						@else
-							<li class="btn"><a href="{{URL::to('/admin')}}">sign up </a></li>
+							<li class="btn"><a href="{{URL::to('/admin')}}">Đăng nhập </a></li>
 						@endif
 					</ul>
 				</div>
@@ -168,10 +168,10 @@
 	    <!-- top search form -->
 			<form action="{{URL::to('/search')}}" method="POST">
 	    <div class="top-search">
-	    	<select>
+	    	<!-- <select>
 				<option value="united">search movies</option>
 				<option value="saab">movies</option>
-			</select>
+			</select> -->
 			{{csrf_field()}}
 				<input type="text" name="keyword" placeholder="tìm phim theo tên, đạo diễn...">
 				<input type="submit" name="btn_search" value=''>
@@ -188,40 +188,27 @@
 	<div class="container">
 		<div class="flex-parent-ft">
 			<div class="flex-child-ft item1">
-				 <a href="index-2.html"><img class="logo" src="{{('public/frontend/images/logo1.png')}}" alt=""></a>
+			<h4>Địa chỉ</h4>
 				 <p>20 Lại yên, Hoài Dức<br>
 				Hà nội, HN 10001</p>
 				<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
 			</div>
 			<div class="flex-child-ft item2">
-				<h4>Resources</h4>
-				<ul>
-					<li><a href="#">Về chúng tôi</a></li> 
-					<li><a href="#">Liên hệ</a></li>
-				</ul>
+
 			</div>
 			<div class="flex-child-ft item3">
-				<h4>Điều khoản</h4>
-				<ul>
-					<li><a href="#">Terms of Use</a></li> 
-					<li><a href="#">Privacy Policy</a></li>	
-					<li><a href="#">Security</a></li>
-				</ul>
+
 			</div>
 			<div class="flex-child-ft item4">
-				<h4>Tài khoản</h4>
-				<ul>
-					<li><a href="#">Tài khoản của tôi</a></li> 
-					<li><a href="#">Hướng dẫn người dùng</a></li>
-				</ul>
+
 			</div>
 			<div class="flex-child-ft item5">
-				<h4>Newsletter</h4>
-				<p>Subscribe to our newsletter system now <br> to get latest news from us.</p>
+				<h4>Góp ý</h4>
+				<p>Mọi đóng góp về trang web trong quá trình sử dụng <br> xin gửi về hòm thư</p>
 				<form action="#">
-					<input type="text" placeholder="Nhập email...">
+					<input type="text" readonly placeholder="blockbuster@gmail.com">
 				</form>
-				<a href="#" class="btn">Đăng kí ngay <i class="ion-ios-arrow-forward"></i></a>
+				<a href="#" id="back-to-top" class="btn">Lên đầu trang <i class="ion-ios-arrow-thin-up"></i></a>
 			</div>
 		</div>
 	</div>
@@ -238,6 +225,7 @@
 <script src="{{asset('public/frontend/js/plugins.js')}}"></script>
 <script src="{{asset('public/frontend/js/plugins2.js')}}"></script>
 <script src="{{asset('public/frontend/js/custom.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.js" integrity="sha512-lUsN5TEogpe12qeV8NF4cxlJJatTZ12jnx9WXkFXOy7yFbuHwYRTjmctvwbRIuZPhv+lpvy7Cm9o8T9e+9pTrg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @stack('scripts')
 @stack('scriptss')
 </body>

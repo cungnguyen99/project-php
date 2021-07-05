@@ -46,7 +46,7 @@ class BookTicket extends Controller
         $date=Session::get('date');
         if($date){
             $d=(new DateTime($date))->format('d-m-Y');
-            $show_times=DB::table('tbl_showtimes')->where('MaPhim',$id_film)->where('NgayChieu','=',$d)->get();
+            $show_times=DB::table('tbl_showtimes')->where('MaPhim',$id_film)->where('NgayChieu','=',$d)->groupBy('NgayChieu')->get();
             
             if($film===null){
                 
@@ -60,7 +60,7 @@ class BookTicket extends Controller
                 ->with('showTimes',$show_times);
             }
         }else{
-            $show_times=DB::table('tbl_showtimes')->where('MaPhim',$id_film)->get();
+            $show_times=DB::table('tbl_showtimes')->where('MaPhim',$id_film)->groupBy('NgayChieu')->get();
     
             if($film===null){
     
@@ -76,9 +76,11 @@ class BookTicket extends Controller
 
     }
 
-    public function show_chair($time_id)
+    public function show_chair($id, $time_id, $timeshow)
     {
        $room = DB::table('tbl_showtimes')->select('MaPhong')->where('showID','=',$time_id)->first()->MaPhong;
+       $time_arr = DB::table('tbl_showtimes')->where('NgayChieu','=',$timeshow)->where('MaPhim','=',$id)->get();
+
        Session::put('room',$room);
        try{
             $chair = DB::table('tbl_chairs')->where('MaPhong','=', $room)->get();
@@ -101,11 +103,16 @@ class BookTicket extends Controller
 
                 $array[] = $chairs;
             }
-            return response()->json([$array,$room]);
+            return response()->json([$array,$room, $time_arr]);
        }
        catch(Exception $ex){
            return response()->json("Error");
        }
+    }
+
+    public function time_show($id, $date){
+        $time_arr = DB::table('tbl_showtimes')->where('NgayChieu','=',$date)->where('MaPhim','=',$id)->get();
+        return response()->json($time_arr);
     }
 
     public function payment(Request $req)
