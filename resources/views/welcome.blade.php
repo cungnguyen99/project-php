@@ -139,14 +139,14 @@
 						</li>
 						<li class="first">
 							<a  href="{{URL::to('/all-films')}}" class="btn btn-default dropdown-toggle lv1">
-							phim
+							phim đang chiếu
 							</a>
 						</li>
-						<li class="first">
+						<!-- <li class="first">
 							<a class="btn btn-default dropdown-toggle lv1" >
 							liên hệ
 							</a>
-						</li>
+						</li> -->
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
 						<?php

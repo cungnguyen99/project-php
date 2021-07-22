@@ -257,6 +257,7 @@ class CategoryFilms extends Controller
         return view('pages.films_actor')->with('films', $films_actor); 
     }
 
+    //khong dùng dữ liệu truyền sang trong này, chỉ dùng để return ra view
     public function revenue_films()
     {
         $revenue=DB::table('tbl_films')
@@ -267,17 +268,30 @@ class CategoryFilms extends Controller
         return view('admin.revenue_films')->with('revenue',$revenue); 
     }
 
+    //gui data json
     public function revenue(){
         $revenues=DB::table('payments')
         ->select(DB::raw('sum(payments.money) as revenue'), DB::raw('MONTH(time) month'))
         ->groupBy(DB::raw('MONTH(time)'))->get();
         $arr_label=array();
         $arr_month=array();
+        $arr_label_name_fimls=array();
+        $arr_films=array();
         foreach ($revenues as $value) {
             $arr_label[] = $value->revenue;
             $arr_month[] = "Tháng ".$value->month;
         }
-        return response()->json([$arr_label,$arr_month]);
+        $revenue_films=DB::table('tbl_films')
+        ->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')
+        ->join('tbl_tickets','tbl_showtimes.showID','=','tbl_tickets.MaShow')
+        ->select(DB::raw('sum(tbl_tickets.GiaVe) as revenue'), 'tbl_films.*')
+        ->groupBy('tbl_films.IDf')->get();
+
+        foreach ($revenue_films as $value) {
+            $arr_label_name_fimls[] = (int)($value->revenue);
+            $arr_films[] = "Phim ".$value->TenPhim;
+        }
+        return response()->json([$arr_label,$arr_month, $arr_label_name_fimls, $arr_films]);
     }
 
     public function export_excel()
@@ -285,6 +299,7 @@ class CategoryFilms extends Controller
         return Excel::download(new ExcelExport, 'test.xlsx');
     }
 
+    //khong dùng hàm này 
     public function revenue_month()
     {
         $revenue=DB::table('payments')
