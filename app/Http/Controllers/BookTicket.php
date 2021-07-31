@@ -60,8 +60,14 @@ class BookTicket extends Controller
                 ->with('showTimes',$show_times);
             }
         }else{
-            $show_times=DB::table('tbl_showtimes')->where('MaPhim',$id_film)->groupBy('NgayChieu')->get();
-    
+            // DB::enableQueryLog();
+            $now = Carbon::now()->format('d-m-Y');
+            $show_times=DB::table('tbl_showtimes')
+            ->where('MaPhim',$id_film)
+            ->where(DB::raw("UNIX_TIMESTAMP(STR_TO_DATE(NgayChieu, '%d-%m-%Y'))"),'>=',Carbon::now()->timestamp)
+            ->groupBy('NgayChieu')->get();
+            // dd(DB::getQueryLog());
+            // dd(Carbon::now()->timestamp, $show_times);
             if($film===null){
     
                 Session::put('mess','Phim chưa có lịch chiếu.');

@@ -7,6 +7,7 @@ use Session;
 use DateTime;
 use Illuminate\Support\Facades\Redirect;
 session_start();
+use Carbon\Carbon;
 class ShowTime extends Controller
 {
     public function add_showtime_film()
@@ -63,9 +64,13 @@ class ShowTime extends Controller
             return Redirect::to('add-showtime');
         }
 
+        if((new Carbon($req->ngaykc))<Carbon::now()){
+            Session::put('error','Ngày chiếu phải lớn hơn ngày hiện tại.');
+            return Redirect::to('add-showtime');
+        }
         if((int)($req->gbd)>=(int)($req->gkt)){
             Session::put('error','Giờ bắt đầu phải nhỏ hơn giờ kết thúc.');
-            return Redirect::to('all-showtimes');
+            return Redirect::to('add-showtime');
         }
         
         if($check_date){

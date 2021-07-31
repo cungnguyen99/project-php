@@ -270,8 +270,10 @@ class CategoryFilms extends Controller
 
     //gui data json
     public function revenue(){
+        $now = Carbon::now()->year;
         $revenues=DB::table('payments')
         ->select(DB::raw('sum(payments.money) as revenue'), DB::raw('MONTH(time) month'))
+        ->where(DB::raw("year(time)"), $now)
         ->groupBy(DB::raw('MONTH(time)'))->get();
         $arr_label=array();
         $arr_month=array();
@@ -285,6 +287,10 @@ class CategoryFilms extends Controller
         ->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')
         ->join('tbl_tickets','tbl_showtimes.showID','=','tbl_tickets.MaShow')
         ->select(DB::raw('sum(tbl_tickets.GiaVe) as revenue'), 'tbl_films.*')
+        ->where(function($query) use ($now) {
+            $query->where(DB::raw("year(STR_TO_DATE(NgayKhoiChieu, '%d-%m-%Y'))"), $now);
+            $query->orWhere(DB::raw("year(STR_TO_DATE(NgayKetThuc, '%d-%m-%Y'))"), $now);
+        })
         ->groupBy('tbl_films.IDf')->get();
 
         foreach ($revenue_films as $value) {

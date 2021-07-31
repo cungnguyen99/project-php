@@ -1,8 +1,9 @@
 @extends('admin_layout')
 @section('admin_content')
 <style>
-#myChart{
+#myChart, #myChartFilms{
   width: 90% !important;
+  height: 400px !important;
   margin: 0 auto
   }
 </style>
@@ -11,8 +12,8 @@
     <div class="panel-heading">
       THỐNG KÊ DOANH THU THEO THÁNG
     </div>
-    <canvas id="myChart" style="witdh: 80%"></canvas>
-    <canvas id="myChartFilms" style="witdh: 80%"></canvas>
+    <canvas id="myChart"></canvas>
+    <canvas id="myChartFilms"></canvas>
     <div class="text-center my-3">
     <button class="btn btn-primary" id='month'>Doanh thu tháng</button>
     <button class="btn btn-success" id='film'>Doanh thu Phim</button>
@@ -40,7 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
   $.get('http://localhost/cinemas/revenue').then(function(data){
   var ctx = document.getElementById('myChart').getContext('2d');
   var ctxs = document.getElementById('myChartFilms').getContext('2d');
-
+  $("#myChartFilms").css("opacity", "0")
+    $("#myChartFilms").css("display", "none")
+    $("#myChartFilms").css("visibility", "hidden")
   var myChart = new Chart(ctx, {
         type: 'bar',
         data: {

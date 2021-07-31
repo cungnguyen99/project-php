@@ -91,6 +91,7 @@ class HomeController extends Controller
         $films=DB::table('tbl_films')
         ->join('tbl_showtimes','tbl_films.IDf','=','tbl_showtimes.MaPhim')
         ->where('tbl_showtimes.NgayChieu','like','%'.$d.'%')
+        ->where(DB::raw("UNIX_TIMESTAMP(STR_TO_DATE(NgayChieu, '%d-%m-%Y'))"),'>=',Carbon::now()->timestamp)
         ->groupBy('MaPhim')
         ->get();
         // $films=DB::table('tbl_films')->where('TenPhim','like','%'.$keyword.'%')->get();
