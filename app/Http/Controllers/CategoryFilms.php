@@ -319,8 +319,22 @@ class CategoryFilms extends Controller
         $revenue=DB::table('payments')
         ->join('tbl_admin','tbl_admin.id','=','payments.user_id')
         ->get();
+        $ticket_booking=DB::table('tbl_tickets')
+        ->join('tbl_showtimes','tbl_showtimes.showId','=','tbl_tickets.MaShow')
+        ->get();
+        return view('admin.all_payment')->with('revenue',$revenue)->with('ticket_booking',$ticket_booking); 
+    }
 
-        return view('admin.all_payment')->with('revenue',$revenue); 
+    public function delete_ticket_null()
+    {
+        $now = Carbon::now()->format('d-m-Y');
+        $ticket_booking=DB::table('tbl_tickets')
+        ->join('tbl_showtimes','tbl_showtimes.showId','=','tbl_tickets.MaShow')
+        ->where('NgayChieu', '=', $now)
+        ->whereNull('MaDonHang')
+        ->delete();
+        Session::put('nullticket','Cập nhật thành công.');
+        return redirect('/payment-report'); 
     }
 
     public function manager_users()

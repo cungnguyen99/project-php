@@ -17,8 +17,12 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- CSS files -->
 	<link rel="stylesheet" href="{{asset('public/frontend/css/plugins.css')}}">
-    <link rel="stylesheet" href="{{asset('public/frontend/css/style.css')}}">
-
+  <link rel="stylesheet" href="{{asset('public/frontend/css/style.css')}}">
+	<style>
+		header .top-search input {
+			background: none
+		}
+	</style>
 </head>
 <body>
 <!--preloading-->
@@ -173,7 +177,7 @@
 				<option value="saab">movies</option>
 			</select> -->
 			{{csrf_field()}}
-				<input type="text" name="keyword" placeholder="tìm phim theo tên, đạo diễn...">
+				<input type="date" name="date" placeholder="tìm phim theo tên, đạo diễn...">
 				<input type="submit" name="btn_search" value=''>
 	    </div>
 			</form>

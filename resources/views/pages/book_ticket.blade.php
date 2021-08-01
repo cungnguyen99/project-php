@@ -507,8 +507,11 @@ $(document).ready(function(){
     $('.chair').html('');
     $('#selectChair').html('');
     $('.room').html('');
-    var id = window.location.pathname[window.location.pathname.length-1];
+    var arr_path = window.location.pathname.split('/');
+    var id = arr_path[arr_path.length-1]
+    console.log(window.location.pathname.split('/'), id[id.length-1])
     $.get('http://localhost/cinemas/time_show/' + id + '/' + timeshow).then(function(data){
+      console.log(data)
       if(data!=null){
         var html_time=""
         html_time+='<option value="" disabled selected> Giờ chiếu *</option>'

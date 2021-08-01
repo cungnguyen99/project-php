@@ -27,6 +27,13 @@
 			//in xong rồi thì gán bằng null, chỉ cho in ra 1 lần
 			Session::put('message',null);
     }
+    $nullticket=Session::get('nullticket');
+    if($nullticket){
+      echo "<script>";
+      echo "alert('Cập nhật thành công.');";
+      echo "</script>";
+      Session::put('nullticket',null);
+    }
 
 	?>
     <div class="table-responsive">
@@ -54,6 +61,42 @@
             <td><span class="text-ellipsis">{{$item->time}}</span></td>
             <td><span class="text-ellipsis">{{$item->code_bank}}</span></td>
             <td><span class="text-ellipsis">{{$item->money}}</span></td>
+          </tr>
+        @endforeach
+        </tbody>
+      </table>
+    </div>
+    <div class="input-group">
+        <form action="{{URL::to('/delete-ticket-null')}}" method="post" >
+          {{csrf_field()}}
+          <input type="submit" class="input-sm form-control btn btn-primary" value="Cập nhật trạng thái vé">
+          </form>
+        </div>
+    <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th style="width:20px;">
+              <label class="i-checks m-b-none">
+                <input type="checkbox"><i></i>
+              </label>
+            </th>
+            <th>STT</th>
+            <th>Mã show</th>
+            <th>Ngày chiếu</th>
+            <th>Mã ghế</th>
+            <th>Mã đơn hàng</th>
+          </tr>
+        </thead>
+        <tbody>
+        @foreach($ticket_booking as $items => $item)
+          <tr>
+            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+            <td>{{$items+1}}</td>
+            <td><span class="text-ellipsis">{{$item->MaShow}}</span></td>
+            <td><span class="text-ellipsis">{{$item->NgayChieu}}</span></td>
+            <td><span class="text-ellipsis">{{$item->MaGhe}}</span></td>
+            <td><span class="text-ellipsis">{{$item->MaDonHang}}</span></td>
           </tr>
         @endforeach
         </tbody>

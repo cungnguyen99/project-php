@@ -49,6 +49,7 @@ Route::get('/revenue-films','App\Http\Controllers\CategoryFilms@revenue_films')-
 Route::get('/revenue-month','App\Http\Controllers\CategoryFilms@revenue_month')->middleware('auth.roles');
 Route::post('/export-excel','App\Http\Controllers\CategoryFilms@export_excel')->middleware('auth.roles');
 Route::get('/payment-report','App\Http\Controllers\CategoryFilms@payment_report')->middleware('auth.roles');
+Route::post('/delete-ticket-null','App\Http\Controllers\CategoryFilms@delete_ticket_null')->middleware('auth.roles');
 Route::get('/manager-users','App\Http\Controllers\CategoryFilms@manager_users')->middleware('auth.roles');
 Route::get('/delete-user/{id_user}','App\Http\Controllers\CategoryFilms@delete_user')->middleware('auth.roles');
 Route::get('/unactive-user/{id_user}','App\Http\Controllers\CategoryFilms@unactive_user')->middleware('auth.roles');
